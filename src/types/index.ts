@@ -3,12 +3,15 @@ export interface Fighter {
   division: string | null;
   record: string;
   rank: string;
+  imageUrl?: string;
 }
 
 export interface Fight {
   f1: Fighter;
   f2: Fighter;
   lockedDiv: string | null;
+  isTitleFight?: boolean;
+  rounds?: 3 | 5;
 }
 
 export interface FightSlot {

@@ -1,8 +1,24 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FightsMap, Fighter, FighterSlotKey } from "./types";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { FightsMap, Fighter, FighterSlotKey, FightSlot } from "./types";
 import { FIGHT_SLOTS, emptyFighter, initFights } from "./constants";
 import { FightRow } from "./components/FightRow";
 import { FighterModal } from "./components/FighterModal";
+import { CardStats } from "./components/CardStats";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 interface ModalState {
   fightId: string;
@@ -13,34 +29,61 @@ interface ModalState {
 function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 my-5">
-      <div className="flex-1 h-px" style={{ background: "#e2e0da" }} />
+      <div className="flex-1 h-px" style={{ background: "var(--border-main)" }} />
       <span
         style={{
           fontFamily: "var(--font-condensed)",
           fontWeight: 900,
           fontSize: 10,
           letterSpacing: "0.25em",
-          color: "#dc2626",
+          color: "var(--accent-color)",
           textTransform: "uppercase",
         }}
       >
         {label}
       </span>
-      <div className="flex-1 h-px" style={{ background: "#e2e0da" }} />
+      <div className="flex-1 h-px" style={{ background: "var(--border-main)" }} />
     </div>
   );
 }
 
 // ── App ────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [fights, setFights]               = useState<FightsMap>(initFights);
+  const [fights, setFights]                 = useState<FightsMap>(initFights);
+  const [slots, setSlots]                   = useState<FightSlot[]>(FIGHT_SLOTS);
   const [noRestrictions, setNoRestrictions] = useState(false);
-  const [modal, setModal]                 = useState<ModalState | null>(null);
-  const [eventName, setEventName]         = useState("UFC 000");
-  const [editingName, setEditingName]     = useState(false);
+  const [modal, setModal]                   = useState<ModalState | null>(null);
+  const [eventName, setEventName]           = useState("UFC 000");
+  const [editingName, setEditingName]       = useState(false);
+  
+  const [isDark, setIsDark]                 = useState(false);
+
   const nameRef = useRef<HTMLInputElement>(null);
 
+  // Focus input when editing name
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+
+  // Apply dark mode
+  useEffect(() => {
+    document.body.className = isDark ? 'dark' : '';
+  }, [isDark]);
+
+  // Drag and Drop sensors
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setSlots((items) => {
+        const oldIndex = items.findIndex((i) => i.id === active.id);
+        const newIndex = items.findIndex((i) => i.id === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
 
   const openPick = (fightId: string, slot: FighterSlotKey) => setModal({ fightId, slot });
 
@@ -49,7 +92,12 @@ export default function App() {
     const { fightId, slot } = modal;
     setFights((prev) => {
       const fight = { ...prev[fightId], f1: { ...prev[fightId].f1 }, f2: { ...prev[fightId].f2 } };
-      fight[slot] = { name: fighter.name, division: fighter.division, record: fighter.record, rank: fighter.rank ?? "" };
+      fight[slot] = { 
+        name: fighter.name, 
+        division: fighter.division, 
+        record: fighter.record, 
+        rank: fighter.rank ?? ""
+      };
       if (!noRestrictions) {
         const other = slot === "f1" ? fight.f2 : fight.f1;
         if (!other.name) fight.lockedDiv = fighter.division;
@@ -68,20 +116,37 @@ export default function App() {
     });
   };
 
+  const toggleTitleFight = (fightId: string) => {
+    setFights((prev) => {
+      const fight = { ...prev[fightId] };
+      fight.isTitleFight = !fight.isTitleFight;
+      fight.rounds = fight.isTitleFight ? 5 : 3;
+      return { ...prev, [fightId]: fight };
+    });
+  };
+
   const getLockedDiv = (fightId: string) =>
     noRestrictions ? null : (fights[fightId]?.lockedDiv ?? null);
 
-  const mainSlots   = FIGHT_SLOTS.filter((s) => s.section === "main");
-  const prelimSlots = FIGHT_SLOTS.filter((s) => s.section === "prelim");
+  const mainSlots   = slots.filter((s) => s.section === "main");
+  const prelimSlots = slots.filter((s) => s.section === "prelim");
+  
+  // Exclude m1 and m2 from sortable context so they cannot be dragged
+  const sortableMainSlots = mainSlots.filter(s => s.id !== "m1" && s.id !== "m2");
+
+  // Get list of already selected fighters to prevent duplicates
+  const selectedFighterNames = Object.values(fights)
+    .flatMap(f => [f.f1.name, f.f2.name])
+    .filter(Boolean) as string[];
 
   return (
-    <div className="min-h-screen" style={{ background: "#f8f7f4" }}>
+    <div className="min-h-screen">
       {/* ── Top bar ─────────────────────────────── */}
       <header
-        className="sticky top-0 z-10 flex items-center gap-3 px-6 py-3"
+        className="sticky top-0 z-10 flex flex-wrap items-center gap-3 px-6 py-3"
         style={{
-          background: "#ffffff",
-          borderBottom: "1px solid #ede9e3",
+          background: "var(--bg-header)",
+          borderBottom: "1px solid var(--border-main)",
           boxShadow: "0 1px 12px rgba(0,0,0,0.04)",
         }}
       >
@@ -89,7 +154,7 @@ export default function App() {
         <div
           className="flex-shrink-0 flex items-center justify-center"
           style={{
-            background: "#dc2626",
+            background: "var(--accent-color)",
             color: "#fff",
             fontFamily: "var(--font-condensed)",
             fontWeight: 900,
@@ -116,11 +181,11 @@ export default function App() {
               fontWeight: 900,
               fontSize: 20,
               letterSpacing: "0.08em",
-              color: "#111827",
+              color: "var(--text-primary)",
               textTransform: "uppercase",
-              background: "none",
+              background: "transparent",
               border: "none",
-              borderBottom: "1.5px solid #dc2626",
+              borderBottom: "1.5px solid var(--accent-color)",
               width: 200,
               padding: "0 0 1px",
             }}
@@ -137,7 +202,7 @@ export default function App() {
                 fontWeight: 900,
                 fontSize: 20,
                 letterSpacing: "0.08em",
-                color: "#111827",
+                color: "var(--text-primary)",
                 textTransform: "uppercase",
               }}
             >
@@ -148,21 +213,32 @@ export default function App() {
         )}
 
         <span
-          className="hidden sm:block"
+          className="hidden sm:block mr-auto"
           style={{
             fontFamily: "var(--font-condensed)",
             fontWeight: 700,
             fontSize: 9,
             letterSpacing: "0.3em",
-            color: "#c4c0b8",
+            color: "var(--text-secondary)",
             textTransform: "uppercase",
           }}
         >
           CUSTOM CARD MAKER
         </span>
 
+        {/* Templates and Theme Toggle */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className="text-sm px-2 py-1 rounded transition-colors"
+            style={{ background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }}
+          >
+            {isDark ? "☀️ Light" : "🌙 Dark"}
+          </button>
+        </div>
+
         {/* No-restrictions toggle */}
-        <div className="ml-auto flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <span
             className="hidden md:block text-right"
             style={{
@@ -170,7 +246,7 @@ export default function App() {
               fontWeight: 700,
               fontSize: 10,
               letterSpacing: "0.1em",
-              color: noRestrictions ? "#dc2626" : "#a8a29e",
+              color: noRestrictions ? "var(--accent-color)" : "var(--text-secondary)",
               textTransform: "uppercase",
               lineHeight: 1.3,
               transition: "color 0.2s",
@@ -185,7 +261,7 @@ export default function App() {
             style={{
               width: 44,
               height: 24,
-              background: noRestrictions ? "#dc2626" : "#e2e0da",
+              background: noRestrictions ? "var(--accent-color)" : "var(--border-main)",
               border: "none",
               cursor: "pointer",
               padding: 0,
@@ -207,33 +283,64 @@ export default function App() {
 
       {/* ── Content ──────────────────────────────── */}
       <main className="max-w-3xl mx-auto px-4 pb-16">
-        <SectionDivider label="Main Card" />
-        {mainSlots.map((slot) => (
-          <FightRow
-            key={slot.id}
-            fightId={slot.id}
-            slot={slot}
-            fight={fights[slot.id]}
-            isMain={true}
-            noRestrictions={noRestrictions}
-            onPick={openPick}
-            onClear={handleClear}
-          />
-        ))}
+        <CardStats fights={fights} />
 
-        <SectionDivider label="Prelims" />
-        {prelimSlots.map((slot) => (
-          <FightRow
-            key={slot.id}
-            fightId={slot.id}
-            slot={slot}
-            fight={fights[slot.id]}
-            isMain={false}
-            noRestrictions={noRestrictions}
-            onPick={openPick}
-            onClear={handleClear}
-          />
-        ))}
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SectionDivider label="Main Card" />
+          
+          {/* Static rendering of m1 and m2 so they cannot be sorted/dragged */}
+          {mainSlots.filter(s => s.id === "m1" || s.id === "m2").map(slot => (
+            <FightRow
+              key={slot.id}
+              fightId={slot.id}
+              slot={slot}
+              fight={fights[slot.id]}
+              isMain={true}
+              noRestrictions={noRestrictions}
+              onPick={openPick}
+              onClear={handleClear}
+              onToggleTitle={toggleTitleFight}
+              disableDrag={true}
+            />
+          ))}
+
+          <SortableContext items={sortableMainSlots} strategy={verticalListSortingStrategy}>
+            {sortableMainSlots.map((slot) => (
+              <FightRow
+                key={slot.id}
+                fightId={slot.id}
+                slot={slot}
+                fight={fights[slot.id]}
+                isMain={true}
+                noRestrictions={noRestrictions}
+                onPick={openPick}
+                onClear={handleClear}
+                onToggleTitle={toggleTitleFight}
+              />
+            ))}
+          </SortableContext>
+
+          <SectionDivider label="Prelims" />
+          <SortableContext items={prelimSlots} strategy={verticalListSortingStrategy}>
+            {prelimSlots.map((slot) => (
+              <FightRow
+                key={slot.id}
+                fightId={slot.id}
+                slot={slot}
+                fight={fights[slot.id]}
+                isMain={false}
+                noRestrictions={noRestrictions}
+                onPick={openPick}
+                onClear={handleClear}
+                onToggleTitle={toggleTitleFight}
+              />
+            ))}
+          </SortableContext>
+        </DndContext>
       </main>
 
       {/* ── Modal ────────────────────────────────── */}
@@ -243,6 +350,7 @@ export default function App() {
           noRestrictions={noRestrictions}
           onSelect={handleSelect}
           onClose={() => setModal(null)}
+          selectedFighters={selectedFighterNames}
         />
       )}
     </div>

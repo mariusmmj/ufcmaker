@@ -3,20 +3,92 @@
 @theme {
   --font-condensed: "Barlow Condensed", sans-serif;
   --font-body: "Barlow", sans-serif;
+}
 
-  --color-red-brand: #dc2626;
-  --color-red-light: #fef2f2;
-  --color-red-mid: #fca5a5;
+:root {
+  --bg-main: #f8f7f4;
+  --bg-header: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafaf9;
+  --bg-card-empty: #fafaf9;
+  --bg-mismatch: #fffbeb;
+  
+  --border-main: #e2e0da;
+  --border-card: #e8e6e1;
+  --border-mismatch: #fcd34d;
+  
+  --text-primary: #111827;
+  --text-secondary: #a8a29e;
+  --text-muted: #d1cfc9;
+  
+  --accent-color: #dc2626;
+  --accent-hover: #b91c1c;
+  --accent-bg: #fef2f2;
+}
 
-  --color-div-strawweight: #be185d;
-  --color-div-flyweight: #7c3aed;
-  --color-div-bantamweight: #1d4ed8;
-  --color-div-featherweight: #0369a1;
-  --color-div-lightweight: #0e7490;
-  --color-div-welterweight: #15803d;
-  --color-div-middleweight: #b45309;
-  --color-div-lhw: #c2410c;
-  --color-div-heavyweight: #b91c1c;
+.dark {
+  --bg-main: #111111;
+  --bg-header: #1a1a1a;
+  --bg-card: #1f1f1f;
+  --bg-card-hover: #262626;
+  --bg-card-empty: #1a1a1a;
+  --bg-mismatch: #422006;
+  
+  --border-main: #333333;
+  --border-card: #333333;
+  --border-mismatch: #b45309;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+
+  --accent-color: #ef4444;
+  --accent-hover: #dc2626;
+  --accent-bg: #450a0a;
+}
+
+/* Theme: UFC 300 (Gold) */
+.theme-ufc300 {
+  --bg-main: #000000;
+  --bg-header: #111111;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #262626;
+  --bg-card-empty: #111111;
+  --bg-mismatch: #422006;
+  
+  --border-main: #eab308;
+  --border-card: #333333;
+  --border-mismatch: #b45309;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+
+  --accent-color: #eab308;
+  --accent-hover: #ca8a04;
+  --accent-bg: #422006;
+}
+
+/* Theme: Noche UFC (Green/Red/White) */
+.theme-noche {
+  --bg-main: #0a0a0a;
+  --bg-header: #0f172a;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --bg-card-empty: #0f172a;
+  --bg-mismatch: #1e3a8a;
+  
+  --border-main: #10b981;
+  --border-card: #334155;
+  --border-mismatch: #3b82f6;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  
+  --accent-color: #10b981;
+  --accent-hover: #059669;
+  --accent-bg: #064e3b;
 }
 
 * {
@@ -25,15 +97,16 @@
 
 body {
   font-family: var(--font-condensed);
-  background-color: #f8f7f4;
-  color: #1a1a1a;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   min-height: 100vh;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #f1f0ed; }
-::-webkit-scrollbar-thumb { background: #d1cfc9; border-radius: 2px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 2px; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(6px); }
