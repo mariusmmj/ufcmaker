@@ -4,11 +4,31 @@ import { DIVISION_COLOR } from "../constants";
 import { DivisionBadge } from "./DivisionBadge";
 import allFighters from "../data/fighters.json";
 const FIGHTERS = allFighters;
-function search(query, lockedDiv, selectedFighters = []) {
+function getRankNum(rank) {
+    if (!rank || rank === "Unranked")
+        return 999;
+    if (rank === "Champion" || rank === "C")
+        return 0;
+    const num = parseInt(rank.replace("#", ""), 10);
+    return isNaN(num) ? 999 : num;
+}
+function search(query, lockedDiv, selectedFighters = [], fightId) {
+    const isMainEvent = fightId === "m1" || fightId === "m2";
     const q = query.toLowerCase().trim();
     return FIGHTERS.filter((f) => {
         if (selectedFighters.includes(f.name))
             return false;
+        const rNum = getRankNum(f.rank);
+        if (isMainEvent) {
+            // Main/Co-main: ONLY top 5 or champion
+            if (rNum > 5)
+                return false;
+        }
+        else {
+            // Prelims/others: NO champions allowed
+            if (rNum === 0)
+                return false;
+        }
         const matchName = !q || f.name.toLowerCase().includes(q);
         const matchDiv = !q || (f.division?.toLowerCase().includes(q) ?? false);
         const matchQuery = matchName || matchDiv;
@@ -16,10 +36,10 @@ function search(query, lockedDiv, selectedFighters = []) {
         return matchQuery && matchLocked;
     }).slice(0, 8);
 }
-export const FighterModal = ({ lockedDiv, noRestrictions, onSelect, onClose, selectedFighters = [] }) => {
+export const FighterModal = ({ fightId, lockedDiv, noRestrictions, onSelect, onClose, selectedFighters = [] }) => {
     const effectiveLock = noRestrictions ? null : lockedDiv;
     const [query, setQuery] = useState("");
-    const [results, setResults] = useState(() => search("", effectiveLock, selectedFighters));
+    const [results, setResults] = useState(() => search("", effectiveLock, selectedFighters, fightId));
     const inputRef = useRef(null);
     // Custom fighter form state
     const [showCustomForm, setShowCustomForm] = useState(false);
@@ -30,17 +50,28 @@ export const FighterModal = ({ lockedDiv, noRestrictions, onSelect, onClose, sel
     useEffect(() => { inputRef.current?.focus(); }, []);
     const handleChange = (val) => {
         setQuery(val);
-        setResults(search(val, effectiveLock, selectedFighters));
+        setResults(search(val, effectiveLock, selectedFighters, fightId));
     };
     const handleCustomSubmit = (e) => {
         e.preventDefault();
         if (!customName.trim())
             return;
+        const rankVal = customRank.trim() || "Unranked";
+        const rNum = getRankNum(rankVal);
+        const isMainEvent = fightId === "m1" || fightId === "m2";
+        if (isMainEvent && rNum > 5) {
+            alert("Bare Champions og Top 5 fighters kan være i Main Event og Co-Main Event!");
+            return;
+        }
+        if (!isMainEvent && rNum === 0) {
+            alert("Champions kan bare være i Main Event og Co-Main Event!");
+            return;
+        }
         onSelect({
             name: customName.trim(),
             division: customDiv,
             record: customRecord.trim() || "0-0-0",
-            rank: customRank.trim() || "Unranked"
+            rank: rankVal
         });
     };
     const initials = (name) => name.split(" ").map((w) => w[0] ?? "").join("").slice(0, 2).toUpperCase();

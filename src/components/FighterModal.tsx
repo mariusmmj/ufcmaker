@@ -6,10 +6,29 @@ import allFighters from "../data/fighters.json";
 
 const FIGHTERS = allFighters as Fighter[];
 
-function search(query: string, lockedDiv: string | null, selectedFighters: string[] = []): Fighter[] {
+function getRankNum(rank?: string): number {
+  if (!rank || rank === "Unranked") return 999;
+  if (rank === "Champion" || rank === "C") return 0;
+  const num = parseInt(rank.replace("#", ""), 10);
+  return isNaN(num) ? 999 : num;
+}
+
+function search(query: string, lockedDiv: string | null, selectedFighters: string[] = [], fightId: string): Fighter[] {
+  const isMainEvent = fightId === "m1" || fightId === "m2";
   const q = query.toLowerCase().trim();
+  
   return FIGHTERS.filter((f) => {
     if (selectedFighters.includes(f.name)) return false;
+
+    const rNum = getRankNum(f.rank);
+    if (isMainEvent) {
+      // Main/Co-main: ONLY top 5 or champion
+      if (rNum > 5) return false;
+    } else {
+      // Prelims/others: NO champions allowed
+      if (rNum === 0) return false;
+    }
+
     const matchName = !q || f.name.toLowerCase().includes(q);
     const matchDiv  = !q || (f.division?.toLowerCase().includes(q) ?? false);
     const matchQuery = matchName || matchDiv;
@@ -19,6 +38,7 @@ function search(query: string, lockedDiv: string | null, selectedFighters: strin
 }
 
 interface Props {
+  fightId: string;
   lockedDiv: string | null;
   noRestrictions: boolean;
   onSelect: (fighter: Fighter) => void;
@@ -26,10 +46,10 @@ interface Props {
   selectedFighters?: string[];
 }
 
-export const FighterModal: React.FC<Props> = ({ lockedDiv, noRestrictions, onSelect, onClose, selectedFighters = [] }) => {
+export const FighterModal: React.FC<Props> = ({ fightId, lockedDiv, noRestrictions, onSelect, onClose, selectedFighters = [] }) => {
   const effectiveLock = noRestrictions ? null : lockedDiv;
   const [query, setQuery]     = useState("");
-  const [results, setResults] = useState<Fighter[]>(() => search("", effectiveLock, selectedFighters));
+  const [results, setResults] = useState<Fighter[]>(() => search("", effectiveLock, selectedFighters, fightId));
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Custom fighter form state
@@ -43,17 +63,31 @@ export const FighterModal: React.FC<Props> = ({ lockedDiv, noRestrictions, onSel
 
   const handleChange = (val: string) => {
     setQuery(val);
-    setResults(search(val, effectiveLock, selectedFighters));
+    setResults(search(val, effectiveLock, selectedFighters, fightId));
   };
 
   const handleCustomSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!customName.trim()) return;
+
+    const rankVal = customRank.trim() || "Unranked";
+    const rNum = getRankNum(rankVal);
+    const isMainEvent = fightId === "m1" || fightId === "m2";
+
+    if (isMainEvent && rNum > 5) {
+      alert("Bare Champions og Top 5 fighters kan være i Main Event og Co-Main Event!");
+      return;
+    }
+    if (!isMainEvent && rNum === 0) {
+      alert("Champions kan bare være i Main Event og Co-Main Event!");
+      return;
+    }
+
     onSelect({
       name: customName.trim(),
       division: customDiv,
       record: customRecord.trim() || "0-0-0",
-      rank: customRank.trim() || "Unranked"
+      rank: rankVal
     });
   };
 

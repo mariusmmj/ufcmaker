@@ -9,15 +9,15 @@ import { CSS } from "@dnd-kit/utilities";
 
 interface CellProps {
   fighter: Fight["f1"];
-  side: "left" | "right";
   isMain: boolean;
   onClick: () => void;
   onClear: () => void;
 }
 
-const FighterCell: React.FC<CellProps> = ({ fighter, side, isMain, onClick, onClear }) => {
-  const align = side === "right" ? "items-end text-right" : "items-start text-left";
-  const clearPos = side === "right" ? "right-2 top-2" : "left-2 top-2";
+const FighterCell: React.FC<CellProps> = ({ fighter, isMain, onClick, onClear }) => {
+  // Always left align the text to make better use of space, and put X on the right.
+  const align = "items-start text-left";
+  const clearPos = "right-3";
 
   if (!fighter.name) {
     return (
@@ -54,7 +54,7 @@ const FighterCell: React.FC<CellProps> = ({ fighter, side, isMain, onClick, onCl
     );
   }
 
-  const metaDir = side === "right" ? "flex-row-reverse" : "flex-row";
+  const metaDir = "flex-row";
 
   return (
     <div
@@ -70,21 +70,26 @@ const FighterCell: React.FC<CellProps> = ({ fighter, side, isMain, onClick, onCl
     >
       {/* Clear button */}
       <button
-        className={`absolute ${clearPos} opacity-0 group-hover:opacity-100 transition-opacity z-10`}
+        className={`absolute ${clearPos} opacity-50 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center`}
         onClick={(e) => { e.stopPropagation(); onClear(); }}
+        title="Fjern fighter"
         style={{
-          background: "none",
+          background: "#ef4444",
           border: "none",
           cursor: "pointer",
-          color: "var(--text-muted)",
-          fontSize: 11,
+          color: "white",
+          width: 28,
+          height: 28,
+          fontSize: 14,
           lineHeight: 1,
-          padding: "2px 3px",
-          borderRadius: 3,
+          borderRadius: "50%",
           fontFamily: "var(--font-condensed)",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+          top: "50%",
+          transform: "translateY(-50%)"
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-color)")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "#dc2626")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "#ef4444")}
       >
         ✕
       </button>
@@ -108,7 +113,7 @@ const FighterCell: React.FC<CellProps> = ({ fighter, side, isMain, onClick, onCl
       </div>
 
       {/* Meta */}
-      <div className={`flex ${metaDir} items-center gap-2 flex-wrap relative z-10`}>
+      <div className={`flex ${metaDir} items-center gap-2 flex-wrap relative z-10 pr-8`}>
         <DivisionBadge division={fighter.division} />
         <span style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--text-secondary)" }}>
           {fighter.record}
@@ -242,7 +247,6 @@ export const FightRow: React.FC<Props> = ({
       <div className="flex items-stretch gap-2 px-2 pb-2">
         <FighterCell
           fighter={f1}
-          side="right"
           isMain={isMain}
           onClick={() => onPick(fightId, "f1")}
           onClear={() => onClear(fightId, "f1")}
@@ -268,7 +272,6 @@ export const FightRow: React.FC<Props> = ({
 
         <FighterCell
           fighter={f2}
-          side="left"
           isMain={isMain}
           onClick={() => onPick(fightId, "f2")}
           onClear={() => onClear(fightId, "f2")}

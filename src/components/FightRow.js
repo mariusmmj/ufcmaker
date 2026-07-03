@@ -3,9 +3,10 @@ import { DIVISION_COLOR } from "../constants";
 import { DivisionBadge } from "./DivisionBadge";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-const FighterCell = ({ fighter, side, isMain, onClick, onClear }) => {
-    const align = side === "right" ? "items-end text-right" : "items-start text-left";
-    const clearPos = side === "right" ? "right-2 top-2" : "left-2 top-2";
+const FighterCell = ({ fighter, isMain, onClick, onClear }) => {
+    // Always left align the text to make better use of space, and put X on the right.
+    const align = "items-start text-left";
+    const clearPos = "right-3";
     if (!fighter.name) {
         return (_jsx("div", { onClick: onClick, className: `flex-1 flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all group`, style: {
                 minHeight: isMain ? 64 : 52,
@@ -25,22 +26,26 @@ const FighterCell = ({ fighter, side, isMain, onClick, onClear }) => {
                     color: "var(--text-muted)",
                 }, children: "+ LEGG TIL FIGHTER" }) }));
     }
-    const metaDir = side === "right" ? "flex-row-reverse" : "flex-row";
+    const metaDir = "flex-row";
     return (_jsxs("div", { onClick: onClick, className: `flex-1 flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group overflow-hidden`, style: {
             minHeight: isMain ? 64 : 52,
             background: "var(--bg-card)",
             border: "1px solid var(--border-card)",
-        }, onMouseEnter: (e) => (e.currentTarget.style.background = "var(--bg-card-hover)"), onMouseLeave: (e) => (e.currentTarget.style.background = "var(--bg-card)"), children: [_jsx("button", { className: `absolute ${clearPos} opacity-0 group-hover:opacity-100 transition-opacity z-10`, onClick: (e) => { e.stopPropagation(); onClear(); }, style: {
-                    background: "none",
+        }, onMouseEnter: (e) => (e.currentTarget.style.background = "var(--bg-card-hover)"), onMouseLeave: (e) => (e.currentTarget.style.background = "var(--bg-card)"), children: [_jsx("button", { className: `absolute ${clearPos} opacity-50 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center`, onClick: (e) => { e.stopPropagation(); onClear(); }, title: "Fjern fighter", style: {
+                    background: "#ef4444",
                     border: "none",
                     cursor: "pointer",
-                    color: "var(--text-muted)",
-                    fontSize: 11,
+                    color: "white",
+                    width: 28,
+                    height: 28,
+                    fontSize: 14,
                     lineHeight: 1,
-                    padding: "2px 3px",
-                    borderRadius: 3,
+                    borderRadius: "50%",
                     fontFamily: "var(--font-condensed)",
-                }, onMouseEnter: (e) => (e.currentTarget.style.color = "var(--accent-color)"), onMouseLeave: (e) => (e.currentTarget.style.color = "var(--text-muted)"), children: "\u2715" }), _jsx("div", { className: "relative z-10 flex items-center gap-2", children: _jsx("p", { style: {
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                    top: "50%",
+                    transform: "translateY(-50%)"
+                }, onMouseEnter: (e) => (e.currentTarget.style.background = "#dc2626"), onMouseLeave: (e) => (e.currentTarget.style.background = "#ef4444"), children: "\u2715" }), _jsx("div", { className: "relative z-10 flex items-center gap-2", children: _jsx("p", { style: {
                         fontFamily: "var(--font-condensed)",
                         fontWeight: 900,
                         fontSize: isMain ? 16 : 14,
@@ -49,7 +54,7 @@ const FighterCell = ({ fighter, side, isMain, onClick, onClear }) => {
                         lineHeight: 1.1,
                         marginBottom: 4,
                         textTransform: "uppercase",
-                    }, children: fighter.name }) }), _jsxs("div", { className: `flex ${metaDir} items-center gap-2 flex-wrap relative z-10`, children: [_jsx(DivisionBadge, { division: fighter.division }), _jsx("span", { style: { fontFamily: "var(--font-body)", fontSize: 11, color: "var(--text-secondary)" }, children: fighter.record }), fighter.rank && fighter.rank !== "Unranked" && (_jsx("span", { style: { fontFamily: "var(--font-body)", fontSize: 10, color: "var(--text-secondary)", fontStyle: "italic" }, children: fighter.rank }))] })] }));
+                    }, children: fighter.name }) }), _jsxs("div", { className: `flex ${metaDir} items-center gap-2 flex-wrap relative z-10 pr-8`, children: [_jsx(DivisionBadge, { division: fighter.division }), _jsx("span", { style: { fontFamily: "var(--font-body)", fontSize: 11, color: "var(--text-secondary)" }, children: fighter.record }), fighter.rank && fighter.rank !== "Unranked" && (_jsx("span", { style: { fontFamily: "var(--font-body)", fontSize: 10, color: "var(--text-secondary)", fontStyle: "italic" }, children: fighter.rank }))] })] }));
 };
 export const FightRow = ({ fightId, slot, fight, isMain, noRestrictions, onPick, onClear, onToggleTitle, disableDrag }) => {
     const { f1, f2, lockedDiv, isTitleFight } = fight;
@@ -88,11 +93,11 @@ export const FightRow = ({ fightId, slot, fight, isMain, noRestrictions, onPick,
                             background: "var(--bg-card)",
                             color: isTitleFight ? "var(--accent-color)" : "var(--text-muted)",
                             borderColor: isTitleFight ? "var(--accent-color)" : "var(--border-card)"
-                        }, children: isTitleFight ? "TITTELKAMP (5 RUNDER)" : "Gjør til tittelkamp" })), mismatch && (_jsx("span", { className: "ml-auto", style: { fontFamily: "var(--font-body)", fontSize: 9, color: "#d97706", fontStyle: "italic" }, children: "\u26A0 divisjon mismatch" }))] }), _jsxs("div", { className: "flex items-stretch gap-2 px-2 pb-2", children: [_jsx(FighterCell, { fighter: f1, side: "right", isMain: isMain, onClick: () => onPick(fightId, "f1"), onClear: () => onClear(fightId, "f1") }), _jsx("div", { className: "flex-shrink-0 flex items-center justify-center", style: { width: 36 }, children: _jsx("span", { style: {
+                        }, children: isTitleFight ? "TITTELKAMP (5 RUNDER)" : "Gjør til tittelkamp" })), mismatch && (_jsx("span", { className: "ml-auto", style: { fontFamily: "var(--font-body)", fontSize: 9, color: "#d97706", fontStyle: "italic" }, children: "\u26A0 divisjon mismatch" }))] }), _jsxs("div", { className: "flex items-stretch gap-2 px-2 pb-2", children: [_jsx(FighterCell, { fighter: f1, isMain: isMain, onClick: () => onPick(fightId, "f1"), onClear: () => onClear(fightId, "f1") }), _jsx("div", { className: "flex-shrink-0 flex items-center justify-center", style: { width: 36 }, children: _jsx("span", { style: {
                                 fontFamily: "var(--font-condensed)",
                                 fontWeight: 900,
                                 fontSize: 11,
                                 letterSpacing: "0.2em",
                                 color: divColors?.text ?? "var(--text-muted)",
-                            }, children: "VS" }) }), _jsx(FighterCell, { fighter: f2, side: "left", isMain: isMain, onClick: () => onPick(fightId, "f2"), onClear: () => onClear(fightId, "f2") })] })] }));
+                            }, children: "VS" }) }), _jsx(FighterCell, { fighter: f2, isMain: isMain, onClick: () => onPick(fightId, "f2"), onClear: () => onClear(fightId, "f2") })] })] }));
 };

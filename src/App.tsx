@@ -4,6 +4,10 @@ import { FIGHT_SLOTS, emptyFighter, initFights } from "./constants";
 import { FightRow } from "./components/FightRow";
 import { FighterModal } from "./components/FighterModal";
 import { CardStats } from "./components/CardStats";
+
+import { saveState, loadState } from "./utils/storage";
+import { generateRandomCard } from "./utils/randomizer";
+import allFighters from "./data/fighters.json";
 import {
   DndContext,
   closestCenter,
@@ -49,16 +53,23 @@ function SectionDivider({ label }: { label: string }) {
 
 // ── App ────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [fights, setFights]                 = useState<FightsMap>(initFights);
+  const initialState = loadState();
+  const [fights, setFights]                 = useState<FightsMap>(initialState.fights || initFights);
   const [slots, setSlots]                   = useState<FightSlot[]>(FIGHT_SLOTS);
   const [noRestrictions, setNoRestrictions] = useState(false);
   const [modal, setModal]                   = useState<ModalState | null>(null);
-  const [eventName, setEventName]           = useState("UFC 000");
+  const [eventName, setEventName]           = useState(initialState.eventName || "UFC 000");
   const [editingName, setEditingName]       = useState(false);
   
   const [isDark, setIsDark]                 = useState(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
+
+  // Autosave
+  useEffect(() => {
+    saveState(fights, eventName);
+  }, [fights, eventName]);
 
   // Focus input when editing name
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
@@ -138,6 +149,13 @@ export default function App() {
   const selectedFighterNames = Object.values(fights)
     .flatMap(f => [f.f1.name, f.f2.name])
     .filter(Boolean) as string[];
+
+
+
+  const surpriseMe = () => {
+    const randomCard = generateRandomCard(slots, allFighters as Fighter[]);
+    setFights(randomCard);
+  };
 
   return (
     <div className="min-h-screen">
@@ -229,6 +247,13 @@ export default function App() {
         {/* Templates and Theme Toggle */}
         <div className="flex items-center gap-4">
           <button
+            onClick={surpriseMe}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold"
+            style={{ background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }}
+          >
+            🎲 Surprise Me!
+          </button>
+          <button
             onClick={() => setIsDark(!isDark)}
             className="text-sm px-2 py-1 rounded transition-colors"
             style={{ background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }}
@@ -282,7 +307,7 @@ export default function App() {
       </header>
 
       {/* ── Content ──────────────────────────────── */}
-      <main className="max-w-3xl mx-auto px-4 pb-16">
+      <main ref={mainRef} className="max-w-3xl mx-auto px-4 pb-16 pt-4">
         <CardStats fights={fights} />
 
         <DndContext
@@ -346,6 +371,7 @@ export default function App() {
       {/* ── Modal ────────────────────────────────── */}
       {modal && (
         <FighterModal
+          fightId={modal.fightId}
           lockedDiv={getLockedDiv(modal.fightId)}
           noRestrictions={noRestrictions}
           onSelect={handleSelect}

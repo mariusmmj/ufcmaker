@@ -4,6 +4,9 @@ import { FIGHT_SLOTS, emptyFighter, initFights } from "./constants";
 import { FightRow } from "./components/FightRow";
 import { FighterModal } from "./components/FighterModal";
 import { CardStats } from "./components/CardStats";
+import { saveState, loadState } from "./utils/storage";
+import { generateRandomCard } from "./utils/randomizer";
+import allFighters from "./data/fighters.json";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, } from "@dnd-kit/sortable";
 // ── Section divider ────────────────────────────────────────────────────────
@@ -19,14 +22,20 @@ function SectionDivider({ label }) {
 }
 // ── App ────────────────────────────────────────────────────────────────────
 export default function App() {
-    const [fights, setFights] = useState(initFights);
+    const initialState = loadState();
+    const [fights, setFights] = useState(initialState.fights || initFights);
     const [slots, setSlots] = useState(FIGHT_SLOTS);
     const [noRestrictions, setNoRestrictions] = useState(false);
     const [modal, setModal] = useState(null);
-    const [eventName, setEventName] = useState("UFC 000");
+    const [eventName, setEventName] = useState(initialState.eventName || "UFC 000");
     const [editingName, setEditingName] = useState(false);
     const [isDark, setIsDark] = useState(false);
     const nameRef = useRef(null);
+    const mainRef = useRef(null);
+    // Autosave
+    useEffect(() => {
+        saveState(fights, eventName);
+    }, [fights, eventName]);
     // Focus input when editing name
     useEffect(() => { if (editingName)
         nameRef.current?.focus(); }, [editingName]);
@@ -94,6 +103,10 @@ export default function App() {
     const selectedFighterNames = Object.values(fights)
         .flatMap(f => [f.f1.name, f.f2.name])
         .filter(Boolean);
+    const surpriseMe = () => {
+        const randomCard = generateRandomCard(slots, allFighters);
+        setFights(randomCard);
+    };
     return (_jsxs("div", { className: "min-h-screen", children: [_jsxs("header", { className: "sticky top-0 z-10 flex flex-wrap items-center gap-3 px-6 py-3", style: {
                     background: "var(--bg-header)",
                     borderBottom: "1px solid var(--border-main)",
@@ -133,7 +146,7 @@ export default function App() {
                             letterSpacing: "0.3em",
                             color: "var(--text-secondary)",
                             textTransform: "uppercase",
-                        }, children: "CUSTOM CARD MAKER" }), _jsx("div", { className: "flex items-center gap-4", children: _jsx("button", { onClick: () => setIsDark(!isDark), className: "text-sm px-2 py-1 rounded transition-colors", style: { background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }, children: isDark ? "☀️ Light" : "🌙 Dark" }) }), _jsxs("div", { className: "flex items-center gap-3", children: [_jsxs("span", { className: "hidden md:block text-right", style: {
+                        }, children: "CUSTOM CARD MAKER" }), _jsxs("div", { className: "flex items-center gap-4", children: [_jsx("button", { onClick: surpriseMe, className: "text-sm px-3 py-1 rounded transition-colors font-bold", style: { background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }, children: "\uD83C\uDFB2 Surprise Me!" }), _jsx("button", { onClick: () => setIsDark(!isDark), className: "text-sm px-2 py-1 rounded transition-colors", style: { background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }, children: isDark ? "☀️ Light" : "🌙 Dark" })] }), _jsxs("div", { className: "flex items-center gap-3", children: [_jsxs("span", { className: "hidden md:block text-right", style: {
                                     fontFamily: "var(--font-condensed)",
                                     fontWeight: 700,
                                     fontSize: 10,
@@ -154,5 +167,5 @@ export default function App() {
                                         height: 20,
                                         left: noRestrictions ? 22 : 2,
                                         boxShadow: "0 1px 4px rgba(0,0,0,0.15)",
-                                    } }) })] })] }), _jsxs("main", { className: "max-w-3xl mx-auto px-4 pb-16", children: [_jsx(CardStats, { fights: fights }), _jsxs(DndContext, { sensors: sensors, collisionDetection: closestCenter, onDragEnd: handleDragEnd, children: [_jsx(SectionDivider, { label: "Main Card" }), mainSlots.filter(s => s.id === "m1" || s.id === "m2").map(slot => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: true, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight, disableDrag: true }, slot.id))), _jsx(SortableContext, { items: sortableMainSlots, strategy: verticalListSortingStrategy, children: sortableMainSlots.map((slot) => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: true, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight }, slot.id))) }), _jsx(SectionDivider, { label: "Prelims" }), _jsx(SortableContext, { items: prelimSlots, strategy: verticalListSortingStrategy, children: prelimSlots.map((slot) => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: false, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight }, slot.id))) })] })] }), modal && (_jsx(FighterModal, { lockedDiv: getLockedDiv(modal.fightId), noRestrictions: noRestrictions, onSelect: handleSelect, onClose: () => setModal(null), selectedFighters: selectedFighterNames }))] }));
+                                    } }) })] })] }), _jsxs("main", { ref: mainRef, className: "max-w-3xl mx-auto px-4 pb-16 pt-4", children: [_jsx(CardStats, { fights: fights }), _jsxs(DndContext, { sensors: sensors, collisionDetection: closestCenter, onDragEnd: handleDragEnd, children: [_jsx(SectionDivider, { label: "Main Card" }), mainSlots.filter(s => s.id === "m1" || s.id === "m2").map(slot => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: true, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight, disableDrag: true }, slot.id))), _jsx(SortableContext, { items: sortableMainSlots, strategy: verticalListSortingStrategy, children: sortableMainSlots.map((slot) => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: true, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight }, slot.id))) }), _jsx(SectionDivider, { label: "Prelims" }), _jsx(SortableContext, { items: prelimSlots, strategy: verticalListSortingStrategy, children: prelimSlots.map((slot) => (_jsx(FightRow, { fightId: slot.id, slot: slot, fight: fights[slot.id], isMain: false, noRestrictions: noRestrictions, onPick: openPick, onClear: handleClear, onToggleTitle: toggleTitleFight }, slot.id))) })] })] }), modal && (_jsx(FighterModal, { fightId: modal.fightId, lockedDiv: getLockedDiv(modal.fightId), noRestrictions: noRestrictions, onSelect: handleSelect, onClose: () => setModal(null), selectedFighters: selectedFighterNames }))] }));
 }

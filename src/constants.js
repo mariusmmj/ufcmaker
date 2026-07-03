@@ -28,6 +28,8 @@ export const DIVISION_COLOR = {
     Middleweight: { text: "#78350f", bg: "#fffbeb", border: "#fde68a" },
     "Light Heavyweight": { text: "#7c2d12", bg: "#fff7ed", border: "#fed7aa" },
     Heavyweight: { text: "#7f1d1d", bg: "#fef2f2", border: "#fecaca" },
+    "Flyweight (W)": { text: "#86198f", bg: "#fdf4ff", border: "#f5d0fe" },
+    "Bantamweight (W)": { text: "#1e40af", bg: "#eff6ff", border: "#bfdbfe" },
 };
 export const emptyFighter = () => ({ name: "", division: null, record: "", rank: "" });
 export const emptyFight = () => ({ f1: emptyFighter(), f2: emptyFighter(), lockedDiv: null });
