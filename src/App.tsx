@@ -85,12 +85,18 @@ export default function App() {
   const handleExport = () => {
     if (mainRef.current === null) return;
     const node = mainRef.current;
+    const exportWidth = 800;
     toPng(node, { 
       cacheBust: true, 
       backgroundColor: isDark ? '#1a1a1a' : '#f9f9f9',
-      width: node.scrollWidth,
+      width: exportWidth,
       height: node.scrollHeight,
-      style: { margin: '0' }
+      style: { 
+        margin: '0',
+        width: `${exportWidth}px`,
+        minWidth: `${exportWidth}px`,
+        maxWidth: `${exportWidth}px`
+      }
     })
       .then((dataUrl) => {
         const link = document.createElement('a');
