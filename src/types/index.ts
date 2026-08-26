@@ -17,8 +17,8 @@ export interface Fight {
 export interface FightSlot {
   id: string;
   label: string;
-  section: "main" | "prelim";
+  section: 'main' | 'prelim';
 }
 
-export type FighterSlotKey = "f1" | "f2";
+export type FighterSlotKey = 'f1' | 'f2';
 export type FightsMap = Record<string, Fight>;

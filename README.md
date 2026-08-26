@@ -1,100 +1,71 @@
-# UFC Card Maker
+# 🥊 UFC Card Maker
 
-A custom UFC event card builder with real-time hype scoring, drag-and-drop reordering, and division-based fighter matching.
+![UFC Card Maker](https://img.shields.io/badge/Status-Production%20Ready-success) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue) ![Zustand](https://img.shields.io/badge/Zustand-State-orange)
 
-## Features
+A professional, interactive web application that allows users to build custom UFC event fight cards. Built with modern web technologies, it features real-time hype scoring, drag-and-drop reordering, division-based matchmaking, and the ability to instantly share or export fight cards.
 
-- **Fighter Selection**: Choose from a database of real UFC fighters or create custom fighters
-- **Division Matching**: Automatically lock fighter divisions to prevent mismatches (optional)
-- **Hype Score System**: Dynamic scoring based on fighter rank, record, and title fights
-- **Drag & Drop**: Reorder fights on the main card and prelims
-- **Title Fight Toggle**: Mark fights as title bouts (5 rounds)
-- **Dark Mode**: Toggle between light and dark themes
-- **Event Customization**: Edit event name and browse multiple theme templates
-- **Card Stats**: View total fights, title bouts, combined records, and dominant weight class
+---
 
-## Tech Stack
+## ✨ Key Features
 
-- **React 18** with TypeScript
-- **Tailwind CSS** for styling
-- **dnd-kit** for drag-and-drop functionality
-- **Vite** for fast development and building
+- **Interactive Fight Builder**: Choose from a database of real UFC fighters. The system automatically enforces weight class restrictions (unless bypassed).
+- **Global State Management**: Powered by **Zustand** for lightning-fast, predictable state updates across the app.
+- **Drag & Drop Interface**: Seamlessly reorder the main card and prelims using `@dnd-kit/core` with smooth animations.
+- **Dynamic Hype Score Engine**: Calculates the "Hype Score" of a card in real-time based on fighter ranks, win records, and whether bouts are title fights.
+- **Shareable URLs**: The app uses `lz-string` to compress the entire state of your custom card into the URL. Send the link to a friend, and they will see the exact card you built!
+- **High-Quality Export**: Leveraging `html-to-image`, users can take a high-resolution screenshot of their completed card with a single click.
+- **Dark/Light Mode**: Full theme support utilizing CSS variables and Tailwind CSS.
 
-## Getting Started
+---
 
-### Install Dependencies
-```sh
+## 🛠 Tech Stack
+
+- **Framework**: React 18
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **Utilities**: `dnd-kit` (drag & drop), `html-to-image` (export), `lz-string` (URL state compression)
+
+---
+
+## 🚀 Getting Started
+
+To run this project locally:
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/your-username/ufc-card-maker.git
+cd ufc-card-maker
 npm install
 ```
 
-### Development
-```sh
+### 2. Run the Development Server
+```bash
 npm run dev
 ```
 
-### Build
-```sh
+### 3. Build for Production
+```bash
 npm run build
 ```
+The optimized bundle will be generated in the `dist` folder.
 
-### Preview Build
-```sh
-npm run preview
-```
+---
 
-## Project Structure
+## 🏗 Architecture & Design Decisions
 
-```
-src/
-├── components/
-│   ├── CardStats.tsx       # Event statistics display
-│   ├── DivisionBadge.tsx   # Division badge component
-│   ├── FightRow.tsx        # Individual fight row
-│   └── FighterModal.tsx    # Fighter selection modal
-├── data/
-│   └── fighters.json       # UFC fighter database
-├── types/
-│   └── index.ts            # TypeScript type definitions
-├── utils/
-│   └── hypeScore.ts        # Hype scoring algorithm
-├── constants.ts            # App constants and configs
-├── App.tsx                 # Main app component
-├── main.tsx                # Entry point
-└── index.css               # Global styles
-```
+### 1. Centralized State (Zustand)
+Initially, state was managed via prop-drilling and `useState` inside the root component. This was refactored into a centralized `useStore.ts` using Zustand. This separation of concerns means the React components now only handle the view layer, while the store handles complex business logic (e.g., parsing URL parameters, enforcing weight divisions, and calculating stats).
 
-## Key Features Explained
+### 2. URL State Encoding
+To allow users to share their fight cards without requiring a backend database, the app implements a stateless sharing mechanism. When a user clicks "Share", the JSON state of the card is compressed using LZ-based compression (`lz-string`) and appended to the URL query string. On initial load, the Zustand store intercepts this URL parameter, decompresses it, and hydrates the application state.
 
-### Hype Score Algorithm
-Points are awarded based on:
-- **Fighter Rank**: Champions (+5), Top 5 (+5), Top 15 (+3)
-- **Record**: 15+ wins (+2), 10+ wins (+1)
-- **Title Fights**: +10 points each
+### 3. Strict Type Safety
+The entire application is strictly typed using TypeScript. Interfaces for `Fighter`, `FightSlot`, and the `FightsMap` prevent runtime errors and ensure that the matching algorithm safely handles edge cases (e.g., cross-divisional catchweights).
 
-Raw score is scaled to 0-5 stars and rounded to nearest half-star.
+---
 
-### Division Locking
-When you add the first fighter to a bout, their division is locked. The second fighter must be from the same division (unless "No Division Restrictions" is enabled).
+## 📄 License
 
-### Drag & Drop
-- Main Event (M1) and Co-Main Event (M2) are pinned and cannot be reordered
-- All other main card and prelim fights can be freely reordered
-- Uses keyboard support for accessibility
-
-## Customization
-
-### Adding Fighters
-Edit fighters.json to add or modify fighters.
-
-### Themes
-Available themes in constants.ts:
-- **Default**: Standard UFC colors
-- **UFC 300**: Gold accent theme
-- **Noche UFC**: Green/Red/White theme
-
-### Styling
-CSS variables in index.css control the entire color scheme and can be overridden per theme.
-
-## Browser Support
-
-Modern browsers with ES2020+ support (Chrome, Firefox, Safari, Edge)
+This project is open-source and available under the [MIT License](LICENSE).

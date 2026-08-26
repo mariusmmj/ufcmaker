@@ -1,13 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { FightsMap, Fighter, FighterSlotKey, FightSlot } from "./types";
-import { FIGHT_SLOTS, emptyFighter, initFights } from "./constants";
-import { FightRow } from "./components/FightRow";
-import { FighterModal } from "./components/FighterModal";
-import { CardStats } from "./components/CardStats";
-
-import { saveState, loadState } from "./utils/storage";
-import { generateRandomCard } from "./utils/randomizer";
-import allFighters from "./data/fighters.json";
+import { useEffect, useRef, useState } from 'react';
+import { FighterSlotKey } from './types';
+import { FightRow } from './components/FightRow';
+import { FighterModal } from './components/FighterModal';
+import { CardStats } from './components/CardStats';
+import { useStore } from './store/useStore';
+import { encodeStateToUrl } from './utils/storage';
+import { toPng } from 'html-to-image';
 import {
   DndContext,
   closestCenter,
@@ -15,64 +13,100 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
-  DragEndEvent
-} from "@dnd-kit/core";
+} from '@dnd-kit/core';
 import {
-  arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-
-interface ModalState {
-  fightId: string;
-  slot: FighterSlotKey;
-}
+} from '@dnd-kit/sortable';
 
 // ── Section divider ────────────────────────────────────────────────────────
 function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 my-5">
-      <div className="flex-1 h-px" style={{ background: "var(--border-main)" }} />
+      <div
+        className="flex-1 h-px"
+        style={{ background: 'var(--border-main)' }}
+      />
       <span
         style={{
-          fontFamily: "var(--font-condensed)",
+          fontFamily: 'var(--font-condensed)',
           fontWeight: 900,
           fontSize: 10,
-          letterSpacing: "0.25em",
-          color: "var(--accent-color)",
-          textTransform: "uppercase",
+          letterSpacing: '0.25em',
+          color: 'var(--accent-color)',
+          textTransform: 'uppercase',
         }}
       >
         {label}
       </span>
-      <div className="flex-1 h-px" style={{ background: "var(--border-main)" }} />
+      <div
+        className="flex-1 h-px"
+        style={{ background: 'var(--border-main)' }}
+      />
     </div>
   );
 }
 
 // ── App ────────────────────────────────────────────────────────────────────
 export default function App() {
-  const initialState = loadState();
-  const [fights, setFights]                 = useState<FightsMap>(initialState.fights || initFights);
-  const [slots, setSlots]                   = useState<FightSlot[]>(FIGHT_SLOTS);
-  const [noRestrictions, setNoRestrictions] = useState(false);
-  const [modal, setModal]                   = useState<ModalState | null>(null);
-  const [eventName, setEventName]           = useState(initialState.eventName || "UFC 000");
-  const [editingName, setEditingName]       = useState(false);
-  
-  const [isDark, setIsDark]                 = useState(false);
+  const {
+    fights,
+    slots,
+    noRestrictions,
+    modal,
+    eventName,
+    isDark,
+    setEventName,
+    setIsDark,
+    setNoRestrictions,
+    setModal,
+    handleDragEnd,
+    handleSelect,
+    handleClear,
+    toggleTitleFight,
+    surpriseMe,
+  } = useStore();
 
+  const [editingName, setEditingName] = useState(false);
+  const [copied, setCopied] = useState(false);
+  
   const nameRef = useRef<HTMLInputElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
-  // Autosave
-  useEffect(() => {
-    saveState(fights, eventName);
-  }, [fights, eventName]);
+  const handleShare = () => {
+    encodeStateToUrl({ fights, eventName, noRestrictions, slots });
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  const handleExport = () => {
+    if (mainRef.current === null) return;
+    const node = mainRef.current;
+    toPng(node, { 
+      cacheBust: true, 
+      backgroundColor: isDark ? '#1a1a1a' : '#f9f9f9',
+      width: node.scrollWidth,
+      height: node.scrollHeight,
+      style: { margin: '0' }
+    })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = `${eventName.replace(/\s+/g, '_')}_card.png`;
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.error('Oops, something went wrong with the export!', err);
+      });
+  };
 
   // Focus input when editing name
-  useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+  useEffect(() => {
+    if (editingName) nameRef.current?.focus();
+  }, [editingName]);
 
   // Apply dark mode
   useEffect(() => {
@@ -85,77 +119,24 @@ export default function App() {
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (over && active.id !== over.id) {
-      setSlots((items) => {
-        const oldIndex = items.findIndex((i) => i.id === active.id);
-        const newIndex = items.findIndex((i) => i.id === over.id);
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-  };
-
-  const openPick = (fightId: string, slot: FighterSlotKey) => setModal({ fightId, slot });
-
-  const handleSelect = useCallback((fighter: Fighter) => {
-    if (!modal) return;
-    const { fightId, slot } = modal;
-    setFights((prev) => {
-      const fight = { ...prev[fightId], f1: { ...prev[fightId].f1 }, f2: { ...prev[fightId].f2 } };
-      fight[slot] = { 
-        name: fighter.name, 
-        division: fighter.division, 
-        record: fighter.record, 
-        rank: fighter.rank ?? ""
-      };
-      if (!noRestrictions) {
-        const other = slot === "f1" ? fight.f2 : fight.f1;
-        if (!other.name) fight.lockedDiv = fighter.division;
-      }
-      return { ...prev, [fightId]: fight };
-    });
-    setModal(null);
-  }, [modal, noRestrictions]);
-
-  const handleClear = (fightId: string, slot: FighterSlotKey) => {
-    setFights((prev) => {
-      const fight = { ...prev[fightId], f1: { ...prev[fightId].f1 }, f2: { ...prev[fightId].f2 } };
-      fight[slot] = emptyFighter();
-      if (!fight.f1.name && !fight.f2.name) fight.lockedDiv = null;
-      return { ...prev, [fightId]: fight };
-    });
-  };
-
-  const toggleTitleFight = (fightId: string) => {
-    setFights((prev) => {
-      const fight = { ...prev[fightId] };
-      fight.isTitleFight = !fight.isTitleFight;
-      fight.rounds = fight.isTitleFight ? 5 : 3;
-      return { ...prev, [fightId]: fight };
-    });
-  };
+  const openPick = (fightId: string, slot: FighterSlotKey) =>
+    setModal({ fightId, slot });
 
   const getLockedDiv = (fightId: string) =>
     noRestrictions ? null : (fights[fightId]?.lockedDiv ?? null);
 
-  const mainSlots   = slots.filter((s) => s.section === "main");
-  const prelimSlots = slots.filter((s) => s.section === "prelim");
-  
+  const mainSlots = slots.filter((s) => s.section === 'main');
+  const prelimSlots = slots.filter((s) => s.section === 'prelim');
+
   // Exclude m1 and m2 from sortable context so they cannot be dragged
-  const sortableMainSlots = mainSlots.filter(s => s.id !== "m1" && s.id !== "m2");
+  const sortableMainSlots = mainSlots.filter(
+    (s) => s.id !== 'm1' && s.id !== 'm2'
+  );
 
   // Get list of already selected fighters to prevent duplicates
   const selectedFighterNames = Object.values(fights)
-    .flatMap(f => [f.f1.name, f.f2.name])
+    .flatMap((f) => [f.f1.name, f.f2.name])
     .filter(Boolean) as string[];
-
-
-
-  const surpriseMe = () => {
-    const randomCard = generateRandomCard(slots, allFighters as Fighter[]);
-    setFights(randomCard);
-  };
 
   return (
     <div className="min-h-screen">
@@ -163,23 +144,23 @@ export default function App() {
       <header
         className="sticky top-0 z-10 flex flex-wrap items-center gap-3 px-6 py-3"
         style={{
-          background: "var(--bg-header)",
-          borderBottom: "1px solid var(--border-main)",
-          boxShadow: "0 1px 12px rgba(0,0,0,0.04)",
+          background: 'var(--bg-header)',
+          borderBottom: '1px solid var(--border-main)',
+          boxShadow: '0 1px 12px rgba(0,0,0,0.04)',
         }}
       >
         {/* UFC Logo */}
         <div
           className="flex-shrink-0 flex items-center justify-center"
           style={{
-            background: "var(--accent-color)",
-            color: "#fff",
-            fontFamily: "var(--font-condensed)",
+            background: 'var(--accent-color)',
+            color: '#fff',
+            fontFamily: 'var(--font-condensed)',
             fontWeight: 900,
             fontSize: 17,
-            letterSpacing: "0.15em",
-            padding: "3px 12px 3px 10px",
-            clipPath: "polygon(0 0, 100% 0, 92% 100%, 8% 100%)",
+            letterSpacing: '0.15em',
+            padding: '3px 12px 3px 10px',
+            clipPath: 'polygon(0 0, 100% 0, 92% 100%, 8% 100%)',
           }}
         >
           UFC
@@ -192,53 +173,60 @@ export default function App() {
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
             onBlur={() => setEditingName(false)}
-            onKeyDown={(e) => e.key === "Enter" && setEditingName(false)}
+            onKeyDown={(e) => e.key === 'Enter' && setEditingName(false)}
             className="outline-none"
             style={{
-              fontFamily: "var(--font-condensed)",
+              fontFamily: 'var(--font-condensed)',
               fontWeight: 900,
               fontSize: 20,
-              letterSpacing: "0.08em",
-              color: "var(--text-primary)",
-              textTransform: "uppercase",
-              background: "transparent",
-              border: "none",
-              borderBottom: "1.5px solid var(--accent-color)",
+              letterSpacing: '0.08em',
+              color: 'var(--text-primary)',
+              textTransform: 'uppercase',
+              background: 'transparent',
+              border: 'none',
+              borderBottom: '1.5px solid var(--accent-color)',
               width: 200,
-              padding: "0 0 1px",
+              padding: '0 0 1px',
             }}
           />
         ) : (
           <button
             onClick={() => setEditingName(true)}
             className="flex items-center gap-2 group"
-            style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+            }}
           >
             <span
               style={{
-                fontFamily: "var(--font-condensed)",
+                fontFamily: 'var(--font-condensed)',
                 fontWeight: 900,
                 fontSize: 20,
-                letterSpacing: "0.08em",
-                color: "var(--text-primary)",
-                textTransform: "uppercase",
+                letterSpacing: '0.08em',
+                color: 'var(--text-primary)',
+                textTransform: 'uppercase',
               }}
             >
               {eventName}
             </span>
-            <span className="text-stone-300 group-hover:text-stone-500 transition-colors text-xs">✏</span>
+            <span className="text-stone-300 group-hover:text-stone-500 transition-colors text-xs">
+              ✏
+            </span>
           </button>
         )}
 
         <span
           className="hidden sm:block mr-auto"
           style={{
-            fontFamily: "var(--font-condensed)",
+            fontFamily: 'var(--font-condensed)',
             fontWeight: 700,
             fontSize: 9,
-            letterSpacing: "0.3em",
-            color: "var(--text-secondary)",
-            textTransform: "uppercase",
+            letterSpacing: '0.3em',
+            color: 'var(--text-secondary)',
+            textTransform: 'uppercase',
           }}
         >
           CUSTOM CARD MAKER
@@ -249,16 +237,46 @@ export default function App() {
           <button
             onClick={surpriseMe}
             className="text-sm px-3 py-1 rounded transition-colors font-bold"
-            style={{ background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }}
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+            }}
           >
             🎲 Surprise Me!
           </button>
           <button
+            onClick={handleExport}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold"
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+            }}
+          >
+            📸 Export
+          </button>
+          <button
+            onClick={handleShare}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold relative"
+            style={{
+              background: 'var(--accent-color)',
+              color: '#fff',
+              border: '1px solid var(--accent-color)',
+            }}
+          >
+            {copied ? '✅ Copied!' : '🔗 Share'}
+          </button>
+          <button
             onClick={() => setIsDark(!isDark)}
             className="text-sm px-2 py-1 rounded transition-colors"
-            style={{ background: "var(--bg-main)", color: "var(--text-primary)", border: "1px solid var(--border-main)" }}
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+            }}
           >
-            {isDark ? "☀️ Light" : "🌙 Dark"}
+            {isDark ? '☀️ Light' : '🌙 Dark'}
           </button>
         </div>
 
@@ -267,28 +285,33 @@ export default function App() {
           <span
             className="hidden md:block text-right"
             style={{
-              fontFamily: "var(--font-condensed)",
+              fontFamily: 'var(--font-condensed)',
               fontWeight: 700,
               fontSize: 10,
-              letterSpacing: "0.1em",
-              color: noRestrictions ? "var(--accent-color)" : "var(--text-secondary)",
-              textTransform: "uppercase",
+              letterSpacing: '0.1em',
+              color: noRestrictions
+                ? 'var(--accent-color)'
+                : 'var(--text-secondary)',
+              textTransform: 'uppercase',
               lineHeight: 1.3,
-              transition: "color 0.2s",
+              transition: 'color 0.2s',
             }}
           >
             Ingen vektklasse-
-            <br />restriksjoner
+            <br />
+            restriksjoner
           </span>
           <button
-            onClick={() => setNoRestrictions((v) => !v)}
+            onClick={() => setNoRestrictions(!noRestrictions)}
             className="relative flex-shrink-0 rounded-full transition-all duration-200"
             style={{
               width: 44,
               height: 24,
-              background: noRestrictions ? "var(--accent-color)" : "var(--border-main)",
-              border: "none",
-              cursor: "pointer",
+              background: noRestrictions
+                ? 'var(--accent-color)'
+                : 'var(--border-main)',
+              border: 'none',
+              cursor: 'pointer',
               padding: 0,
             }}
             aria-label="Toggle vektklasse-restriksjoner"
@@ -299,7 +322,7 @@ export default function App() {
                 width: 20,
                 height: 20,
                 left: noRestrictions ? 22 : 2,
-                boxShadow: "0 1px 4px rgba(0,0,0,0.15)",
+                boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
               }}
             />
           </button>
@@ -316,24 +339,29 @@ export default function App() {
           onDragEnd={handleDragEnd}
         >
           <SectionDivider label="Main Card" />
-          
-          {/* Static rendering of m1 and m2 so they cannot be sorted/dragged */}
-          {mainSlots.filter(s => s.id === "m1" || s.id === "m2").map(slot => (
-            <FightRow
-              key={slot.id}
-              fightId={slot.id}
-              slot={slot}
-              fight={fights[slot.id]}
-              isMain={true}
-              noRestrictions={noRestrictions}
-              onPick={openPick}
-              onClear={handleClear}
-              onToggleTitle={toggleTitleFight}
-              disableDrag={true}
-            />
-          ))}
 
-          <SortableContext items={sortableMainSlots} strategy={verticalListSortingStrategy}>
+          {/* Static rendering of m1 and m2 so they cannot be sorted/dragged */}
+          {mainSlots
+            .filter((s) => s.id === 'm1' || s.id === 'm2')
+            .map((slot) => (
+              <FightRow
+                key={slot.id}
+                fightId={slot.id}
+                slot={slot}
+                fight={fights[slot.id]}
+                isMain={true}
+                noRestrictions={noRestrictions}
+                onPick={openPick}
+                onClear={handleClear}
+                onToggleTitle={toggleTitleFight}
+                disableDrag={true}
+              />
+            ))}
+
+          <SortableContext
+            items={sortableMainSlots}
+            strategy={verticalListSortingStrategy}
+          >
             {sortableMainSlots.map((slot) => (
               <FightRow
                 key={slot.id}
@@ -350,7 +378,10 @@ export default function App() {
           </SortableContext>
 
           <SectionDivider label="Prelims" />
-          <SortableContext items={prelimSlots} strategy={verticalListSortingStrategy}>
+          <SortableContext
+            items={prelimSlots}
+            strategy={verticalListSortingStrategy}
+          >
             {prelimSlots.map((slot) => (
               <FightRow
                 key={slot.id}

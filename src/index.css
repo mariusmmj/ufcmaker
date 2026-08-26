@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-condensed: "Barlow Condensed", sans-serif;
-  --font-body: "Barlow", sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
 }
 
 :root {
@@ -12,15 +12,15 @@
   --bg-card-hover: #fafaf9;
   --bg-card-empty: #fafaf9;
   --bg-mismatch: #fffbeb;
-  
+
   --border-main: #e2e0da;
   --border-card: #e8e6e1;
   --border-mismatch: #fcd34d;
-  
+
   --text-primary: #111827;
   --text-secondary: #a8a29e;
   --text-muted: #d1cfc9;
-  
+
   --accent-color: #dc2626;
   --accent-hover: #b91c1c;
   --accent-bg: #fef2f2;
@@ -33,11 +33,11 @@
   --bg-card-hover: #262626;
   --bg-card-empty: #1a1a1a;
   --bg-mismatch: #422006;
-  
+
   --border-main: #333333;
   --border-card: #333333;
   --border-mismatch: #b45309;
-  
+
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
   --text-muted: #4b5563;
@@ -55,11 +55,11 @@
   --bg-card-hover: #262626;
   --bg-card-empty: #111111;
   --bg-mismatch: #422006;
-  
+
   --border-main: #eab308;
   --border-card: #333333;
   --border-mismatch: #b45309;
-  
+
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
   --text-muted: #4b5563;
@@ -77,15 +77,15 @@
   --bg-card-hover: #334155;
   --bg-card-empty: #0f172a;
   --bg-mismatch: #1e3a8a;
-  
+
   --border-main: #10b981;
   --border-card: #334155;
   --border-mismatch: #3b82f6;
-  
+
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #475569;
-  
+
   --accent-color: #10b981;
   --accent-hover: #059669;
   --accent-bg: #064e3b;
@@ -100,17 +100,34 @@ body {
   background-color: var(--bg-main);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-main); }
-::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 2px; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 2px;
 }
 
-.fade-up { animation: fadeUp 0.2s ease forwards; }
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.2s ease forwards;
+}

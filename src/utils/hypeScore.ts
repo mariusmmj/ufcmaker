@@ -1,14 +1,14 @@
-import { Fight, FightsMap } from "../types";
+import { Fight, FightsMap } from '../types';
 
-export function getFighterPoints(f: Fight["f1"]) {
+export function getFighterPoints(f: Fight['f1']) {
   if (!f.name) return 0;
   let pts = 0;
 
   // Rank points
-  if (f.rank === "Champion" || f.rank === "C") {
+  if (f.rank === 'Champion' || f.rank === 'C') {
     pts += 5;
   } else if (f.rank) {
-    const r = parseInt(f.rank.replace("#", ""), 10);
+    const r = parseInt(f.rank.replace('#', ''), 10);
     if (!isNaN(r)) {
       if (r <= 5) pts += 5;
       else if (r <= 15) pts += 3;
@@ -42,11 +42,11 @@ export function calculateHypeScore(fights: FightsMap) {
   });
 
   // Calculate stars (0 to 5)
-  // Let's say a perfect fight gives ~20-25 pts. 
+  // Let's say a perfect fight gives ~20-25 pts.
   // 5 fights * 20 = 100 pts. Let's make the max expected score roughly 50-60 for 5 stars on a typical card.
   // We'll scale it so that ~40 points is 5 stars.
-  let rawStars = activeFights === 0 ? 0 : (score / 15);
-  
+  let rawStars = activeFights === 0 ? 0 : score / 15;
+
   if (rawStars > 5) rawStars = 5;
   if (rawStars < 0) rawStars = 0;
 
