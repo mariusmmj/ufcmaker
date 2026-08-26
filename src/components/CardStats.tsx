@@ -113,7 +113,7 @@ export const CardStats: React.FC<Props> = ({ fights }) => {
               marginBottom: 2,
             }}
           >
-            Kamper totalt
+            Total Fights
           </span>
           <span
             style={{
@@ -137,7 +137,7 @@ export const CardStats: React.FC<Props> = ({ fights }) => {
               marginBottom: 2,
             }}
           >
-            Tittelkamper
+            Titlefights
           </span>
           <span
             style={{
@@ -161,7 +161,7 @@ export const CardStats: React.FC<Props> = ({ fights }) => {
               marginBottom: 2,
             }}
           >
-            Dominerende Vekt
+            Dominating Weight Class
           </span>
           <span
             style={{

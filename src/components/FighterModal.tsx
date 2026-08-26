@@ -92,12 +92,12 @@ export const FighterModal: React.FC<Props> = ({
 
     if (isMainEvent && rNum > 5) {
       alert(
-        'Bare Champions og Top 5 fighters kan være i Main Event og Co-Main Event!'
+        'Only Champions and top 5 ranked fighters are allowed in Main Event and Co-Main Event!'
       );
       return;
     }
     if (!isMainEvent && rNum === 0) {
-      alert('Champions kan bare være i Main Event og Co-Main Event!');
+      alert('Only Champions and top 5 ranked fighters are allowed in Main Event and Co-Main Event!');
       return;
     }
 
@@ -149,7 +149,7 @@ export const FighterModal: React.FC<Props> = ({
               color: 'var(--text-primary)',
             }}
           >
-            {showCustomForm ? 'NY FIGHTER' : 'VELG FIGHTER'}
+            {showCustomForm ? 'NEW FIGHTER' : 'PICK FIGHTER'}
           </span>
           {effectiveLock && !showCustomForm && (
             <DivisionBadge division={effectiveLock} size="md" />
@@ -164,7 +164,7 @@ export const FighterModal: React.FC<Props> = ({
                 background: 'var(--bg-main)',
               }}
             >
-              ALLE DIVISJONER
+              ALL DIVISIONS
             </span>
           )}
           <button
@@ -202,7 +202,7 @@ export const FighterModal: React.FC<Props> = ({
                   color: 'var(--text-secondary)',
                 }}
               >
-                Navn
+                Name
               </label>
               <input
                 autoFocus
@@ -226,7 +226,7 @@ export const FighterModal: React.FC<Props> = ({
                     color: 'var(--text-secondary)',
                   }}
                 >
-                  Vektklasse
+                  Weightclass
                 </label>
                 <select
                   value={customDiv}
@@ -276,7 +276,7 @@ export const FighterModal: React.FC<Props> = ({
                     color: 'var(--text-secondary)',
                   }}
                 >
-                  Ranking (valgfritt)
+                  Ranking (optional)
                 </label>
                 <input
                   placeholder="#1, Champion, etc."
@@ -303,7 +303,7 @@ export const FighterModal: React.FC<Props> = ({
                   fontFamily: 'var(--font-condensed)',
                 }}
               >
-                TILBAKE
+                BACK
               </button>
               <button
                 type="submit"
@@ -315,7 +315,7 @@ export const FighterModal: React.FC<Props> = ({
                   fontFamily: 'var(--font-condensed)',
                 }}
               >
-                LEGG TIL PÅ KORT
+                ADD TO CARD
               </button>
             </div>
           </form>
@@ -357,7 +357,7 @@ export const FighterModal: React.FC<Props> = ({
                     color: 'var(--text-muted)',
                   }}
                 >
-                  Ingen fighters funnet.
+                  No fighters found.
                 </p>
               )}
               {results.map((f, i) => {
@@ -469,7 +469,7 @@ export const FighterModal: React.FC<Props> = ({
                     e.currentTarget.style.color = 'var(--text-secondary)';
                   }}
                 >
-                  + OPPRETT EGEN FIGHTER
+                  + CREATE CUSTOM FIGHTER
                 </button>
               </div>
             </div>

@@ -53,7 +53,7 @@ const FighterCell: React.FC<CellProps> = ({
             color: 'var(--text-muted)',
           }}
         >
-          + LEGG TIL FIGHTER
+          + ADD FIGHTER
         </span>
       </div>
     );
@@ -84,7 +84,7 @@ const FighterCell: React.FC<CellProps> = ({
           e.stopPropagation();
           onClear();
         }}
-        title="Fjern fighter"
+        title="Remove fighter"
         style={{
           background: '#ef4444',
           border: 'none',
@@ -222,7 +222,7 @@ export const FightRow: React.FC<Props> = ({
             {...attributes}
             {...listeners}
             className="cursor-grab text-stone-400 hover:text-stone-600 px-1"
-            title="Dra for å flytte"
+            title="Drag to reorder fights"
           >
             ⋮⋮
           </div>
@@ -277,7 +277,7 @@ export const FightRow: React.FC<Props> = ({
                 : 'var(--border-card)',
             }}
           >
-            {isTitleFight ? 'TITTELKAMP (5 RUNDER)' : 'Gjør til tittelkamp'}
+            {isTitleFight ? 'TITLE FIGHT (5 ROUNDS)' : 'Make Title Fight'}
           </button>
         )}
 
@@ -291,7 +291,7 @@ export const FightRow: React.FC<Props> = ({
               fontStyle: 'italic',
             }}
           >
-            ⚠ divisjon mismatch
+            ⚠ division mismatch
           </span>
         )}
       </div>

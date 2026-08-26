@@ -249,7 +249,7 @@ export default function App() {
               border: '1px solid var(--border-main)',
             }}
           >
-            🎲 Surprise Me!
+            Random Card
           </button>
           <button
             onClick={handleExport}
@@ -260,7 +260,7 @@ export default function App() {
               border: '1px solid var(--border-main)',
             }}
           >
-            📸 Export
+            Image Export
           </button>
           <button
             onClick={handleShare}
@@ -271,7 +271,7 @@ export default function App() {
               border: '1px solid var(--accent-color)',
             }}
           >
-            {copied ? '✅ Copied!' : '🔗 Share'}
+            {copied ? 'Copied!' : 'Share Link'}
           </button>
           <button
             onClick={() => setIsDark(!isDark)}
@@ -282,7 +282,7 @@ export default function App() {
               border: '1px solid var(--border-main)',
             }}
           >
-            {isDark ? '☀️ Light' : '🌙 Dark'}
+            {isDark ? 'Light Mode' : 'Dark Mode'}
           </button>
         </div>
 
@@ -303,9 +303,9 @@ export default function App() {
               transition: 'color 0.2s',
             }}
           >
-            Ingen vektklasse-
+            No Weight Class -
             <br />
-            restriksjoner
+            Restrictions
           </span>
           <button
             onClick={() => setNoRestrictions(!noRestrictions)}
@@ -320,7 +320,7 @@ export default function App() {
               cursor: 'pointer',
               padding: 0,
             }}
-            aria-label="Toggle vektklasse-restriksjoner"
+            aria-label="Toggle weight class restrictions"
           >
             <div
               className="absolute top-0.5 rounded-full bg-white transition-all duration-200"
