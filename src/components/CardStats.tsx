@@ -1,6 +1,5 @@
 import React from 'react';
 import { FightsMap } from '../types';
-import { calculateHypeScore } from '../utils/hypeScore';
 
 interface Props {
   fights: FightsMap;
@@ -38,8 +37,6 @@ export const CardStats: React.FC<Props> = ({ fights }) => {
     }
   });
 
-  const { score, stars } = calculateHypeScore(fights);
-
   if (totalFights === 0) return null;
 
   // Find most prominent division
@@ -61,45 +58,6 @@ export const CardStats: React.FC<Props> = ({ fights }) => {
         boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
       }}
     >
-      {/* Hype Score Box */}
-      <div className="flex flex-col items-center justify-center min-w-[120px]">
-        <span
-          style={{
-            fontFamily: 'var(--font-condensed)',
-            fontWeight: 900,
-            fontSize: 12,
-            letterSpacing: '0.15em',
-            color: 'var(--accent-color)',
-            textTransform: 'uppercase',
-            marginBottom: 4,
-          }}
-        >
-          Hype Score
-        </span>
-        <div className="flex gap-1 mb-1 text-2xl text-yellow-400">
-          {[1, 2, 3, 4, 5].map((s) => (
-            <span
-              key={s}
-              style={{
-                opacity: s <= stars ? 1 : s - 0.5 === stars ? 0.5 : 0.2,
-              }}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-        <span
-          style={{
-            fontFamily: 'var(--font-condensed)',
-            fontSize: 11,
-            color: 'var(--text-muted)',
-            fontWeight: 800,
-          }}
-        >
-          {score} PTS
-        </span>
-      </div>
-
       {/* Stats Grid */}
       <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
         <div className="flex flex-col">

@@ -64,7 +64,7 @@ const FighterCell: React.FC<CellProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group overflow-hidden`}
+      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group`}
       style={{
         minHeight: isMain ? 64 : 52,
         background: 'var(--bg-card)',
@@ -106,8 +106,21 @@ const FighterCell: React.FC<CellProps> = ({
         ✕
       </button>
 
-      {/* Name */}
-      <div className="relative z-10 flex items-center gap-2">
+      {/* Name & Image */}
+      <div className="relative z-10 flex items-center gap-2 mb-1">
+        {fighter.image && (
+          <div className="relative group/img z-10 hover:z-50">
+            <img
+              src={fighter.image}
+              alt={fighter.name}
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border border-stone-800 transition-transform duration-200 origin-left group-hover/img:scale-[2.5]"
+              style={{
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                backgroundColor: 'var(--bg-card-hover)',
+              }}
+            />
+          </div>
+        )}
         <p
           style={{
             fontFamily: 'var(--font-condensed)',
@@ -116,7 +129,6 @@ const FighterCell: React.FC<CellProps> = ({
             letterSpacing: '0.05em',
             color: 'var(--text-primary)',
             lineHeight: 1.1,
-            marginBottom: 4,
             textTransform: 'uppercase',
           }}
         >
@@ -277,7 +289,7 @@ export const FightRow: React.FC<Props> = ({
                 : 'var(--border-card)',
             }}
           >
-            {isTitleFight ? 'TITLE FIGHT (5 ROUNDS)' : 'Make Title Fight'}
+            {isTitleFight ? 'TITLEFIGHT (5 ROUNDS)' : 'Make Title Fight'}
           </button>
         )}
 

@@ -3,7 +3,7 @@ export interface Fighter {
   division: string | null;
   record: string;
   rank: string;
-  imageUrl?: string;
+  image?: string;
 }
 
 export interface Fight {

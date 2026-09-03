@@ -330,7 +330,7 @@ export const FighterModal: React.FC<Props> = ({
                 ref={inputRef}
                 value={query}
                 onChange={(e) => handleChange(e.target.value)}
-                placeholder="Søk på fighternavn eller vektklasse..."
+                placeholder="Search fighter name or weight class..."
                 className="w-full rounded-lg px-3 py-2 text-sm outline-none transition-all"
                 style={{
                   fontFamily: 'var(--font-body)',

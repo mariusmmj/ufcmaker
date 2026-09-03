@@ -2,7 +2,7 @@
 
 ![UFC Card Maker](https://img.shields.io/badge/Status-Production%20Ready-success) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue) ![Zustand](https://img.shields.io/badge/Zustand-State-orange)
 
-A professional, interactive web application that allows users to build custom UFC event fight cards. Built with modern web technologies, it features real-time hype scoring, drag-and-drop reordering, division-based matchmaking, and the ability to instantly share or export fight cards.
+A professional, interactive web application that allows users to build custom UFC event fight cards. Built with modern web technologies, it features drag-and-drop reordering, division-based matchmaking, and the ability to instantly share or export fight cards.
 
 ---
 
@@ -11,7 +11,6 @@ A professional, interactive web application that allows users to build custom UF
 - **Interactive Fight Builder**: Choose from a database of real UFC fighters. The system automatically enforces weight class restrictions (unless bypassed).
 - **Global State Management**: Powered by **Zustand** for lightning-fast, predictable state updates across the app.
 - **Drag & Drop Interface**: Seamlessly reorder the main card and prelims using `@dnd-kit/core` with smooth animations.
-- **Dynamic Hype Score Engine**: Calculates the "Hype Score" of a card in real-time based on fighter ranks, win records, and whether bouts are title fights.
 - **Shareable URLs**: The app uses `lz-string` to compress the entire state of your custom card into the URL. Send the link to a friend, and they will see the exact card you built!
 - **High-Quality Export**: Leveraging `html-to-image`, users can take a high-resolution screenshot of their completed card with a single click.
 - **Dark/Light Mode**: Full theme support utilizing CSS variables and Tailwind CSS.

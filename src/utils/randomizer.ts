@@ -19,16 +19,17 @@ function getRankNum(rank?: string): number {
 
 export function generateRandomCard(
   slots: FightSlot[],
-  allFighters: Fighter[]
+  allFighters: Fighter[],
+  noRestrictions: boolean = false
 ): FightsMap {
   const newFights: FightsMap = {};
   const selectedNames = new Set<string>();
 
-  // Helper to find two available fighters in a specific division
+  // Helper to find two available fighters in a specific division (or any if noRestrictions)
   const getMatchup = (division: string, isMainEvent: boolean) => {
     const available = allFighters.filter((f) => {
       if (selectedNames.has(f.name)) return false;
-      if (f.division !== division) return false;
+      if (!noRestrictions && f.division !== division) return false;
 
       const rNum = getRankNum(f.rank);
       if (isMainEvent) {
@@ -51,7 +52,7 @@ export function generateRandomCard(
     selectedNames.add(f1.name);
     selectedNames.add(f2.name);
 
-    return { f1, f2, lockedDiv: division };
+    return { f1, f2, lockedDiv: noRestrictions ? null : division };
   };
 
   const divisions = [

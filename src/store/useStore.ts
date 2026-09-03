@@ -124,9 +124,10 @@ export const useStore = create<AppState>((set, get) => ({
   },
 
   surpriseMe: () => {
-    const { slots } = get();
-    const randomCard = generateRandomCard(slots, allFighters as Fighter[]);
-    set({ fights: randomCard });
+    const { slots, noRestrictions } = get();
+    set({
+      fights: generateRandomCard(slots, allFighters as Fighter[], noRestrictions),
+    });
   },
 }));
 
