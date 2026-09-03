@@ -84,6 +84,7 @@ export const useStore = create<AppState>((set, get) => ({
       division: fighter.division,
       record: fighter.record,
       rank: fighter.rank ?? '',
+      image: fighter.image,
     };
 
     if (!noRestrictions) {

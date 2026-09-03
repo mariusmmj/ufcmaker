@@ -381,22 +381,36 @@ export const FighterModal: React.FC<Props> = ({
                     }
                   >
                     {/* Avatar */}
-                    <div
-                      className="flex-shrink-0 flex items-center justify-center rounded-full text-sm"
-                      style={{
-                        width: 38,
-                        height: 38,
-                        background: colors.bg,
-                        border: `1px solid ${colors.border}`,
-                        color: colors.text,
-                        fontFamily: 'var(--font-condensed)',
-                        fontWeight: 900,
-                        fontSize: 13,
-                        letterSpacing: '0.05em',
-                      }}
-                    >
-                      {initials(f.name)}
-                    </div>
+                    {f.image ? (
+                      <img
+                        src={f.image}
+                        alt={f.name}
+                        className="flex-shrink-0 rounded-full object-cover border"
+                        style={{
+                          width: 38,
+                          height: 38,
+                          borderColor: colors.border,
+                          backgroundColor: colors.bg,
+                        }}
+                      />
+                    ) : (
+                      <div
+                        className="flex-shrink-0 flex items-center justify-center rounded-full text-sm"
+                        style={{
+                          width: 38,
+                          height: 38,
+                          background: colors.bg,
+                          border: `1px solid ${colors.border}`,
+                          color: colors.text,
+                          fontFamily: 'var(--font-condensed)',
+                          fontWeight: 900,
+                          fontSize: 13,
+                          letterSpacing: '0.05em',
+                        }}
+                      >
+                        {initials(f.name)}
+                      </div>
+                    )}
 
                     {/* Info */}
                     <div className="flex-1 min-w-0">

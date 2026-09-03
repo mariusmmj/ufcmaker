@@ -78,12 +78,14 @@ export function generateRandomCard(
           division: matchup.f1.division,
           record: matchup.f1.record,
           rank: matchup.f1.rank,
+          image: matchup.f1.image,
         },
         f2: {
           name: matchup.f2.name,
           division: matchup.f2.division,
           record: matchup.f2.record,
           rank: matchup.f2.rank,
+          image: matchup.f2.image,
         },
         lockedDiv: matchup.lockedDiv,
         isTitleFight: slot.id === 'm1', // Automatically make m1 a title fight

@@ -10,6 +10,7 @@ import { CSS } from '@dnd-kit/utilities';
 interface CellProps {
   fighter: Fight['f1'];
   isMain: boolean;
+  isTitleFight?: boolean;
   onClick: () => void;
   onClear: () => void;
 }
@@ -17,6 +18,7 @@ interface CellProps {
 const FighterCell: React.FC<CellProps> = ({
   fighter,
   isMain,
+  isTitleFight,
   onClick,
   onClear,
 }) => {
@@ -30,7 +32,7 @@ const FighterCell: React.FC<CellProps> = ({
         onClick={onClick}
         className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all group`}
         style={{
-          minHeight: isMain ? 64 : 52,
+          minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
           border: '1.5px dashed var(--border-main)',
           background: 'var(--bg-card-empty)',
         }}
@@ -66,7 +68,7 @@ const FighterCell: React.FC<CellProps> = ({
       onClick={onClick}
       className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group`}
       style={{
-        minHeight: isMain ? 64 : 52,
+        minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
         background: 'var(--bg-card)',
         border: '1px solid var(--border-card)',
       }}
@@ -107,13 +109,13 @@ const FighterCell: React.FC<CellProps> = ({
       </button>
 
       {/* Name & Image */}
-      <div className="relative z-10 flex items-center gap-2 mb-1">
+      <div className="relative z-20 flex items-center gap-4 mb-1">
         {fighter.image && (
-          <div className="relative group/img z-10 hover:z-50">
+          <div className="relative z-20">
             <img
               src={fighter.image}
               alt={fighter.name}
-              className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border border-stone-800 transition-transform duration-200 origin-left group-hover/img:scale-[2.5]"
+              className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-md"
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 backgroundColor: 'var(--bg-card-hover)',
@@ -125,7 +127,7 @@ const FighterCell: React.FC<CellProps> = ({
           style={{
             fontFamily: 'var(--font-condensed)',
             fontWeight: 900,
-            fontSize: isMain ? 16 : 14,
+            fontSize: isTitleFight ? 24 : isMain ? 16 : 14,
             letterSpacing: '0.05em',
             color: 'var(--text-primary)',
             lineHeight: 1.1,
@@ -313,10 +315,10 @@ export const FightRow: React.FC<Props> = ({
         <FighterCell
           fighter={f1}
           isMain={isMain}
+          isTitleFight={isTitleFight}
           onClick={() => onPick(fightId, 'f1')}
           onClear={() => onClear(fightId, 'f1')}
         />
-
         {/* VS divider */}
         <div
           className="flex-shrink-0 flex items-center justify-center"
@@ -334,10 +336,10 @@ export const FightRow: React.FC<Props> = ({
             VS
           </span>
         </div>
-
         <FighterCell
           fighter={f2}
           isMain={isMain}
+          isTitleFight={isTitleFight}
           onClick={() => onPick(fightId, 'f2')}
           onClear={() => onClear(fightId, 'f2')}
         />

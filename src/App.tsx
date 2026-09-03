@@ -336,7 +336,7 @@ export default function App() {
       </header>
 
       {/* ── Content ──────────────────────────────── */}
-      <main ref={mainRef} className="max-w-3xl mx-auto px-4 pb-16 pt-4">
+      <main ref={mainRef} className="max-w-5xl mx-auto px-4 pb-16 pt-4">
         <CardStats fights={fights} />
 
         <DndContext
