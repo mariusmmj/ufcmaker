@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { FighterSlotKey } from './types';
 import { FightRow } from './components/FightRow';
 import { FighterModal } from './components/FighterModal';
+import { FighterInfoModal } from './components/FighterInfoModal';
+import { SavedCardsModal } from './components/SavedCardsModal';
 import { CardStats } from './components/CardStats';
 import { useStore } from './store/useStore';
 import { encodeStateToUrl } from './utils/storage';
@@ -55,12 +57,15 @@ export default function App() {
     slots,
     noRestrictions,
     modal,
+    infoModal,
+    historyModalOpen,
     eventName,
     isDark,
     setEventName,
     setIsDark,
     setNoRestrictions,
     setModal,
+    setInfoModal,
     handleDragEnd,
     handleSelect,
     handleClear,
@@ -85,7 +90,7 @@ export default function App() {
   const handleExport = () => {
     if (mainRef.current === null) return;
     const node = mainRef.current;
-    const exportWidth = 800;
+    const exportWidth = 1200;
     toPng(node, { 
       cacheBust: true, 
       backgroundColor: isDark ? '#1a1a1a' : '#f9f9f9',
@@ -155,22 +160,7 @@ export default function App() {
           boxShadow: '0 1px 12px rgba(0,0,0,0.04)',
         }}
       >
-        {/* UFC Logo */}
-        <div
-          className="flex-shrink-0 flex items-center justify-center"
-          style={{
-            background: 'var(--accent-color)',
-            color: '#fff',
-            fontFamily: 'var(--font-condensed)',
-            fontWeight: 900,
-            fontSize: 17,
-            letterSpacing: '0.15em',
-            padding: '3px 12px 3px 10px',
-            clipPath: 'polygon(0 0, 100% 0, 92% 100%, 8% 100%)',
-          }}
-        >
-          UFC
-        </div>
+        
 
         {/* Event name */}
         {editingName ? (
@@ -219,7 +209,7 @@ export default function App() {
               {eventName}
             </span>
             <span className="text-stone-300 group-hover:text-stone-500 transition-colors text-xs">
-              ✏
+              Edit Name
             </span>
           </button>
         )}
@@ -229,31 +219,56 @@ export default function App() {
           style={{
             fontFamily: 'var(--font-condensed)',
             fontWeight: 700,
-            fontSize: 9,
+            fontSize: 12,
             letterSpacing: '0.3em',
             color: 'var(--text-secondary)',
             textTransform: 'uppercase',
           }}
         >
-          CUSTOM CARD MAKER
+          Custom UFC Card Builder
         </span>
 
         {/* Templates and Theme Toggle */}
         <div className="flex items-center gap-4">
           <button
-            onClick={surpriseMe}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold"
+            onClick={() => useStore.getState().saveCurrentCard()}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
               border: '1px solid var(--border-main)',
+              fontFamily: 'var(--font-condensed)',
+            }}
+          >
+            Save Card
+          </button>
+          <button
+            onClick={() => useStore.getState().setHistoryModalOpen(true)}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+              fontFamily: 'var(--font-condensed)',
+            }}
+          >
+            History
+          </button>
+          <button
+            onClick={surpriseMe}
+            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+              fontFamily: 'var(--font-condensed)',
             }}
           >
             Random Card
           </button>
           <button
             onClick={handleExport}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold"
+            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -264,7 +279,7 @@ export default function App() {
           </button>
           <button
             onClick={handleShare}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold relative"
+            className="text-sm px-3 py-1 rounded transition-colors font-bold relative uppercase"
             style={{
               background: 'var(--accent-color)',
               color: '#fff',
@@ -275,7 +290,7 @@ export default function App() {
           </button>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="text-sm px-2 py-1 rounded transition-colors"
+            className="text-sm px-2 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -416,6 +431,15 @@ export default function App() {
           selectedFighters={selectedFighterNames}
         />
       )}
+
+      {infoModal && (
+        <FighterInfoModal
+          fighter={infoModal}
+          onClose={() => setInfoModal(null)}
+        />
+      )}
+
+      {historyModalOpen && <SavedCardsModal />}
     </div>
   );
 }

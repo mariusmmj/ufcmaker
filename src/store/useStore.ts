@@ -17,14 +17,27 @@ interface AppState {
   slots: FightSlot[];
   noRestrictions: boolean;
   modal: ModalState | null;
+  infoModal: Fighter | null;
+  historyModalOpen: boolean;
+  saveModalOpen: boolean;
+  toastMessage: string | null;
   eventName: string;
   isDark: boolean;
+  savedCards: import('../types').SavedCard[];
 
   setEventName: (name: string) => void;
   setIsDark: (isDark: boolean) => void;
   setNoRestrictions: (noRestrictions: boolean) => void;
   setModal: (modal: ModalState | null) => void;
+  setInfoModal: (fighter: Fighter | null) => void;
+  setHistoryModalOpen: (open: boolean) => void;
+  setSaveModalOpen: (open: boolean) => void;
+  setToastMessage: (msg: string | null) => void;
   setSlots: (slots: FightSlot[]) => void;
+
+  saveCurrentCard: (name: string) => boolean;
+  loadCard: (id: string) => void;
+  deleteCard: (id: string) => void;
 
   handleDragEnd: (event: DragEndEvent) => void;
   handleSelect: (fighter: Fighter) => void;
@@ -41,13 +54,19 @@ const initialState = {
   slots: urlState?.slots || FIGHT_SLOTS,
   eventName: urlState?.eventName || localStorageState.eventName || 'UFC 000',
   noRestrictions: urlState?.noRestrictions ?? false,
+  savedCards: localStorageState.savedCards || [],
 };
 
 export const useStore = create<AppState>((set, get) => ({
   fights: initialState.fights,
   slots: initialState.slots,
   noRestrictions: initialState.noRestrictions,
+  savedCards: initialState.savedCards,
   modal: null,
+  infoModal: null,
+  historyModalOpen: false,
+  saveModalOpen: false,
+  toastMessage: null,
   eventName: initialState.eventName,
   isDark: false,
 
@@ -55,7 +74,48 @@ export const useStore = create<AppState>((set, get) => ({
   setIsDark: (isDark: boolean) => set({ isDark }),
   setNoRestrictions: (noRestrictions: boolean) => set({ noRestrictions }),
   setModal: (modal: ModalState | null) => set({ modal }),
+  setInfoModal: (fighter: Fighter | null) => set({ infoModal: fighter }),
+  setHistoryModalOpen: (open: boolean) => set({ historyModalOpen: open }),
+  setSaveModalOpen: (open: boolean) => set({ saveModalOpen: open }),
+  setToastMessage: (msg: string | null) => set({ toastMessage: msg }),
   setSlots: (slots: FightSlot[]) => set({ slots }),
+
+  saveCurrentCard: (name: string) => {
+    const state = get();
+    if (state.savedCards.some(c => c.name.toLowerCase() === name.toLowerCase())) {
+      return false; // Name already exists
+    }
+    
+    const newCard: import('../types').SavedCard = {
+      id: Date.now().toString(),
+      name,
+      dateSaved: Date.now(),
+      fights: state.fights,
+      slots: state.slots,
+      noRestrictions: state.noRestrictions,
+    };
+    set({ savedCards: [newCard, ...state.savedCards] });
+    return true;
+  },
+
+  loadCard: (id: string) => {
+    const state = get();
+    const card = state.savedCards.find(c => c.id === id);
+    if (card) {
+      set({
+        fights: card.fights,
+        slots: card.slots,
+        eventName: card.name,
+        noRestrictions: card.noRestrictions,
+        historyModalOpen: false,
+      });
+    }
+  },
+
+  deleteCard: (id: string) => {
+    const state = get();
+    set({ savedCards: state.savedCards.filter(c => c.id !== id) });
+  },
 
   handleDragEnd: (event: DragEndEvent) => {
     const { active, over } = event;
@@ -80,11 +140,8 @@ export const useStore = create<AppState>((set, get) => ({
       f2: { ...fights[fightId].f2 },
     };
     newFight[slot] = {
-      name: fighter.name,
-      division: fighter.division,
-      record: fighter.record,
+      ...fighter,
       rank: fighter.rank ?? '',
-      image: fighter.image,
     };
 
     if (!noRestrictions) {
@@ -134,5 +191,5 @@ export const useStore = create<AppState>((set, get) => ({
 
 // Subscribe to store changes to save state automatically
 useStore.subscribe((state) => {
-  saveState(state.fights, state.eventName);
+  saveState(state.fights, state.eventName, state.savedCards);
 });

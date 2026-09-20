@@ -4,1224 +4,2441 @@
     "division": "Lightweight",
     "record": "30-9-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-07/POIRIER_DUSTIN_07-19.png?itok=TVcXENrK"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-07/POIRIER_DUSTIN_07-19.png?itok=TVcXENrK",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/POIRIER_DUSTIN_L_06-01.png?itok=VHXq-Y5g",
+    "age": 36,
+    "winMethods": {
+      "ko": 16,
+      "sub": 7,
+      "dec": 7
+    }
   },
   {
     "name": "Charles Oliveira",
     "division": "Lightweight",
     "record": "34-10-0",
     "rank": "#3 Contender & BMF Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/OLIVEIRA_CHARLES_BMFMOCK.png?itok=oqa2YPrt"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/OLIVEIRA_CHARLES_BMFMOCK.png?itok=oqa2YPrt",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/OLIVEIRA_CHARLES_L_BMFMOCK.png?itok=Up-QPLgQ",
+    "age": 36,
+    "winMethods": {
+      "ko": 10,
+      "sub": 22,
+      "dec": 5
+    }
   },
   {
     "name": "Arman Tsarukyan",
     "division": "Lightweight",
     "record": "22-3-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/TSARUKYAN_ARMAN_11-22.png?itok=XrAwlcHk"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/TSARUKYAN_ARMAN_11-22.png?itok=XrAwlcHk",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/TSARUKYAN_ARMAN_L_11-22.png?itok=19p_TvDH",
+    "age": 29,
+    "winMethods": {
+      "ko": 9,
+      "sub": 6,
+      "dec": 8
+    }
   },
   {
     "name": "Justin Gaethje",
     "division": "Lightweight",
     "record": "25-5-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/GAETHJE_JUSTIN_BELT_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/GAETHJE_JUSTIN_BELT_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/GAETHJE_JUSTIN_R_BELT_06-14.png?itok=cyzUtrXX",
+    "age": 37,
+    "winMethods": {
+      "ko": 21,
+      "sub": 1,
+      "dec": 6
+    }
   },
   {
     "name": "Beneil Dariush",
     "division": "Lightweight",
     "record": "22-5-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DARIUSH_BENEIL_05-02.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DARIUSH_BENEIL_05-02.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/DARIUSH_BENEIL_L_05-02.png?itok=EGBjHKgU",
+    "age": 37,
+    "winMethods": {
+      "ko": 5,
+      "sub": 8,
+      "dec": 10
+    }
   },
   {
     "name": "Michael Chandler",
     "division": "Lightweight",
     "record": "23-8-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/CHANDLER_MICHAEL_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/CHANDLER_MICHAEL_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/CHANDLER_MICHAEL_R_06-14.png?itok=Tg_XY15B",
+    "age": 40,
+    "winMethods": {
+      "ko": 11,
+      "sub": 7,
+      "dec": 5
+    }
   },
   {
     "name": "Mateusz Gamrot",
     "division": "Lightweight",
     "record": "23-2-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/GAMROT_MATEUSZ_08-08.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/GAMROT_MATEUSZ_08-08.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/GAMROT_MATEUSZ_L_08-08.png?itok=7jQV7xpa",
+    "age": 35,
+    "winMethods": {
+      "ko": 8,
+      "sub": 6,
+      "dec": 12
+    }
   },
   {
     "name": "Dan Hooker",
     "division": "Lightweight",
     "record": "23-13-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-09/HOOKER_DAN_09-05.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-09/HOOKER_DAN_09-05.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/HOOKER_DAN_L_09-05.png?itok=cLfQlP6e",
+    "age": 36,
+    "winMethods": {
+      "ko": 11,
+      "sub": 7,
+      "dec": 6
+    }
   },
   {
     "name": "Renato Moicano",
     "division": "Lightweight",
     "record": "19-5-1",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MOICANO_RENATO_04-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MOICANO_RENATO_04-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/MOICANO_RENATO_L_04-04.png?itok=2zj_9GSb",
+    "age": 37,
+    "winMethods": {
+      "ko": 2,
+      "sub": 11,
+      "dec": 8
+    }
   },
   {
     "name": "Rafael Fiziev",
     "division": "Lightweight",
     "record": "13-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/FIZIEV_RAFAEL_06-27.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/FIZIEV_RAFAEL_06-27.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/FIZIEV_RAFAEL_L_06-27.png?itok=9yGMUIvE",
+    "age": 33,
+    "winMethods": {
+      "ko": 9,
+      "sub": 1,
+      "dec": 4
+    }
   },
   {
     "name": "Conor McGregor",
     "division": "Lightweight",
     "record": "22-6-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/MCGREGOR_CONOR_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/MCGREGOR_CONOR_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/MCGREGOR_CONOR_L_07-11.png?itok=oPFhXwIA",
+    "age": 38,
+    "winMethods": {
+      "ko": 19,
+      "sub": 1,
+      "dec": 2
+    }
   },
   {
     "name": "Paddy Pimblett",
     "division": "Lightweight",
     "record": "22-3-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/PIMBLETT_PADDY_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/PIMBLETT_PADDY_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/PIMBLETT_PADDY_L_07-27.png?itok=SOnIEjUC",
+    "age": 31,
+    "winMethods": {
+      "ko": 7,
+      "sub": 11,
+      "dec": 6
+    }
   },
   {
     "name": "Leon Edwards",
     "division": "Welterweight",
     "record": "22-3-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/EDWARDS_LEON_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/EDWARDS_LEON_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/EDWARDS_LEON_L_11-15.png?itok=sqp_GH1G",
+    "age": 35,
+    "winMethods": {
+      "ko": 7,
+      "sub": 3,
+      "dec": 12
+    }
   },
   {
     "name": "Belal Muhammad",
     "division": "Welterweight",
     "record": "23-3-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/MUHAMMAD_BELAL_06-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/MUHAMMAD_BELAL_06-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/MUHAMMAD_BELAL_L_06-06.png?itok=sZ00w5IQ",
+    "age": 38,
+    "winMethods": {
+      "ko": 5,
+      "sub": 1,
+      "dec": 18
+    }
   },
   {
     "name": "Shavkat Rakhmonov",
     "division": "Welterweight",
     "record": "18-0-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/RAKHMONOV_SHAVKAT_12-07.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/RAKHMONOV_SHAVKAT_12-07.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/RAKHMONOV_SHAVKAT_L_12-07.png?itok=iUYvV22v",
+    "age": 31,
+    "winMethods": {
+      "ko": 8,
+      "sub": 10,
+      "dec": 1
+    }
   },
   {
     "name": "Sean Brady",
     "division": "Welterweight",
     "record": "16-1-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/BRADY_SEAN_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/BRADY_SEAN_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/BRADY_SEAN_L_05-09.png?itok=lfpHN5PX",
+    "age": 33,
+    "winMethods": {
+      "ko": 3,
+      "sub": 6,
+      "dec": 10
+    }
   },
   {
     "name": "Geoff Neal",
     "division": "Welterweight",
     "record": "16-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/NEAL_GEOFF_02-21.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/NEAL_GEOFF_02-21.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/NEAL_GEOFF_L_02-21.png?itok=h9m7my9H",
+    "age": 35,
+    "winMethods": {
+      "ko": 10,
+      "sub": 2,
+      "dec": 4
+    }
   },
   {
     "name": "Vicente Luque",
     "division": "Welterweight",
     "record": "22-9-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/LUQUE_VICENTE_08-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/LUQUE_VICENTE_08-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/LUQUE_VICENTE_L_08-15.png?itok=UplLKsVD",
+    "age": 34,
+    "winMethods": {
+      "ko": 11,
+      "sub": 10,
+      "dec": 3
+    }
   },
   {
     "name": "Ian Machado Garry",
     "division": "Welterweight",
     "record": "15-0-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/MACHADO_GARRY_IAN_08-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/MACHADO_GARRY_IAN_08-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-04/MACHADO_GARRY_IAN_L_04-26.png?itok=DVG8yebN",
+    "age": 28,
+    "winMethods": {
+      "ko": 7,
+      "sub": 1,
+      "dec": 9
+    }
   },
   {
     "name": "Jack Della Maddalena",
     "division": "Welterweight",
     "record": "16-2-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DELLA_MADDALENA_JACK_05-02.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DELLA_MADDALENA_JACK_05-02.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/DELLA_MADDALENA_JACK_L_05-02.png?itok=csEbKpt6",
+    "age": 29,
+    "winMethods": {
+      "ko": 12,
+      "sub": 2,
+      "dec": 4
+    }
   },
   {
     "name": "Neil Magny",
     "division": "Welterweight",
     "record": "28-12-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/MAGNY_NEIL_08-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/MAGNY_NEIL_08-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/MAGNY_NEIL_L_08-15.png?itok=HZBmL-4-",
+    "age": 39,
+    "winMethods": {
+      "ko": 10,
+      "sub": 5,
+      "dec": 17
+    }
   },
   {
     "name": "Kamaru Usman",
     "division": "Welterweight",
     "record": "20-4-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/USMAN_KAMARU_07-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/USMAN_KAMARU_07-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/USMAN_KAMARU_L_06-14.png?itok=_E2PDHo4",
+    "age": 39,
+    "winMethods": {
+      "ko": 9,
+      "sub": 1,
+      "dec": 11
+    }
   },
   {
     "name": "Sean Strickland",
     "division": "Middleweight",
     "record": "28-6-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-01/STRICKLAND_SEAN_BELT_01-20.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-01/STRICKLAND_SEAN_BELT_01-20.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-01/STRICKLAND_SEAN_L_BELT_01-20.png?itok=4lpTjgRZ",
+    "age": 35,
+    "winMethods": {
+      "ko": 12,
+      "sub": 4,
+      "dec": 15
+    }
   },
   {
     "name": "Dricus Du Plessis",
     "division": "Middleweight",
     "record": "22-2-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/DU_PLESSIS_DRICUS_07-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/DU_PLESSIS_DRICUS_07-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/DU_PLESSIS_DRICUS_L_07-18.png?itok=ms17eNrc",
+    "age": 32,
+    "winMethods": {
+      "ko": 9,
+      "sub": 11,
+      "dec": 4
+    }
   },
   {
     "name": "Israel Adesanya",
     "division": "Middleweight",
     "record": "24-3-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/ADESANYA_ISRAEL_03-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/ADESANYA_ISRAEL_03-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/ADESANYA_ISRAEL_L_03-28.png?itok=RopFx9gx",
+    "age": 37,
+    "winMethods": {
+      "ko": 16,
+      "sub": 0,
+      "dec": 8
+    }
   },
   {
     "name": "Robert Whittaker",
     "division": "Middleweight",
     "record": "25-7-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/WHITTAKER_ROBERT_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/WHITTAKER_ROBERT_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-07/WHITTAKER_ROBERT_L_07-26.png?itok=9PCu_K6-",
+    "age": 35,
+    "winMethods": {
+      "ko": 12,
+      "sub": 5,
+      "dec": 11
+    }
   },
   {
     "name": "Khamzat Chimaev",
     "division": "Middleweight",
     "record": "13-0-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/CHIMAEV_KHAMZAT_10-26.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/CHIMAEV_KHAMZAT_10-26.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-05/CHIMAEV_KHAMZAT_L_10-26.png?itok=j3RFR7hz",
+    "age": 32,
+    "winMethods": {
+      "ko": 6,
+      "sub": 6,
+      "dec": 3
+    }
   },
   {
     "name": "Brendan Allen",
     "division": "Middleweight",
     "record": "24-5-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALLEN_BRENDAN_06-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALLEN_BRENDAN_06-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/ALLEN_BRENDAN_L_06-06.png?itok=ww_FOqAD",
+    "age": 30,
+    "winMethods": {
+      "ko": 6,
+      "sub": 14,
+      "dec": 7
+    }
   },
   {
     "name": "Chris Curtis",
     "division": "Middleweight",
     "record": "31-10-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/CURTIS_CHRIS_03-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/CURTIS_CHRIS_03-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/CURTIS_CHRIS_L_03-14.png?itok=hDIZj-a7",
+    "age": 39,
+    "winMethods": {
+      "ko": 17,
+      "sub": 1,
+      "dec": 14
+    }
   },
   {
     "name": "Nassourdine Imavov",
     "division": "Middleweight",
     "record": "14-4-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-09/IMAVOV_NASSOURDINE_09-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-09/IMAVOV_NASSOURDINE_09-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-09/IMAVOV_NASSOURDINE_L_09-06.png?itok=gNf34xg2",
+    "age": 30,
+    "winMethods": {
+      "ko": 7,
+      "sub": 4,
+      "dec": 6
+    }
   },
   {
     "name": "Roman Dolidze",
     "division": "Middleweight",
     "record": "12-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/DOLIDZE_ROMAN_08-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/DOLIDZE_ROMAN_08-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/DOLIDZE_ROMAN_L_03-21.png?itok=LBWQed7d",
+    "age": 38,
+    "winMethods": {
+      "ko": 8,
+      "sub": 3,
+      "dec": 4
+    }
   },
   {
     "name": "Alex Pereira",
     "division": "Light Heavyweight",
     "record": "9-2-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/PEREIRA_ALEX_10-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/PEREIRA_ALEX_10-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-03/PEREIRA_ALEX_L.png?itok=AMZ6OfEA",
+    "age": 38,
+    "winMethods": {
+      "ko": 11,
+      "sub": 0,
+      "dec": 2
+    }
   },
   {
     "name": "Magomed Ankalaev",
     "division": "Light Heavyweight",
     "record": "19-1-1",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ANKALAEV_MAGOMED_07-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ANKALAEV_MAGOMED_07-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/ANKALAEV_MAGOMED_L_07-25.png?itok=LWk-G7kA",
+    "age": 34,
+    "winMethods": {
+      "ko": 12,
+      "sub": 0,
+      "dec": 10
+    }
   },
   {
     "name": "Jamahal Hill",
     "division": "Light Heavyweight",
     "record": "12-2-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/HILL_JAMAHAL_06-21.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/HILL_JAMAHAL_06-21.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/HILL_JAMAHAL_L_06-21.png?itok=sv2vQEyZ",
+    "age": 35,
+    "winMethods": {
+      "ko": 7,
+      "sub": 0,
+      "dec": 5
+    }
   },
   {
     "name": "Aleksandar Rakic",
     "division": "Light Heavyweight",
     "record": "15-4-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/RAKIC_ALEKSANDAR_08-01.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/RAKIC_ALEKSANDAR_08-01.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/RAKIC_ALEKSANDAR_L_08-01.png?itok=BC0F8HQV",
+    "age": 34,
+    "winMethods": {
+      "ko": 9,
+      "sub": 1,
+      "dec": 5
+    }
   },
   {
     "name": "Johnny Walker",
     "division": "Light Heavyweight",
     "record": "20-8-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/WALKER_JOHNNY_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/WALKER_JOHNNY_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-08/WALKER_JOHNNY_L_08-23.png?itok=cy7jdBoB",
+    "age": 34,
+    "winMethods": {
+      "ko": 17,
+      "sub": 3,
+      "dec": 2
+    }
   },
   {
     "name": "Khalil Rountree Jr",
     "division": "Light Heavyweight",
     "record": "13-5-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ROUNTREE_KHALIL_10-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ROUNTREE_KHALIL_10-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/ROUNTREE_KHALIL_L_12-09.png?itok=jdBjK2dO",
+    "age": 36,
+    "winMethods": {
+      "ko": 9,
+      "sub": 0,
+      "dec": 6
+    }
   },
   {
     "name": "Nikita Krylov",
     "division": "Light Heavyweight",
     "record": "30-10-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KRYLOV_NIKITA_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KRYLOV_NIKITA_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/KRYLOV_NIKITA_L_07-11.png?itok=G-SKEXs5",
+    "age": 34,
+    "winMethods": {
+      "ko": 13,
+      "sub": 16,
+      "dec": 2
+    }
   },
   {
     "name": "Jan Blachowicz",
     "division": "Light Heavyweight",
     "record": "29-10-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BLACHOWICZ_JAN_08-01.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BLACHOWICZ_JAN_08-01.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/BLACHOWICZ_JAN_L_08-01.png?itok=ESS7apdi",
+    "age": 43,
+    "winMethods": {
+      "ko": 9,
+      "sub": 9,
+      "dec": 11
+    }
   },
   {
     "name": "Ryan Spann",
     "division": "Light Heavyweight",
     "record": "22-9-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-09/SPANN_RYAN_09-05.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-09/SPANN_RYAN_09-05.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-07/SPANN_RYAN_L_07-19.png?itok=uktQXcGD",
+    "age": 35,
+    "winMethods": {
+      "ko": 7,
+      "sub": 14,
+      "dec": 3
+    }
   },
   {
     "name": "Anthony Smith",
     "division": "Light Heavyweight",
     "record": "38-20-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-04/SMITH_ANTHONY_04-26.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-04/SMITH_ANTHONY_04-26.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-04/SMITH_ANTHONY_L_04-26.png?itok=q1kFSJ8p",
+    "age": 36,
+    "winMethods": {
+      "ko": 19,
+      "sub": 15,
+      "dec": 4
+    }
   },
   {
     "name": "Jon Jones",
     "division": "Heavyweight",
     "record": "27-1-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/JONES_JON.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/JONES_JON.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-10/JONES_JON_L.png?itok=ZKUJM0wq",
+    "age": 38,
+    "winMethods": {
+      "ko": 11,
+      "sub": 7,
+      "dec": 10
+    }
   },
   {
     "name": "Ciryl Gane",
     "division": "Heavyweight",
     "record": "12-2-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/GANE_CIRYL_BELT_01-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/GANE_CIRYL_BELT_01-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/GANE_CIRYL_L_BELT_01-22.png?itok=6Dy6iwAT",
+    "age": 36,
+    "winMethods": {
+      "ko": 7,
+      "sub": 3,
+      "dec": 4
+    }
   },
   {
     "name": "Tom Aspinall",
     "division": "Heavyweight",
     "record": "14-3-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ASPINALL_TOM_BELT_10-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ASPINALL_TOM_BELT_10-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-10/ASPINALL_TOM_L_BELT_10-25.png?itok=wdUr8VUg",
+    "age": 33,
+    "winMethods": {
+      "ko": 12,
+      "sub": 3,
+      "dec": 0
+    }
   },
   {
     "name": "Sergei Pavlovich",
     "division": "Heavyweight",
     "record": "18-2-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/PAVLOVICH_SERGEI_05-30.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/PAVLOVICH_SERGEI_05-30.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/PAVLOVICH_SERGEI_L_05-30.png?itok=4VRfER2s",
+    "age": 34,
+    "winMethods": {
+      "ko": 16,
+      "sub": 0,
+      "dec": 5
+    }
   },
   {
     "name": "Curtis Blaydes",
     "division": "Heavyweight",
     "record": "18-4-1",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BLAYDES_CURTIS_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BLAYDES_CURTIS_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/BLAYDES_CURTIS_L_04-11.png?itok=Qv7hfvDn",
+    "age": 35,
+    "winMethods": {
+      "ko": 13,
+      "sub": 0,
+      "dec": 7
+    }
   },
   {
     "name": "Alexander Volkov",
     "division": "Heavyweight",
     "record": "37-10-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/VOLKOV_ALEXANDER_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/VOLKOV_ALEXANDER_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/VOLKOV_ALEXANDER_L_05-09.png?itok=Z7Pt4p3a",
+    "age": 37,
+    "winMethods": {
+      "ko": 24,
+      "sub": 4,
+      "dec": 12
+    }
   },
   {
     "name": "Jailton Almeida",
     "division": "Heavyweight",
     "record": "21-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/ALMEIDA_JAILTON_02-07.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/ALMEIDA_JAILTON_02-07.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/ALMEIDA_JAILTON_L_02-07.png?itok=xpA9HLAC",
+    "age": 35,
+    "winMethods": {
+      "ko": 7,
+      "sub": 13,
+      "dec": 2
+    }
   },
   {
     "name": "Derrick Lewis",
     "division": "Heavyweight",
     "record": "27-11-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/LEWIS_DERRICK_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/LEWIS_DERRICK_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/LEWIS_DERRICK_R_06-14.png?itok=MYYFS9tO",
+    "age": 41,
+    "winMethods": {
+      "ko": 24,
+      "sub": 1,
+      "dec": 4
+    }
   },
   {
     "name": "Tai Tuivasa",
     "division": "Heavyweight",
     "record": "15-6-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/TUIVASA_TAI_05-02.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/TUIVASA_TAI_05-02.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/TUIVASA_TAI_L_05-02.png?itok=XW0QZQmA",
+    "age": 33,
+    "winMethods": {
+      "ko": 14,
+      "sub": 0,
+      "dec": 1
+    }
   },
   {
     "name": "Marcos Rogerio de Lima",
     "division": "Heavyweight",
     "record": "23-8-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/ROGERIO%20DE%20LIMA_MARCOS_02-17.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/ROGERIO%20DE%20LIMA_MARCOS_02-17.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/ROGERIO%20DE%20LIMA_MARCOS_L_02-17.png?itok=hdKE0Yev",
+    "age": 39,
+    "winMethods": {
+      "ko": 15,
+      "sub": 3,
+      "dec": 3
+    }
   },
   {
     "name": "Francis Ngannou",
     "division": "Heavyweight",
     "record": "17-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2021-03/67964%252Fprofile-galery%252Fprofile-picture%252FNGANNOU_FRANCIS_03-27.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2021-03/67964%252Fprofile-galery%252Fprofile-picture%252FNGANNOU_FRANCIS_03-27.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2023-01/NGANNOU_FRANCIS_L_03-27.png?itok=9ZE3P2lK",
+    "age": 36,
+    "winMethods": {
+      "ko": 12,
+      "sub": 4,
+      "dec": 1
+    }
   },
   {
     "name": "Alexander Volkanovski",
     "division": "Featherweight",
     "record": "26-3-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/VOLKANOVSKI_ALEXANDER_BELT_01-31.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/VOLKANOVSKI_ALEXANDER_BELT_01-31.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-01/VOLKANOVSKI_ALEXANDER_L_BELT_01-31.png?itok=hfZR81xh",
+    "age": 37,
+    "winMethods": {
+      "ko": 13,
+      "sub": 3,
+      "dec": 12
+    }
   },
   {
     "name": "Ilia Topuria",
     "division": "Featherweight",
     "record": "15-0-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/TOPURIA_ILIA_06-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/TOPURIA_ILIA_06-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/TOPURIA_ILIA_L_06-28.png?itok=DRPWPNCZ",
+    "age": 29,
+    "winMethods": {
+      "ko": 7,
+      "sub": 8,
+      "dec": 2
+    }
   },
   {
     "name": "Brian Ortega",
     "division": "Featherweight",
     "record": "15-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ORTEGA_BRIAN_08-23.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ORTEGA_BRIAN_08-23.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-08/ORTEGA_BRIAN_L_08-23.png?itok=OQf_S2Es",
+    "age": 35,
+    "winMethods": {
+      "ko": 3,
+      "sub": 8,
+      "dec": 5
+    }
   },
   {
     "name": "Yair Rodriguez",
     "division": "Featherweight",
     "record": "17-4-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-04/RODRIGUEZ_YAIR_04-12.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-04/RODRIGUEZ_YAIR_04-12.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-04/RODRIGUEZ_YAIR_L_04-12.png?itok=MbCovx1T",
+    "age": 33,
+    "winMethods": {
+      "ko": 8,
+      "sub": 5,
+      "dec": 8
+    }
   },
   {
     "name": "Josh Emmett",
     "division": "Featherweight",
     "record": "18-4-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/EMMETT_JOSH_03-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/EMMETT_JOSH_03-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/EMMETT_JOSH_L_03-14.png?itok=CmMjCtXR",
+    "age": 41,
+    "winMethods": {
+      "ko": 7,
+      "sub": 2,
+      "dec": 10
+    }
   },
   {
     "name": "Arnold Allen",
     "division": "Featherweight",
     "record": "19-2-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/ALLEN_ARNOLD_05-16.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/ALLEN_ARNOLD_05-16.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/ALLEN_ARNOLD_L_05-16.png?itok=d2l8gVp-",
+    "age": 32,
+    "winMethods": {
+      "ko": 7,
+      "sub": 4,
+      "dec": 10
+    }
   },
   {
     "name": "Calvin Kattar",
     "division": "Featherweight",
     "record": "24-8-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-07/KATTAR_CALVIN_07-12.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-07/KATTAR_CALVIN_07-12.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-07/KATTAR_CALVIN_L_07-12.png?itok=poQjUSo-",
+    "age": 37,
+    "winMethods": {
+      "ko": 11,
+      "sub": 2,
+      "dec": 10
+    }
   },
   {
     "name": "Giga Chikadze",
     "division": "Featherweight",
     "record": "14-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/CHIKADZE_GIGA_12-13.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/CHIKADZE_GIGA_12-13.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-12/CHIKADZE_GIGA_L_12-13.png?itok=PAa40eRd",
+    "age": 37,
+    "winMethods": {
+      "ko": 9,
+      "sub": 1,
+      "dec": 5
+    }
   },
   {
     "name": "Movsar Evloev",
     "division": "Featherweight",
     "record": "17-0-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/EVLOEV_MOVSAR_03-21.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/EVLOEV_MOVSAR_03-21.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/EVLOEV_MOVSAR_L_03-21.png?itok=X2qAuG7T",
+    "age": 32,
+    "winMethods": {
+      "ko": 3,
+      "sub": 4,
+      "dec": 13
+    }
   },
   {
     "name": "Sodiq Yusuff",
     "division": "Featherweight",
     "record": "14-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/YUSUFF_SODIQ_05-17.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/YUSUFF_SODIQ_05-17.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-05/YUSUFF_SODIQ_L_05-17.png?itok=B8jepDkf",
+    "age": 31,
+    "winMethods": {
+      "ko": 6,
+      "sub": 1,
+      "dec": 6
+    }
   },
   {
     "name": "Shane Burgos",
     "division": "Featherweight",
     "record": "16-4-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2022-07/BURGOS_SHANE_07-16.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2022-07/BURGOS_SHANE_07-16.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2022-07/BURGOS_SHANE_L_07-16.png?itok=lsLBdX69",
+    "age": 32,
+    "winMethods": {
+      "ko": 5,
+      "sub": 5,
+      "dec": 8
+    }
   },
   {
     "name": "Sean O'Malley",
     "division": "Bantamweight",
     "record": "17-1-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/OMALLEY_SEAN_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/OMALLEY_SEAN_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/OMALLEY_SEAN_L_06-14.png?itok=mk-P63ge",
+    "age": 31,
+    "winMethods": {
+      "ko": 13,
+      "sub": 1,
+      "dec": 6
+    }
   },
   {
     "name": "Merab Dvalishvili",
     "division": "Bantamweight",
     "record": "17-4-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-09/DVALISHVILI_MERAB_CG_09-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-09/DVALISHVILI_MERAB_CG_09-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2022-08/DVALISHVILI_MERAB_L_08-20.png?itok=UNfxCucB",
+    "age": 35,
+    "winMethods": {
+      "ko": 3,
+      "sub": 2,
+      "dec": 16
+    }
   },
   {
     "name": "Marlon Vera",
     "division": "Bantamweight",
     "record": "22-8-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/VERA_MARLON_02-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/VERA_MARLON_02-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/VERA_MARLON_L_02-28.png?itok=1Ebcd42S",
+    "age": 33,
+    "winMethods": {
+      "ko": 8,
+      "sub": 10,
+      "dec": 5
+    }
   },
   {
     "name": "Song Yadong",
     "division": "Bantamweight",
     "record": "22-7-1",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/YADONG_SONG_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/YADONG_SONG_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/YADONG_SONG_L_05-30.png?itok=yMtLdKZS",
+    "age": 28,
+    "winMethods": {
+      "ko": 10,
+      "sub": 4,
+      "dec": 10
+    }
   },
   {
     "name": "Cory Sandhagen",
     "division": "Bantamweight",
     "record": "16-5-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/SANDHAGEN_CORY_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/SANDHAGEN_CORY_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/SANDHAGEN_CORY_L_07-11.png?itok=js9SxyWU",
+    "age": 34,
+    "winMethods": {
+      "ko": 8,
+      "sub": 3,
+      "dec": 7
+    }
   },
   {
     "name": "Umar Nurmagomedov",
     "division": "Bantamweight",
     "record": "17-0-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/NURMAGOMEDOV_UMAR_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/NURMAGOMEDOV_UMAR_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/NURMAGOMEDOV_UMAR_L_08-29.png?itok=JyBT4AfR",
+    "age": 30,
+    "winMethods": {
+      "ko": 2,
+      "sub": 7,
+      "dec": 11
+    }
   },
   {
     "name": "Rob Font",
     "division": "Bantamweight",
     "record": "20-8-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/FONT_ROB_03-07.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/FONT_ROB_03-07.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/FONT_ROB_L_03-07.png?itok=1MgNWkzy",
+    "age": 39,
+    "winMethods": {
+      "ko": 9,
+      "sub": 4,
+      "dec": 9
+    }
   },
   {
     "name": "Deiveson Figueiredo",
     "division": "Bantamweight",
     "record": "24-4-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/FIGUEIREDO_DEIVESON_05-30.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/FIGUEIREDO_DEIVESON_05-30.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-10/FIGUEIREDO_DEIVESON_L_10-11.png?itok=arHv-wVH",
+    "age": 38,
+    "winMethods": {
+      "ko": 9,
+      "sub": 9,
+      "dec": 7
+    }
   },
   {
     "name": "Jonathan Martinez",
     "division": "Bantamweight",
     "record": "19-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-11/MARTINEZ_JONATHAN_11-16.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-11/MARTINEZ_JONATHAN_11-16.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-11/MARTINEZ_JONATHAN_L_11-16.png?itok=bznVqcTr",
+    "age": 30,
+    "winMethods": {
+      "ko": 9,
+      "sub": 2,
+      "dec": 8
+    }
   },
   {
     "name": "Dominick Cruz",
     "division": "Bantamweight",
     "record": "24-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/2/CRUZ_DOMINICK_12-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/2/CRUZ_DOMINICK_12-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-10/2/CRUZ_DOMINICK_L_12-11.png?itok=EhbJRfom",
+    "age": 40,
+    "winMethods": {
+      "ko": 7,
+      "sub": 1,
+      "dec": 16
+    }
   },
   {
     "name": "Petr Yan",
     "division": "Bantamweight",
     "record": "17-5-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/YAN_PETR_BELT.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/YAN_PETR_BELT.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-12/YAN_PETR_L_BELT_04-09.png?itok=rEIQhNvw",
+    "age": 33,
+    "winMethods": {
+      "ko": 7,
+      "sub": 1,
+      "dec": 12
+    }
   },
   {
     "name": "Alexandre Pantoja",
     "division": "Flyweight",
     "record": "27-5-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2023-07/PANTOJA_ALEXANDRE_07-08.png?itok=CBIiY-m4"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2023-07/PANTOJA_ALEXANDRE_07-08.png?itok=CBIiY-m4",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-12/PANTOJA_ALEXANDRE_L_07-08.png?itok=djxLt29b",
+    "age": 36,
+    "winMethods": {
+      "ko": 8,
+      "sub": 12,
+      "dec": 10
+    }
   },
   {
     "name": "Brandon Royval",
     "division": "Flyweight",
     "record": "16-7-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ROYVAL_BRANDON_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ROYVAL_BRANDON_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/ROYVAL_BRANDON_L_07-11.png?itok=3E0xqRoW",
+    "age": 34,
+    "winMethods": {
+      "ko": 4,
+      "sub": 10,
+      "dec": 4
+    }
   },
   {
     "name": "Kai Kara-France",
     "division": "Flyweight",
     "record": "24-10-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/KARA-FRANCE_KAI_06-28.png?itok=dEHoXuLJ"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/KARA-FRANCE_KAI_06-28.png?itok=dEHoXuLJ",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/KARA-FRANCE_KAI_L_08-17.png?itok=h8S40d8d",
+    "age": 32,
+    "winMethods": {
+      "ko": 12,
+      "sub": 3,
+      "dec": 10
+    }
   },
   {
     "name": "Amir Albazi",
     "division": "Flyweight",
     "record": "16-1-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/ALBAZI_AMIR_02-07.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/ALBAZI_AMIR_02-07.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/ALBAZI_AMIR_L_02-07.png?itok=eWJL3Orf",
+    "age": 32,
+    "winMethods": {
+      "ko": 5,
+      "sub": 9,
+      "dec": 3
+    }
   },
   {
     "name": "Steve Erceg",
     "division": "Flyweight",
     "record": "12-2-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ERCEG_STEVE_07-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/ERCEG_STEVE_07-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/ERCEG_STEVE_L_07-25.png?itok=L0455cpA",
+    "age": 31,
+    "winMethods": {
+      "ko": 2,
+      "sub": 6,
+      "dec": 6
+    }
   },
   {
     "name": "Matheus Nicolau",
     "division": "Flyweight",
     "record": "20-4-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/16/NICOLAU_MATHEUS_10-19.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/16/NICOLAU_MATHEUS_10-19.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-10/16/NICOLAU_MATHEUS_L_10-19.png?itok=gDoqyPTk",
+    "age": 32,
+    "winMethods": {
+      "ko": 5,
+      "sub": 5,
+      "dec": 9
+    }
   },
   {
     "name": "David Dvorak",
     "division": "Flyweight",
     "record": "22-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2023-06/DVORAK_DAVID_06-10.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2023-06/DVORAK_DAVID_06-10.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2023-06/DVORAK_DAVID_L_06-10.png?itok=N34d26rL",
+    "age": 31,
+    "winMethods": {
+      "ko": 8,
+      "sub": 8,
+      "dec": 4
+    }
   },
   {
     "name": "Tatsuro Taira",
     "division": "Flyweight",
     "record": "16-0-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/TAIRA_TATSURO_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/TAIRA_TATSURO_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-07/TAIRA_TATSURO_L_08-02.png?itok=pMtfQ6S3",
+    "age": 26,
+    "winMethods": {
+      "ko": 6,
+      "sub": 8,
+      "dec": 4
+    }
   },
   {
     "name": "Tim Elliott",
     "division": "Flyweight",
     "record": "18-13-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ELLIOTT_TIM_05-02.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ELLIOTT_TIM_05-02.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/ELLIOTT_TIM_L_09-12.png?itok=ig5zg9at",
+    "age": 39,
+    "winMethods": {
+      "ko": 3,
+      "sub": 8,
+      "dec": 12
+    }
   },
   {
     "name": "Alex Perez",
     "division": "Flyweight",
     "record": "11-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/PEREZ_ALEX_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/PEREZ_ALEX_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/PEREZ_ALEX_L_08-29.png?itok=hDi458D_",
+    "age": 34,
+    "winMethods": {
+      "ko": 7,
+      "sub": 7,
+      "dec": 12
+    }
   },
   {
     "name": "Joseph Benavidez",
     "division": "Flyweight",
     "record": "28-8-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2020-07/BENAVIDEZ_JOSEPH_02-29.png?VersionId=Q1J4k.ZuddHvyfMGxUzEJM8tnEcL3DQS&itok=d-FzFTxS"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2020-07/BENAVIDEZ_JOSEPH_02-29.png?VersionId=Q1J4k.ZuddHvyfMGxUzEJM8tnEcL3DQS&itok=d-FzFTxS",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/image/fighter_images/Joseph_Benavidez/BENAVIDEZ_JOSEPH_L.png?VersionId=a8wJrP2mqxdlJbDOx5fZtlHCdVZrg3tZ&itok=qczp5MEF",
+    "age": 40,
+    "winMethods": {
+      "ko": 8,
+      "sub": 9,
+      "dec": 11
+    }
   },
   {
     "name": "Zhang Weili",
     "division": "Strawweight",
     "record": "24-3-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/WEILI_ZHANG_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/WEILI_ZHANG_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2022-06/d6bd47bc-d423-4ae8-9073-f0abd7777751%252FWEILI_ZHANG_L_06-11.png?itok=QDyjRoZ7",
+    "age": 37,
+    "winMethods": {
+      "ko": 11,
+      "sub": 8,
+      "dec": 7
+    }
   },
   {
     "name": "Yan Xiaonan",
     "division": "Strawweight",
     "record": "18-3-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/XIAONAN_YAN_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/XIAONAN_YAN_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/XIAONAN_YAN_L_08-29.png?itok=ITVMjKS5",
+    "age": 37,
+    "winMethods": {
+      "ko": 8,
+      "sub": 1,
+      "dec": 10
+    }
   },
   {
     "name": "Rose Namajunas",
     "division": "Strawweight",
     "record": "13-6-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/NAMAJUNAS_ROSE_01-24.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/NAMAJUNAS_ROSE_01-24.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/NAMAJUNAS_ROSE_L_06-14.png?itok=SA42vJhp",
+    "age": 34,
+    "winMethods": {
+      "ko": 2,
+      "sub": 6,
+      "dec": 7
+    }
   },
   {
     "name": "Tatiana Suarez",
     "division": "Strawweight",
     "record": "10-0-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/SUAREZ_TATIANA_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/SUAREZ_TATIANA_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/SUAREZ_TATIANA_L_04-11.png?itok=hkAiQqtr",
+    "age": 35,
+    "winMethods": {
+      "ko": 2,
+      "sub": 7,
+      "dec": 4
+    }
   },
   {
     "name": "Mackenzie Dern",
     "division": "Strawweight",
     "record": "13-5-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/DERN_MACKENZIE_BELT_08-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/DERN_MACKENZIE_BELT_08-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/DERN_MACKENZIE_L_BELT_08-15.png?itok=F25i7KdB",
+    "age": 33,
+    "winMethods": {
+      "ko": 0,
+      "sub": 8,
+      "dec": 9
+    }
   },
   {
     "name": "Amanda Lemos",
     "division": "Strawweight",
     "record": "13-3-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/LEMOS_AMANDA_08-08.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/LEMOS_AMANDA_08-08.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/LEMOS_AMANDA_L_08-08.png?itok=tJiVRMjJ",
+    "age": 39,
+    "winMethods": {
+      "ko": 8,
+      "sub": 3,
+      "dec": 4
+    }
   },
   {
     "name": "Virna Jandiroba",
     "division": "Strawweight",
     "record": "20-3-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JANDIROBA_VIRNA_04-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JANDIROBA_VIRNA_04-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/JANDIROBA_VIRNA_L_04-04.png?itok=AL1UZCHe",
+    "age": 38,
+    "winMethods": {
+      "ko": 1,
+      "sub": 14,
+      "dec": 8
+    }
   },
   {
     "name": "Luana Pinheiro",
     "division": "Strawweight",
     "record": "14-3-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/PINHEIRO_LUANA_11-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/5/PINHEIRO_LUANA_11-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/PINHEIRO_LUANA_L_11-09.png?itok=pEpBNxkt",
+    "age": 32,
+    "winMethods": {
+      "ko": 2,
+      "sub": 5,
+      "dec": 4
+    }
   },
   {
     "name": "Jessica Andrade",
     "division": "Strawweight",
     "record": "24-12-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ANDRADE_JESSICA_08-16.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-08/ANDRADE_JESSICA_08-16.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-08/ANDRADE_JESSICA_L_08-16.png?itok=EG1JyXfD",
+    "age": 34,
+    "winMethods": {
+      "ko": 10,
+      "sub": 8,
+      "dec": 8
+    }
   },
   {
     "name": "Marina Rodriguez",
     "division": "Strawweight",
     "record": "17-5-1",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/RODRIGUEZ_MARINA_05-03.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-05/RODRIGUEZ_MARINA_05-03.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-05/RODRIGUEZ_MARINA_L_05-03.png?itok=CesxfjaE",
+    "age": 38,
+    "winMethods": {
+      "ko": 7,
+      "sub": 1,
+      "dec": 9
+    }
   },
   {
     "name": "Karolina Kowalkiewicz",
     "division": "Strawweight",
     "record": "14-7-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/KOWALKIEWICZ_KAROLINA_10-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/KOWALKIEWICZ_KAROLINA_10-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-11/KOWALKIEWICZ_KAROLINA_L_11-09.png?itok=JK5FHctD",
+    "age": 39,
+    "winMethods": {
+      "ko": 1,
+      "sub": 3,
+      "dec": 12
+    }
   },
   {
     "name": "Joanna Jedrzejczyk",
     "division": "Strawweight",
     "record": "16-5-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2022-06/c9bff243-ef38-4b3b-a554-6c16390f351c%252FJEDRZEJCZYK_JOANNA_06-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2022-06/c9bff243-ef38-4b3b-a554-6c16390f351c%252FJEDRZEJCZYK_JOANNA_06-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2022-06/JEDRZEJCZYK_JOANNA_L_06-11.png?itok=twIWUogI",
+    "age": 36,
+    "winMethods": {
+      "ko": 4,
+      "sub": 1,
+      "dec": 11
+    }
   },
   {
     "name": "Carla Esparza",
     "division": "Strawweight",
     "record": "19-7-0",
     "rank": "Unranked",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/ESPARZA_CARLA_10-05.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/ESPARZA_CARLA_10-05.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-10/ESPARZA_CARLA_L_10-05.png?itok=4rVkGHv9",
+    "age": 37,
+    "winMethods": {
+      "ko": 4,
+      "sub": 4,
+      "dec": 12
+    }
   },
   {
     "name": "Carlos Ulberg",
     "division": "Light Heavyweight",
     "record": "12-1-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ULBERG_CARLOS_BELTMOCK.png?itok=JcwI5i6V"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ULBERG_CARLOS_BELTMOCK.png?itok=JcwI5i6V",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/ULBERG_CARLOS_L_BELTMOCK.png?itok=fE8o1Ek2",
+    "age": 35,
+    "winMethods": {
+      "ko": 10,
+      "sub": 1,
+      "dec": 4
+    }
   },
   {
     "name": "Joshua Van",
     "division": "Flyweight",
     "record": "10-1-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/VAN_JOSHUA_BELT_05-09.png?itok=AU8VXDqp"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/VAN_JOSHUA_BELT_05-09.png?itok=AU8VXDqp",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/VAN_JOSHUA_L_BELT_05-09.png?itok=emXQEdHo",
+    "age": 24,
+    "winMethods": {
+      "ko": 9,
+      "sub": 2,
+      "dec": 6
+    }
   },
   {
     "name": "Manel Kape",
     "division": "Flyweight",
     "record": "19-6-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/KAPE_MANEL_06-20.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/KAPE_MANEL_06-20.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/KAPE_MANEL_L_06-20.png?itok=hx-69Gee",
+    "age": 32,
+    "winMethods": {
+      "ko": 15,
+      "sub": 5,
+      "dec": 3
+    }
   },
   {
     "name": "Lone'er Kavanagh",
     "division": "Flyweight",
     "record": "7-0-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KAVANAGH_LONEER_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KAVANAGH_LONEER_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-03/KAVANAGH_LONEER_L_03-22.png?itok=TudzQ-4b",
+    "age": 27,
+    "winMethods": {
+      "ko": 4,
+      "sub": 1,
+      "dec": 5
+    }
   },
   {
     "name": "Asu Almabayev",
     "division": "Flyweight",
     "record": "20-2-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALMABAYEV_ASU_06-27.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALMABAYEV_ASU_06-27.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/ALMABAYEV_ASU_L_06-27.png?itok=Y0SjNrdV",
+    "age": 32,
+    "winMethods": {
+      "ko": 3,
+      "sub": 11,
+      "dec": 10
+    }
   },
   {
     "name": "Kyoji Horiguchi",
     "division": "Flyweight",
     "record": "33-5-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/HORIGUCHI_KYOJI_11-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/HORIGUCHI_KYOJI_11-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/HORIGUCHI_KYOJI_R_11-22.png?itok=Dn6SxnwP",
+    "age": 35,
+    "winMethods": {
+      "ko": 15,
+      "sub": 6,
+      "dec": 15
+    }
   },
   {
     "name": "Brandon Moreno",
     "division": "Flyweight",
     "record": "23-10-2",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/MORENO_BRANDON_02-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/MORENO_BRANDON_02-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/MORENO_BRANDON_L_09-12.png?itok=tIqGDEZU",
+    "age": 32,
+    "winMethods": {
+      "ko": 5,
+      "sub": 11,
+      "dec": 8
+    }
   },
   {
     "name": "Kevin Borjas",
     "division": "Flyweight",
     "record": "9-2-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/BORJAS_KEVIN_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/BORJAS_KEVIN_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-04/BORJAS_KEVIN_L_11-11.png?itok=lzFPPN1l",
+    "age": 28,
+    "winMethods": {
+      "ko": 8,
+      "sub": 0,
+      "dec": 3
+    }
   },
   {
     "name": "Mario Bautista",
     "division": "Bantamweight",
     "record": "14-2-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BAUTISTA_MARIO_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BAUTISTA_MARIO_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/BAUTISTA_MARIO_L_02-07.png?itok=Wpsbk8fU",
+    "age": 33,
+    "winMethods": {
+      "ko": 3,
+      "sub": 7,
+      "dec": 8
+    }
   },
   {
     "name": "David Martinez",
     "division": "Bantamweight",
     "record": "10-1-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/MARTINEZ_DAVID_02-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/MARTINEZ_DAVID_02-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/MARTINEZ_DAVID_L_09-12.png?itok=12Ecb6KY",
+    "age": 28,
+    "winMethods": {
+      "ko": 10,
+      "sub": 0,
+      "dec": 5
+    }
   },
   {
     "name": "Raoni Barcelos",
     "division": "Bantamweight",
     "record": "17-5-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BARCELOS_RAONI_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/BARCELOS_RAONI_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/BARCELOS_RAONI_L_01-18.png?itok=wbdKRVUn",
+    "age": 39,
+    "winMethods": {
+      "ko": 8,
+      "sub": 3,
+      "dec": 11
+    }
   },
   {
     "name": "Marcus McGhee",
     "division": "Bantamweight",
     "record": "9-1-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/MCGHEE_MARCUS_06-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/MCGHEE_MARCUS_06-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/MCGHEE_MARCUS_L_06-06.png?itok=DOTo3j44",
+    "age": 36,
+    "winMethods": {
+      "ko": 8,
+      "sub": 1,
+      "dec": 2
+    }
   },
   {
     "name": "Farid Basharat",
     "division": "Bantamweight",
     "record": "12-0-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BASHARAT_FARID_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/BASHARAT_FARID_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/BASHARAT_FARID_L_07-11.png?itok=KVMMn6Y2",
+    "age": 29,
+    "winMethods": {
+      "ko": 1,
+      "sub": 6,
+      "dec": 9
+    }
   },
   {
     "name": "Diego Lopes",
     "division": "Featherweight",
     "record": "24-6-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/LOPES_DIEGO_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/LOPES_DIEGO_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/LOPES_DIEGO_L_06-14.png?itok=UQIuHbZC",
+    "age": 31,
+    "winMethods": {
+      "ko": 12,
+      "sub": 12,
+      "dec": 4
+    }
   },
   {
     "name": "Lerone Murphy",
     "division": "Featherweight",
     "record": "14-0-1",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/MURPHY_LERONE_03-21.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/MURPHY_LERONE_03-21.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-08/MURPHY_LERONE_L_08-16.png?itok=gmWbl1-Y",
+    "age": 35,
+    "winMethods": {
+      "ko": 8,
+      "sub": 0,
+      "dec": 9
+    }
   },
   {
     "name": "Aljamain Sterling",
     "division": "Featherweight",
     "record": "26-5-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/STERLING_ALJAMAIN_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/STERLING_ALJAMAIN_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/STERLING_ALJAMAIN_L_04-25.png?itok=lJPFybAO",
+    "age": 37,
+    "winMethods": {
+      "ko": 3,
+      "sub": 8,
+      "dec": 15
+    }
   },
   {
     "name": "Jean Silva",
     "division": "Featherweight",
     "record": "12-2-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/SILVA_JEAN_01-24.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/SILVA_JEAN_01-24.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/SILVA_JEAN_L_09-12.png?itok=Mwc0Nn9B",
+    "age": 29,
+    "winMethods": {
+      "ko": 12,
+      "sub": 4,
+      "dec": 2
+    }
   },
   {
     "name": "Pat Sabatini",
     "division": "Featherweight",
     "record": "18-5-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/SABATINI_PAT_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/SABATINI_PAT_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-05/SABATINI_PAT_L_05-09.png?itok=YDUceiMi",
+    "age": 35,
+    "winMethods": {
+      "ko": 2,
+      "sub": 12,
+      "dec": 8
+    }
   },
   {
     "name": "Youssef Zalal",
     "division": "Featherweight",
     "record": "14-5-1",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ZALAL_YOUSSEF_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/ZALAL_YOUSSEF_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-08/ZALAL_YOUSSEF_L_08-10.png?itok=pZreInuR",
+    "age": 30,
+    "winMethods": {
+      "ko": 4,
+      "sub": 10,
+      "dec": 4
+    }
   },
   {
     "name": "Nathaniel Wood",
     "division": "Featherweight",
     "record": "20-6-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/WOOD_NATHANIEL_10-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/WOOD_NATHANIEL_10-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-10/WOOD_NATHANIEL_L_10-25.png?itok=xpw74M8X",
+    "age": 33,
+    "winMethods": {
+      "ko": 8,
+      "sub": 5,
+      "dec": 10
+    }
   },
   {
     "name": "Kevin Vallejos",
     "division": "Featherweight",
     "record": "13-1-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/VALLEJOS_KEVIN_12-13.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/VALLEJOS_KEVIN_12-13.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-12/VALLEJOS_KEVIN_R_12-13.png?itok=-h2gdx6Y",
+    "age": 24,
+    "winMethods": {
+      "ko": 13,
+      "sub": 2,
+      "dec": 3
+    }
   },
   {
     "name": "Ilia Topuria",
     "division": "Lightweight",
     "record": "17-1-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/TOPURIA_ILIA_06-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/TOPURIA_ILIA_06-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/TOPURIA_ILIA_L_06-28.png?itok=DRPWPNCZ",
+    "age": 29,
+    "winMethods": {
+      "ko": 7,
+      "sub": 8,
+      "dec": 2
+    }
   },
   {
     "name": "Max Holloway",
     "division": "Lightweight",
     "record": "27-9-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-04/HOLLOWAY_MAX_04-13.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-04/HOLLOWAY_MAX_04-13.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-04/HOLLOWAY_MAX_L_04-13.png?itok=mcRfmIq0",
+    "age": 34,
+    "winMethods": {
+      "ko": 13,
+      "sub": 2,
+      "dec": 13
+    }
   },
   {
     "name": "Benoît Saint Denis",
     "division": "Lightweight",
     "record": "13-2-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/SAINT_DENIS_BENOIT_07-11.png?itok=bZ-d0yum"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/SAINT_DENIS_BENOIT_07-11.png?itok=bZ-d0yum",
+    "winMethods": {
+      "ko": 0,
+      "sub": 0,
+      "dec": 0
+    }
   },
   {
     "name": "Quillan Salkilld",
     "division": "Lightweight",
     "record": "6-1-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/SALKILLD_QUILLAN_08-08.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/SALKILLD_QUILLAN_08-08.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-01/SALKILLD_QUILLAN_L_01-31.png?itok=FT1z9B_U",
+    "age": 26,
+    "winMethods": {
+      "ko": 5,
+      "sub": 5,
+      "dec": 3
+    }
   },
   {
     "name": "Mauricio Ruffy",
     "division": "Lightweight",
     "record": "10-1-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/RUFFY_MAURICIO_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/RUFFY_MAURICIO_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/RUFFY_MAURICIO_L_06-14.png?itok=CtSQD7Ui",
+    "age": 30,
+    "winMethods": {
+      "ko": 13,
+      "sub": 0,
+      "dec": 1
+    }
   },
   {
     "name": "Islam Makhachev",
     "division": "Welterweight",
     "record": "28-1-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/7/MAKHACHEV_ISLAM_BELT_01-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-01/7/MAKHACHEV_ISLAM_BELT_01-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/7/MAKHACHEV_ISLAM_L_BELT_01-18.png?itok=crqbSRmt",
+    "age": 34,
+    "winMethods": {
+      "ko": 5,
+      "sub": 13,
+      "dec": 11
+    }
   },
   {
     "name": "Carlos Prates",
     "division": "Welterweight",
     "record": "19-6-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/PRATES_CARLOS_05-02.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/PRATES_CARLOS_05-02.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/PRATES_CARLOS_L_08-17.png?itok=_Hqd6Xfd",
+    "age": 33,
+    "winMethods": {
+      "ko": 19,
+      "sub": 3,
+      "dec": 2
+    }
   },
   {
     "name": "Michael Morales",
     "division": "Welterweight",
     "record": "16-0-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/MORALES_MICHAEL_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/MORALES_MICHAEL_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/MORALES_MICHAEL_L_08-24.png?itok=CCXil9g6",
+    "age": 27,
+    "winMethods": {
+      "ko": 14,
+      "sub": 1,
+      "dec": 4
+    }
   },
   {
     "name": "Gabriel Bonfim",
     "division": "Welterweight",
     "record": "15-1-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/BONFIM_GABRIEL_06-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/BONFIM_GABRIEL_06-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/BONFIM_GABRIEL_L_11-08.png?itok=FGdOTced",
+    "age": 29,
+    "winMethods": {
+      "ko": 4,
+      "sub": 13,
+      "dec": 3
+    }
   },
   {
     "name": "Joaquin Buckley",
     "division": "Welterweight",
     "record": "18-6-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/BUCKLEY_JOAQUIN_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/BUCKLEY_JOAQUIN_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/BUCKLEY_JOAQUIN_L_05-11.png?itok=yyjyefDC",
+    "age": 32,
+    "winMethods": {
+      "ko": 15,
+      "sub": 0,
+      "dec": 6
+    }
   },
   {
     "name": "Joe Pyfer",
     "division": "Middleweight",
     "record": "12-3-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/PYFER_JOE_03-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/PYFER_JOE_03-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-06/PYFER_JOE_L_06-29.png?itok=sM3GEwSu",
+    "age": 29,
+    "winMethods": {
+      "ko": 10,
+      "sub": 4,
+      "dec": 2
+    }
   },
   {
     "name": "Caio Borralho",
     "division": "Middleweight",
     "record": "16-1-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/BORRALHO_CAIO_03-07.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/BORRALHO_CAIO_03-07.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/BORRALHO_CAIO_L_03-07.png?itok=uKHF4K2U",
+    "age": 33,
+    "winMethods": {
+      "ko": 5,
+      "sub": 4,
+      "dec": 9
+    }
   },
   {
     "name": "Anthony Hernandez",
     "division": "Middleweight",
     "record": "12-2-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/HERNANDEZ_ANTHONY_08-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/HERNANDEZ_ANTHONY_08-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/HERNANDEZ_ANTHONY_L_08-22.png?itok=3lBUdA4_",
+    "age": 32,
+    "winMethods": {
+      "ko": 3,
+      "sub": 9,
+      "dec": 3
+    }
   },
   {
     "name": "Gregory Rodrigues",
     "division": "Middleweight",
     "record": "19-6-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/RODRIGUES_GREGORY_08-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/RODRIGUES_GREGORY_08-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/RODRIGUES_GREGORY_L_03-07.png?itok=klxiW8-p",
+    "age": 34,
+    "winMethods": {
+      "ko": 12,
+      "sub": 3,
+      "dec": 5
+    }
   },
   {
     "name": "Ikram Aliskerov",
     "division": "Middleweight",
     "record": "18-2-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALISKEROV_IKRAM_06-27.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ALISKEROV_IKRAM_06-27.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/ALISKEROV_IKRAM_L_06-27.png?itok=3ij01m2a",
+    "age": 33,
+    "winMethods": {
+      "ko": 7,
+      "sub": 5,
+      "dec": 6
+    }
   },
   {
     "name": "Jiří Procházka",
     "division": "Light Heavyweight",
     "record": "32-6-1",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/PROCHAZKA_JIRI_04-11.png?itok=UXRq9ipK"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/PROCHAZKA_JIRI_04-11.png?itok=UXRq9ipK",
+    "winMethods": {
+      "ko": 0,
+      "sub": 0,
+      "dec": 0
+    }
   },
   {
     "name": "Paulo Costa",
     "division": "Light Heavyweight",
     "record": "16-4-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/COSTA_PAULO_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/COSTA_PAULO_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-07/COSTA_PAULO_L_07-19.png?itok=Z_3tTUCi",
+    "age": 35,
+    "winMethods": {
+      "ko": 12,
+      "sub": 1,
+      "dec": 3
+    }
   },
   {
     "name": "Khalil Rountree Jr.",
     "division": "Light Heavyweight",
     "record": "15-7-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ROUNTREE_KHALIL_10-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/ROUNTREE_KHALIL_10-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/ROUNTREE_KHALIL_L_12-09.png?itok=jdBjK2dO",
+    "age": 36,
+    "winMethods": {
+      "ko": 9,
+      "sub": 0,
+      "dec": 6
+    }
   },
   {
     "name": "Dominick Reyes",
     "division": "Light Heavyweight",
     "record": "12-4-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/REYES_DOMINICK_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/REYES_DOMINICK_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/REYES_DOMINICK_L_04-11.png?itok=7HSVtv1p",
+    "age": 36,
+    "winMethods": {
+      "ko": 10,
+      "sub": 2,
+      "dec": 4
+    }
   },
   {
     "name": "Volkan Oezdemir",
     "division": "Light Heavyweight",
     "record": "19-7-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/OEZDEMIR_VOLKAN_11-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/OEZDEMIR_VOLKAN_11-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/OEZDEMIR_VOLKAN_L_11-22.png?itok=t7-CBwn_",
+    "age": 36,
+    "winMethods": {
+      "ko": 14,
+      "sub": 2,
+      "dec": 5
+    }
   },
   {
     "name": "Azamat Murzakanov",
     "division": "Light Heavyweight",
     "record": "13-0-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MURZAKANOV_AZAMAT_04-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MURZAKANOV_AZAMAT_04-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/MURZAKANOV_AZAMAT_L_04-11.png?itok=mqQa9nra",
+    "age": 37,
+    "winMethods": {
+      "ko": 12,
+      "sub": 1,
+      "dec": 3
+    }
   },
   {
     "name": "Bogdan Guskov",
     "division": "Light Heavyweight",
     "record": "16-3-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/GUSKOV_BOGDAN_12-06.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-12/GUSKOV_BOGDAN_12-06.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/7/GUSKOV_BOGDAN_L_01-18.png?itok=IAOAajQf",
+    "age": 33,
+    "winMethods": {
+      "ko": 15,
+      "sub": 3,
+      "dec": 0
+    }
   },
   {
     "name": "Alex Pereira",
     "division": "Heavyweight",
     "record": "13-4-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/PEREIRA_ALEX_10-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/PEREIRA_ALEX_10-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-03/PEREIRA_ALEX_L.png?itok=AMZ6OfEA",
+    "age": 38,
+    "winMethods": {
+      "ko": 11,
+      "sub": 0,
+      "dec": 2
+    }
   },
   {
     "name": "Josh Hokit",
     "division": "Heavyweight",
     "record": "8-1-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/HOKIT_JOSH_06-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/HOKIT_JOSH_06-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/HOKIT_JOSH_L_06-14.png?itok=Es1_9BbW",
+    "age": 28,
+    "winMethods": {
+      "ko": 6,
+      "sub": 3,
+      "dec": 1
+    }
   },
   {
     "name": "Waldo Cortes Acosta",
     "division": "Heavyweight",
     "record": "11-1-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/CORTES_ACOSTA_WALDO_05-09.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/CORTES_ACOSTA_WALDO_05-09.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/CORTES_ACOSTA_WALDO_L_09-12.png?itok=PSa--Nt9",
+    "age": 34,
+    "winMethods": {
+      "ko": 9,
+      "sub": 1,
+      "dec": 7
+    }
   },
   {
     "name": "Rizvan Kuniev",
     "division": "Heavyweight",
     "record": "12-2-1",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KUNIEV_RIZVAN_07-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/KUNIEV_RIZVAN_07-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/KUNIEV_RIZVAN_L_07-25.png?itok=PSzxdGmY",
+    "age": 34,
+    "winMethods": {
+      "ko": 7,
+      "sub": 2,
+      "dec": 5
+    }
   },
   {
     "name": "Serghei Spivac",
     "division": "Heavyweight",
     "record": "16-4-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/SPIVAC_SERGHEI_08-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/SPIVAC_SERGHEI_08-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-08/SPIVAC_SERGHEI_L_08-22.png?itok=4Bn2kGKb",
+    "age": 31,
+    "winMethods": {
+      "ko": 7,
+      "sub": 8,
+      "dec": 3
+    }
   },
   {
     "name": "Vitor Petrino",
     "division": "Heavyweight",
     "record": "11-0-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/PETRINO_VITOR_08-22.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/PETRINO_VITOR_08-22.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/PETRINO_VITOR_L_03-14.png?itok=pNmeTfOY",
+    "age": 29,
+    "winMethods": {
+      "ko": 8,
+      "sub": 2,
+      "dec": 5
+    }
   },
   {
     "name": "Gillian Robertson",
     "division": "Strawweight",
     "record": "13-8-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/ROBERTSON_GILLIAN_08-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/ROBERTSON_GILLIAN_08-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/ROBERTSON_GILLIAN_L_01-20.png?itok=yw3RX2mI",
+    "age": 31,
+    "winMethods": {
+      "ko": 3,
+      "sub": 9,
+      "dec": 5
+    }
   },
   {
     "name": "Piera Rodriguez",
     "division": "Strawweight",
     "record": "9-1-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/RODRIGUEZ_PIERA_03-14.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/RODRIGUEZ_PIERA_03-14.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/RODRIGUEZ_PIERA_L_03-14.png?itok=UDMKBpY8",
+    "age": 33,
+    "winMethods": {
+      "ko": 5,
+      "sub": 0,
+      "dec": 7
+    }
   },
   {
     "name": "Tabatha Ricci",
     "division": "Strawweight",
     "record": "9-2-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/RICCI_TABATHA_07-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/RICCI_TABATHA_07-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/RICCI_TABATHA_L_07-18.png?itok=aQRpl-cY",
+    "age": 31,
+    "winMethods": {
+      "ko": 2,
+      "sub": 3,
+      "dec": 7
+    }
   },
   {
     "name": "Denise Gomes",
     "division": "Strawweight",
     "record": "8-3-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/GOMES_DENISE_08-29.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/GOMES_DENISE_08-29.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2024-11/GOMES_DENISE_L_11-04.png?itok=TD3_gJ1z",
+    "age": 26,
+    "winMethods": {
+      "ko": 8,
+      "sub": 0,
+      "dec": 5
+    }
   },
   {
     "name": "Mizuki",
     "division": "Strawweight",
     "record": "14-6-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/MIZUKI_10-25.png?itok=yNUQpSrN"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/MIZUKI_10-25.png?itok=yNUQpSrN",
+    "winMethods": {
+      "ko": 0,
+      "sub": 0,
+      "dec": 0
+    }
   },
   {
     "name": "Alexia Thainara",
     "division": "Strawweight",
     "record": "10-1-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/THAINARA_ALEXIA_08-08.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-08/THAINARA_ALEXIA_08-08.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/THAINARA_ALEXIA_L_03-28.png?itok=Z448AVao",
+    "age": 30,
+    "winMethods": {
+      "ko": 0,
+      "sub": 8,
+      "dec": 7
+    }
   },
   {
     "name": "Valentina Shevchenko",
     "division": "Flyweight (W)",
     "record": "23-4-1",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/SHEVCHENKO_VALENTINA_BELT_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/SHEVCHENKO_VALENTINA_BELT_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/SHEVCHENKO_VALENTINA_L_BELT_11-15.png?itok=4KuKr99O",
+    "age": 38,
+    "winMethods": {
+      "ko": 8,
+      "sub": 7,
+      "dec": 11
+    }
   },
   {
     "name": "Natalia Silva",
     "division": "Flyweight (W)",
     "record": "17-5-1",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/SILVA_NATALIA_01-24.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/SILVA_NATALIA_01-24.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-01/SILVA_NATALIA_L_01-24.png?itok=A5iY_ScW",
+    "age": 29,
+    "winMethods": {
+      "ko": 5,
+      "sub": 7,
+      "dec": 8
+    }
   },
   {
     "name": "Manon Fiorot",
     "division": "Flyweight (W)",
     "record": "12-1-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/FIOROT_MANON_10-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/FIOROT_MANON_10-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-09/FIOROT_MANON_L_09-12.png?itok=lxR1mJIt",
+    "age": 36,
+    "winMethods": {
+      "ko": 7,
+      "sub": 0,
+      "dec": 6
+    }
   },
   {
     "name": "Alexa Grasso",
     "division": "Flyweight (W)",
     "record": "16-3-1",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/GRASSO_ALEXA_03-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/GRASSO_ALEXA_03-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-03/GRASSO_ALEXA_L_03-28.png?itok=O9csNdaV",
+    "age": 33,
+    "winMethods": {
+      "ko": 5,
+      "sub": 2,
+      "dec": 11
+    }
   },
   {
     "name": "Erin Blanchfield",
     "division": "Flyweight (W)",
     "record": "12-1-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/BLANCHFIELD_ERIN_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/BLANCHFIELD_ERIN_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/BLANCHFIELD_ERIN_L_11-15.png?itok=pwhXp_G4",
+    "age": 27,
+    "winMethods": {
+      "ko": 2,
+      "sub": 5,
+      "dec": 7
+    }
   },
   {
     "name": "Zhang Weili",
     "division": "Flyweight (W)",
     "record": "24-3-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/WEILI_ZHANG_11-15.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-11/WEILI_ZHANG_11-15.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2022-06/d6bd47bc-d423-4ae8-9073-f0abd7777751%252FWEILI_ZHANG_L_06-11.png?itok=QDyjRoZ7",
+    "age": 37,
+    "winMethods": {
+      "ko": 11,
+      "sub": 8,
+      "dec": 7
+    }
   },
   {
     "name": "Jasmine Jasudavicius",
     "division": "Flyweight (W)",
     "record": "10-3-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JASUDAVICIUS_JASMINE_04-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/JASUDAVICIUS_JASMINE_04-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/JASUDAVICIUS_JASMINE_L_04-18.png?itok=brWuBeJK",
+    "age": 37,
+    "winMethods": {
+      "ko": 2,
+      "sub": 4,
+      "dec": 9
+    }
   },
   {
     "name": "Rose Namajunas",
     "division": "Flyweight (W)",
     "record": "12-6-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/NAMAJUNAS_ROSE_01-24.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-01/NAMAJUNAS_ROSE_01-24.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/NAMAJUNAS_ROSE_L_06-14.png?itok=SA42vJhp",
+    "age": 34,
+    "winMethods": {
+      "ko": 2,
+      "sub": 6,
+      "dec": 7
+    }
   },
   {
     "name": "Tracy Cortez",
     "division": "Flyweight (W)",
     "record": "11-1-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/CORTEZ_TRACY_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/CORTEZ_TRACY_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-07/CORTEZ_TRACY_L_07-11.png?itok=Yp7AqE4a",
+    "age": 32,
+    "winMethods": {
+      "ko": 1,
+      "sub": 1,
+      "dec": 10
+    }
   },
   {
     "name": "Maycee Barber",
     "division": "Flyweight (W)",
     "record": "14-2-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/1/BARBER_MAYCEE_03-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-03/1/BARBER_MAYCEE_03-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-12/BARBER_MAYCEE_L_12-06.png?itok=QdNfHNom",
+    "age": 28,
+    "winMethods": {
+      "ko": 6,
+      "sub": 2,
+      "dec": 7
+    }
   },
   {
     "name": "Wang Cong",
     "division": "Flyweight (W)",
     "record": "5-0-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/CONG_WANG_07-11.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-07/CONG_WANG_07-11.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/CONG_WANG_L_02-07.png?itok=LBnTljRc",
+    "age": 34,
+    "winMethods": {
+      "ko": 2,
+      "sub": 2,
+      "dec": 6
+    }
   },
   {
     "name": "Kayla Harrison",
     "division": "Bantamweight (W)",
     "record": "16-1-0",
     "rank": "Champion",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/HARRISON_KAYLA_BELTMOCK.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-06/HARRISON_KAYLA_BELTMOCK.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-06/HARRISON_KAYLA_L_BELTMOCK.png?itok=goxu4s1i",
+    "age": 36,
+    "winMethods": {
+      "ko": 6,
+      "sub": 8,
+      "dec": 5
+    }
   },
   {
     "name": "Joselyne Edwards",
     "division": "Bantamweight (W)",
     "record": "13-5-0",
     "rank": "#1 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/EDWARDS_JOSELYNE_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/EDWARDS_JOSELYNE_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-08/EDWARDS_JOSELYNE_L_08-09.png?itok=k2CkSa7C",
+    "age": 30,
+    "winMethods": {
+      "ko": 7,
+      "sub": 0,
+      "dec": 6
+    }
   },
   {
     "name": "Norma Dumont",
     "division": "Bantamweight (W)",
     "record": "11-2-0",
     "rank": "#2 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DUMONT_NORMA_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/DUMONT_NORMA_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-04/DUMONT_NORMA_L_04-25.png?itok=uOQsIEx0",
+    "age": 35,
+    "winMethods": {
+      "ko": 0,
+      "sub": 2,
+      "dec": 11
+    }
   },
   {
     "name": "Luana Santos",
     "division": "Bantamweight (W)",
     "record": "7-1-0",
     "rank": "#3 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/SANTOS_LUANA_06-20.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/SANTOS_LUANA_06-20.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-05/SANTOS_LUANA_L_05-17.png?itok=F9R3I5g7",
+    "age": 26,
+    "winMethods": {
+      "ko": 1,
+      "sub": 5,
+      "dec": 5
+    }
   },
   {
     "name": "Julianna Peña",
     "division": "Bantamweight (W)",
     "record": "11-5-0",
     "rank": "#4 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/PENA_JULIANNA_10-05.png?itok=vbyk_Th9"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2024-10/PENA_JULIANNA_10-05.png?itok=vbyk_Th9",
+    "winMethods": {
+      "ko": 0,
+      "sub": 0,
+      "dec": 0
+    }
   },
   {
     "name": "Ailin Perez",
     "division": "Bantamweight (W)",
     "record": "9-2-0",
     "rank": "#5 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/PEREZ_AILIN_02-28.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-02/PEREZ_AILIN_02-28.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-02/PEREZ_AILIN_L_02-28.png?itok=sPy9HJ2B",
+    "age": 31,
+    "winMethods": {
+      "ko": 4,
+      "sub": 2,
+      "dec": 7
+    }
   },
   {
     "name": "Yana Santos",
     "division": "Bantamweight (W)",
     "record": "14-8-0",
     "rank": "#6 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/SANTOS_YANA_10-04.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/SANTOS_YANA_10-04.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-05/SANTOS_YANA_L_05-03.png?itok=pkR_XniN",
+    "age": 36,
+    "winMethods": {
+      "ko": 7,
+      "sub": 1,
+      "dec": 9
+    }
   },
   {
     "name": "Jacqueline Cavalcanti",
     "division": "Bantamweight (W)",
     "record": "6-1-0",
     "rank": "#7 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/CAVALCANTI_JACQUELINE_05-16.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-05/CAVALCANTI_JACQUELINE_05-16.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-01/5/CAVALCANTI_JACQUELINE_L_08-24.png?itok=NQZ5w4CU",
+    "age": 29,
+    "winMethods": {
+      "ko": 3,
+      "sub": 0,
+      "dec": 7
+    }
   },
   {
     "name": "Michelle Montague",
     "division": "Bantamweight (W)",
     "record": "4-0-0",
     "rank": "#8 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MONTAGUE_MICHELLE_04-25.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-04/MONTAGUE_MICHELLE_04-25.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-09/MONTAGUE_MICHELLE_L_09-27.png?itok=hREMtg7j",
+    "age": 32,
+    "winMethods": {
+      "ko": 0,
+      "sub": 6,
+      "dec": 2
+    }
   },
   {
     "name": "Melissa Croden",
     "division": "Bantamweight (W)",
     "record": "4-2-0",
     "rank": "#9 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/CRODEN_MELISSA_10-18.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2025-10/CRODEN_MELISSA_10-18.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-10/CRODEN_MELISSA_L_10-18.png?itok=0xkEkNiU",
+    "age": 35,
+    "winMethods": {
+      "ko": 6,
+      "sub": 1,
+      "dec": 1
+    }
   },
   {
     "name": "Karol Rosa",
     "division": "Bantamweight (W)",
     "record": "17-6-0",
     "rank": "#10 Contender",
-    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ROSA_KAROL_06-20.png"
+    "image": "https://www.ufc.com/images/styles/event_results_athlete_headshot/s3/2026-06/ROSA_KAROL_06-20.png",
+    "fullBodyImage": "https://ufc.com/images/styles/athlete_bio_full_body/s3/2026-06/ROSA_KAROL_L_06-20.png?itok=YUHa84_9",
+    "age": 31,
+    "winMethods": {
+      "ko": 4,
+      "sub": 2,
+      "dec": 13
+    }
   }
 ]

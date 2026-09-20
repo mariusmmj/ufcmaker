@@ -73,20 +73,8 @@ export function generateRandomCard(
 
     if (matchup) {
       newFights[slot.id] = {
-        f1: {
-          name: matchup.f1.name,
-          division: matchup.f1.division,
-          record: matchup.f1.record,
-          rank: matchup.f1.rank,
-          image: matchup.f1.image,
-        },
-        f2: {
-          name: matchup.f2.name,
-          division: matchup.f2.division,
-          record: matchup.f2.record,
-          rank: matchup.f2.rank,
-          image: matchup.f2.image,
-        },
+        f1: { ...matchup.f1 },
+        f2: { ...matchup.f2 },
         lockedDiv: matchup.lockedDiv,
         isTitleFight: slot.id === 'm1', // Automatically make m1 a title fight
         rounds: slot.id === 'm1' ? 5 : 3,

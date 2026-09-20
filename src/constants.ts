@@ -2,8 +2,6 @@ import { Fight, FightSlot, Fighter } from './types';
 
 export const TEMPLATES = [
   { id: 'default', label: 'Standard UFC', className: '' },
-  { id: 'ufc300', label: 'UFC 300', className: 'theme-ufc300' },
-  { id: 'noche', label: 'Noche UFC', className: 'theme-noche' },
 ];
 
 export const FIGHT_SLOTS: FightSlot[] = [

@@ -4,6 +4,8 @@ import { DIVISION_COLOR } from '../constants';
 import { DivisionBadge } from './DivisionBadge';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useStore } from '../store/useStore';
+import allFighters from '../data/fighters.json';
 
 // ── FighterCell ────────────────────────────────────────────────────────────
 
@@ -13,6 +15,7 @@ interface CellProps {
   isTitleFight?: boolean;
   onClick: () => void;
   onClear: () => void;
+  onInfoClick?: () => void;
 }
 
 const FighterCell: React.FC<CellProps> = ({
@@ -21,6 +24,7 @@ const FighterCell: React.FC<CellProps> = ({
   isTitleFight,
   onClick,
   onClear,
+  onInfoClick,
 }) => {
   // Always left align the text to make better use of space, and put X on the right.
   const align = 'items-start text-left';
@@ -109,29 +113,36 @@ const FighterCell: React.FC<CellProps> = ({
       </button>
 
       {/* Name & Image */}
-      <div className="relative z-20 flex items-center gap-4 mb-1">
+      <div className="relative z-20 flex items-center gap-2 sm:gap-4 mb-1">
         {fighter.image && (
-          <div className="relative z-20">
+          <button 
+            type="button"
+            className="relative z-20 cursor-pointer transition-transform hover:scale-105 active:scale-95 border-none bg-transparent p-0"
+            onClick={(e) => {
+              e.stopPropagation();
+              onInfoClick?.();
+            }}
+          >
             <img
               src={fighter.image}
               alt={fighter.name}
-              className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-md"
+              className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-md"
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                 backgroundColor: 'var(--bg-card-hover)',
               }}
             />
-          </div>
+          </button>
         )}
         <p
+          className={`uppercase leading-tight ${
+            isTitleFight ? 'text-lg sm:text-xl lg:text-2xl' : isMain ? 'text-sm sm:text-base lg:text-lg' : 'text-xs sm:text-sm lg:text-base'
+          }`}
           style={{
             fontFamily: 'var(--font-condensed)',
             fontWeight: 900,
-            fontSize: isTitleFight ? 24 : isMain ? 16 : 14,
             letterSpacing: '0.05em',
             color: 'var(--text-primary)',
-            lineHeight: 1.1,
-            textTransform: 'uppercase',
           }}
         >
           {fighter.name}
@@ -318,6 +329,12 @@ export const FightRow: React.FC<Props> = ({
           isTitleFight={isTitleFight}
           onClick={() => onPick(fightId, 'f1')}
           onClear={() => onClear(fightId, 'f1')}
+          onInfoClick={() => {
+            if (f1.name) {
+              const freshData = allFighters.find((f) => f.name === f1.name) as any;
+              useStore.getState().setInfoModal(freshData || f1);
+            }
+          }}
         />
         {/* VS divider */}
         <div
@@ -330,7 +347,7 @@ export const FightRow: React.FC<Props> = ({
               fontWeight: 900,
               fontSize: 11,
               letterSpacing: '0.2em',
-              color: divColors?.text ?? 'var(--text-muted)',
+              color: '#ef4444',
             }}
           >
             VS
@@ -342,6 +359,12 @@ export const FightRow: React.FC<Props> = ({
           isTitleFight={isTitleFight}
           onClick={() => onPick(fightId, 'f2')}
           onClear={() => onClear(fightId, 'f2')}
+          onInfoClick={() => {
+            if (f2.name) {
+              const freshData = allFighters.find((f) => f.name === f2.name) as any;
+              useStore.getState().setInfoModal(freshData || f2);
+            }
+          }}
         />
       </div>
     </div>
