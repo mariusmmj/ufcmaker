@@ -231,7 +231,12 @@ export default function App() {
         {/* Templates and Theme Toggle */}
         <div className="flex items-center gap-4">
           <button
-            onClick={() => useStore.getState().saveCurrentCard()}
+            onClick={() => {
+              const name = prompt('Enter card name:');
+                if (name) {
+                  useStore.getState().saveCurrentCard(name);
+                }
+              }}
             className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
