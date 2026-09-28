@@ -1,4 +1,4 @@
-# 🥊 UFC Card Maker
+# UFC Card Maker
 
 ![UFC Card Maker](https://img.shields.io/badge/Status-Production%20Ready-success) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue) ![Zustand](https://img.shields.io/badge/Zustand-State-orange)
 
@@ -6,7 +6,7 @@ A professional, interactive web application that allows users to build custom UF
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Interactive Fight Builder**: Choose from a database of real UFC fighters. The system automatically enforces weight class restrictions (unless bypassed).
 - **Global State Management**: Powered by **Zustand** for lightning-fast, predictable state updates across the app.
@@ -14,10 +14,12 @@ A professional, interactive web application that allows users to build custom UF
 - **Shareable URLs**: The app uses `lz-string` to compress the entire state of your custom card into the URL. Send the link to a friend, and they will see the exact card you built!
 - **High-Quality Export**: Leveraging `html-to-image`, users can take a high-resolution screenshot of their completed card with a single click.
 - **Dark/Light Mode**: Full theme support utilizing CSS variables and Tailwind CSS.
+- **Champion Highlighting**: Distinctive gold styling and background radiants for champions on the card.
+- **Card History**: Save locally and retrieve multiple custom cards via a history modal.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Framework**: React 18
 - **Language**: TypeScript
@@ -28,7 +30,7 @@ A professional, interactive web application that allows users to build custom UF
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 To run this project locally:
 
@@ -52,7 +54,7 @@ The optimized bundle will be generated in the `dist` folder.
 
 ---
 
-## 🏗 Architecture & Design Decisions
+## Architecture & Design Decisions
 
 ### 1. Centralized State (Zustand)
 Initially, state was managed via prop-drilling and `useState` inside the root component. This was refactored into a centralized `useStore.ts` using Zustand. This separation of concerns means the React components now only handle the view layer, while the store handles complex business logic (e.g., parsing URL parameters, enforcing weight divisions, and calculating stats).
@@ -65,6 +67,6 @@ The entire application is strictly typed using TypeScript. Interfaces for `Fight
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
