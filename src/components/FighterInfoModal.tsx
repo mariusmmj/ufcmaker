@@ -49,7 +49,9 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
         <div
           className="w-full md:w-1/2 relative flex items-end justify-center overflow-hidden"
           style={{
-            background: 'var(--bg-main)',
+            background: fighter.rank?.includes('Champion') 
+              ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+              : 'var(--bg-main)',
             minHeight: '300px',
           }}
         >

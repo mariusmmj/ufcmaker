@@ -67,20 +67,28 @@ const FighterCell: React.FC<CellProps> = ({
 
   const metaDir = 'flex-row';
 
+  const isChampion = fighter.rank?.includes('Champion');
+  const defaultBg = isChampion 
+    ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+    : 'var(--bg-card)';
+  const hoverBg = isChampion 
+    ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.35), rgba(218, 165, 32, 0.2))' 
+    : 'var(--bg-card-hover)';
+
   return (
     <div
       onClick={onClick}
       className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group`}
       style={{
         minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
-        background: 'var(--bg-card)',
-        border: '1px solid var(--border-card)',
+        background: defaultBg,
+        border: isChampion ? '1px solid rgba(218, 165, 32, 0.4)' : '1px solid var(--border-card)',
       }}
       onMouseEnter={(e) =>
-        (e.currentTarget.style.background = 'var(--bg-card-hover)')
+        (e.currentTarget.style.background = hoverBg)
       }
       onMouseLeave={(e) =>
-        (e.currentTarget.style.background = 'var(--bg-card)')
+        (e.currentTarget.style.background = defaultBg)
       }
     >
       {/* Clear button */}
@@ -129,7 +137,9 @@ const FighterCell: React.FC<CellProps> = ({
               className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-md"
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                backgroundColor: 'var(--bg-card-hover)',
+                background: isChampion 
+                  ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+                  : 'var(--bg-card-hover)',
               }}
             />
           </button>
@@ -168,8 +178,10 @@ const FighterCell: React.FC<CellProps> = ({
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 10,
-              color: 'var(--text-secondary)',
-              fontStyle: 'italic',
+              color: isChampion ? '#daa520' : 'var(--text-secondary)',
+              fontWeight: isChampion ? 800 : 400,
+              fontStyle: isChampion ? 'normal' : 'italic',
+              textTransform: isChampion ? 'uppercase' : 'none',
             }}
           >
             {fighter.rank}

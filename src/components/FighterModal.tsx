@@ -366,19 +366,21 @@ export const FighterModal: React.FC<Props> = ({
                   bg: '#f9fafb',
                   border: '#e5e7eb',
                 };
+                const isChampion = f.rank?.includes('Champion');
+                const defaultBg = isChampion ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' : 'transparent';
+                const hoverBg = isChampion ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.35), rgba(218, 165, 32, 0.2))' : 'var(--bg-card-hover)';
+                
                 return (
                   <div
                     key={i}
                     className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors"
-                    style={{ borderBottom: '1px solid var(--border-main)' }}
+                    style={{ 
+                      borderBottom: '1px solid var(--border-main)',
+                      background: defaultBg
+                    }}
                     onClick={() => onSelect(f)}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.background =
-                        'var(--bg-card-hover)')
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.background = 'transparent')
-                    }
+                    onMouseEnter={(e) => (e.currentTarget.style.background = hoverBg)}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = defaultBg)}
                   >
                     {/* Avatar */}
                     {f.image ? (
@@ -442,8 +444,10 @@ export const FighterModal: React.FC<Props> = ({
                             style={{
                               fontFamily: 'var(--font-body)',
                               fontSize: 10,
-                              color: 'var(--text-secondary)',
-                              fontStyle: 'italic',
+                              color: isChampion ? '#daa520' : 'var(--text-secondary)',
+                              fontWeight: isChampion ? 800 : 400,
+                              fontStyle: isChampion ? 'normal' : 'italic',
+                              textTransform: isChampion ? 'uppercase' : 'none',
                             }}
                           >
                             {f.rank}

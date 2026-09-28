@@ -4,6 +4,7 @@ import { FightRow } from './components/FightRow';
 import { FighterModal } from './components/FighterModal';
 import { FighterInfoModal } from './components/FighterInfoModal';
 import { SavedCardsModal } from './components/SavedCardsModal';
+import { SaveCardModal } from './components/SaveCardModal';
 import { CardStats } from './components/CardStats';
 import { useStore } from './store/useStore';
 import { encodeStateToUrl } from './utils/storage';
@@ -59,6 +60,8 @@ export default function App() {
     modal,
     infoModal,
     historyModalOpen,
+    saveModalOpen,
+    toastMessage,
     eventName,
     isDark,
     setEventName,
@@ -71,6 +74,7 @@ export default function App() {
     handleClear,
     toggleTitleFight,
     surpriseMe,
+    clearCard,
   } = useStore();
 
   const [editingName, setEditingName] = useState(false);
@@ -229,15 +233,10 @@ export default function App() {
         </span>
 
         {/* Templates and Theme Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4">
           <button
-            onClick={() => {
-              const name = prompt('Enter card name:');
-                if (name) {
-                  useStore.getState().saveCurrentCard(name);
-                }
-              }}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            onClick={() => useStore.getState().setSaveModalOpen(true)}
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -249,7 +248,7 @@ export default function App() {
           </button>
           <button
             onClick={() => useStore.getState().setHistoryModalOpen(true)}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -260,8 +259,20 @@ export default function App() {
             History
           </button>
           <button
+            onClick={clearCard}
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
+            style={{
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+              fontFamily: 'var(--font-condensed)',
+            }}
+          >
+            Clear Card
+          </button>
+          <button
             onClick={surpriseMe}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -273,7 +284,7 @@ export default function App() {
           </button>
           <button
             onClick={handleExport}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -284,7 +295,7 @@ export default function App() {
           </button>
           <button
             onClick={handleShare}
-            className="text-sm px-3 py-1 rounded transition-colors font-bold relative uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold relative uppercase"
             style={{
               background: 'var(--accent-color)',
               color: '#fff',
@@ -295,7 +306,7 @@ export default function App() {
           </button>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="text-sm px-2 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -445,6 +456,22 @@ export default function App() {
       )}
 
       {historyModalOpen && <SavedCardsModal />}
+      
+      {saveModalOpen && <SaveCardModal />}
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div 
+          className="fixed bottom-6 right-6 z-[100] px-6 py-3 rounded-xl shadow-2xl font-bold uppercase"
+          style={{
+            background: 'var(--accent-color)',
+            color: '#fff',
+            fontFamily: 'var(--font-condensed)'
+          }}
+        >
+          {toastMessage}
+        </div>
+      )}
     </div>
   );
 }

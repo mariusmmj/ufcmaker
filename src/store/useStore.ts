@@ -44,6 +44,7 @@ interface AppState {
   handleClear: (fightId: string, slot: FighterSlotKey) => void;
   toggleTitleFight: (fightId: string) => void;
   surpriseMe: () => void;
+  clearCard: () => void;
 }
 
 const urlState = decodeStateFromUrl();
@@ -186,6 +187,10 @@ export const useStore = create<AppState>((set, get) => ({
     set({
       fights: generateRandomCard(slots, allFighters as Fighter[], noRestrictions),
     });
+  },
+
+  clearCard: () => {
+    set({ fights: initFights() });
   },
 }));
 
