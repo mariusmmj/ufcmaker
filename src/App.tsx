@@ -3,6 +3,7 @@ import { FighterSlotKey } from './types';
 import { FightRow } from './components/FightRow';
 import { FighterModal } from './components/FighterModal';
 import { FighterInfoModal } from './components/FighterInfoModal';
+import { TaleOfTheTapeModal } from './components/TaleOfTheTapeModal';
 import { SavedCardsModal } from './components/SavedCardsModal';
 import { SaveCardModal } from './components/SaveCardModal';
 import { CardStats } from './components/CardStats';
@@ -59,16 +60,21 @@ export default function App() {
     noRestrictions,
     modal,
     infoModal,
+    taleModal,
     historyModalOpen,
     saveModalOpen,
     toastMessage,
     eventName,
     isDark,
+    pickemMode,
+    picks,
+    setPickemMode,
     setEventName,
     setIsDark,
     setNoRestrictions,
     setModal,
     setInfoModal,
+    setTaleModal,
     handleDragEnd,
     handleSelect,
     handleClear,
@@ -84,7 +90,7 @@ export default function App() {
   const mainRef = useRef<HTMLElement>(null);
 
   const handleShare = () => {
-    encodeStateToUrl({ fights, eventName, noRestrictions, slots });
+    encodeStateToUrl({ fights, eventName, noRestrictions, slots, pickemMode, picks });
     navigator.clipboard.writeText(window.location.href).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -305,6 +311,17 @@ export default function App() {
             {copied ? 'Copied!' : 'Share Link'}
           </button>
           <button
+            onClick={() => setPickemMode(!pickemMode)}
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
+            style={{
+              background: pickemMode ? 'var(--accent-color)' : 'var(--bg-main)',
+              color: pickemMode ? '#fff' : 'var(--text-primary)',
+              border: pickemMode ? '1px solid var(--accent-color)' : '1px solid var(--border-main)',
+            }}
+          >
+            {pickemMode ? "Exit Pick'em" : "Pick'em Mode"}
+          </button>
+          <button
             onClick={() => setIsDark(!isDark)}
             className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
             style={{
@@ -453,6 +470,10 @@ export default function App() {
           fighter={infoModal}
           onClose={() => setInfoModal(null)}
         />
+      )}
+
+      {taleModal && (
+        <TaleOfTheTapeModal fight={taleModal} onClose={() => setTaleModal(null)} />
       )}
 
       {historyModalOpen && <SavedCardsModal />}

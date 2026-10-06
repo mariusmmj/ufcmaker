@@ -13,6 +13,8 @@ interface CellProps {
   fighter: Fight['f1'];
   isMain: boolean;
   isTitleFight?: boolean;
+  isPicked?: boolean;
+  isNotPicked?: boolean;
   onClick: () => void;
   onClear: () => void;
   onInfoClick?: () => void;
@@ -22,6 +24,8 @@ const FighterCell: React.FC<CellProps> = ({
   fighter,
   isMain,
   isTitleFight,
+  isPicked,
+  isNotPicked,
   onClick,
   onClear,
   onInfoClick,
@@ -68,12 +72,18 @@ const FighterCell: React.FC<CellProps> = ({
   const metaDir = 'flex-row';
 
   const isChampion = fighter.rank?.includes('Champion');
-  const defaultBg = isChampion 
-    ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
-    : 'var(--bg-card)';
-  const hoverBg = isChampion 
-    ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.35), rgba(218, 165, 32, 0.2))' 
-    : 'var(--bg-card-hover)';
+  const defaultBg = isPicked
+    ? 'rgba(34, 197, 94, 0.15)'
+    : isChampion 
+      ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+      : 'var(--bg-card)';
+  const hoverBg = isPicked
+    ? 'rgba(34, 197, 94, 0.25)'
+    : isChampion 
+      ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.35), rgba(218, 165, 32, 0.2))' 
+      : 'var(--bg-card-hover)';
+
+  const borderColor = isPicked ? '2px solid rgb(34, 197, 94)' : isChampion ? '1px solid rgba(218, 165, 32, 0.4)' : '1px solid var(--border-card)';
 
   return (
     <div
@@ -82,7 +92,9 @@ const FighterCell: React.FC<CellProps> = ({
       style={{
         minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
         background: defaultBg,
-        border: isChampion ? '1px solid rgba(218, 165, 32, 0.4)' : '1px solid var(--border-card)',
+        border: borderColor,
+        opacity: isNotPicked ? 0.3 : 1,
+        transform: isNotPicked ? 'scale(0.98)' : 'scale(1)',
       }}
       onMouseEnter={(e) =>
         (e.currentTarget.style.background = hoverBg)
@@ -92,33 +104,35 @@ const FighterCell: React.FC<CellProps> = ({
       }
     >
       {/* Clear button */}
-      <button
-        className={`absolute ${clearPos} opacity-50 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center`}
-        onClick={(e) => {
-          e.stopPropagation();
-          onClear();
-        }}
-        title="Remove fighter"
-        style={{
-          background: '#ef4444',
-          border: 'none',
-          cursor: 'pointer',
-          color: 'white',
-          width: 28,
-          height: 28,
-          fontSize: 14,
-          lineHeight: 1,
-          borderRadius: '50%',
-          fontFamily: 'var(--font-condensed)',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          top: '50%',
-          transform: 'translateY(-50%)',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = '#dc2626')}
-        onMouseLeave={(e) => (e.currentTarget.style.background = '#ef4444')}
-      >
-        ✕
-      </button>
+      {!isPicked && !isNotPicked && !useStore.getState().pickemMode && (
+        <button
+          className={`absolute ${clearPos} opacity-50 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClear();
+          }}
+          title="Remove fighter"
+          style={{
+            background: '#ef4444',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'white',
+            width: 28,
+            height: 28,
+            fontSize: 14,
+            lineHeight: 1,
+            borderRadius: '50%',
+            fontFamily: 'var(--font-condensed)',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            top: '50%',
+            transform: 'translateY(-50%)',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#dc2626')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = '#ef4444')}
+        >
+          ✕
+        </button>
+      )}
 
       {/* Name & Image */}
       <div className="relative z-20 flex items-center gap-2 sm:gap-4 mb-1">
@@ -225,6 +239,9 @@ export const FightRow: React.FC<Props> = ({
     f1.division !== f2.division;
   const divColors = lockedDiv ? DIVISION_COLOR[lockedDiv] : null;
 
+  const { pickemMode, picks, setPick } = useStore();
+  const currentPick = picks[fightId];
+
   const {
     attributes,
     listeners,
@@ -254,7 +271,7 @@ export const FightRow: React.FC<Props> = ({
     >
       {/* Row header */}
       <div className="flex items-center gap-2 px-3 pt-2 pb-1.5">
-        {!disableDrag && (
+        {!disableDrag && !pickemMode && (
           <div
             {...attributes}
             {...listeners}
@@ -339,7 +356,15 @@ export const FightRow: React.FC<Props> = ({
           fighter={f1}
           isMain={isMain}
           isTitleFight={isTitleFight}
-          onClick={() => onPick(fightId, 'f1')}
+          isPicked={pickemMode && currentPick === 'f1'}
+          isNotPicked={pickemMode && currentPick === 'f2'}
+          onClick={() => {
+            if (pickemMode) {
+              if (f1.name) setPick(fightId, currentPick === 'f1' ? null : 'f1');
+            } else {
+              onPick(fightId, 'f1');
+            }
+          }}
           onClear={() => onClear(fightId, 'f1')}
           onInfoClick={() => {
             if (f1.name) {
@@ -348,28 +373,54 @@ export const FightRow: React.FC<Props> = ({
             }
           }}
         />
+
         {/* VS divider */}
         <div
           className="flex-shrink-0 flex items-center justify-center"
-          style={{ width: 36 }}
+          style={{ width: 40 }}
         >
-          <span
-            style={{
-              fontFamily: 'var(--font-condensed)',
-              fontWeight: 900,
-              fontSize: 11,
-              letterSpacing: '0.2em',
-              color: '#ef4444',
+          <button
+            onClick={() => {
+              if (f1.name && f2.name) {
+                const freshF1 = allFighters.find((f) => f.name === f1.name) || f1;
+                const freshF2 = allFighters.find((f) => f.name === f2.name) || f2;
+                useStore.getState().setTaleModal({ ...fight, f1: freshF1 as any, f2: freshF2 as any });
+              }
             }}
+            className="flex flex-col items-center justify-center transition-transform hover:scale-110 active:scale-95 bg-transparent border-none p-0 cursor-pointer"
+            title="View Tale of the Tape"
+            disabled={!f1.name || !f2.name}
+            style={{ opacity: f1.name && f2.name ? 1 : 0.5 }}
           >
-            VS
-          </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-condensed)',
+                fontWeight: 900,
+                fontSize: 14,
+                letterSpacing: '0.2em',
+                color: '#ef4444',
+              }}
+            >
+              VS
+            </span>
+            {f1.name && f2.name && (
+              <span className="text-[8px] uppercase tracking-widest text-stone-400 mt-0.5">Stats</span>
+            )}
+          </button>
         </div>
         <FighterCell
           fighter={f2}
           isMain={isMain}
           isTitleFight={isTitleFight}
-          onClick={() => onPick(fightId, 'f2')}
+          isPicked={pickemMode && currentPick === 'f2'}
+          isNotPicked={pickemMode && currentPick === 'f1'}
+          onClick={() => {
+            if (pickemMode) {
+              if (f2.name) setPick(fightId, currentPick === 'f2' ? null : 'f2');
+            } else {
+              onPick(fightId, 'f2');
+            }
+          }}
           onClear={() => onClear(fightId, 'f2')}
           onInfoClick={() => {
             if (f2.name) {

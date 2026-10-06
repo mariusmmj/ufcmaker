@@ -23,43 +23,42 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
       onClick={onClose}
     >
         <div
-          className="relative w-full max-w-4xl rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl"
+          className="relative w-full max-w-4xl rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--border-main)',
-            minHeight: '400px',
+            maxHeight: '90vh',
           }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-50 flex items-center justify-center w-8 h-8 rounded-full"
-          style={{
-            background: 'var(--bg-card-hover)',
-            color: 'var(--text-primary)',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
-          ✕
-        </button>
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 z-[100] flex items-center justify-center w-8 h-8 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+            style={{
+              border: 'none',
+              cursor: 'pointer',
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            ✕
+          </button>
 
-        {/* Left Side: Image */}
-        <div
-          className="w-full md:w-1/2 relative flex items-end justify-center overflow-hidden"
-          style={{
-            background: fighter.rank?.includes('Champion') 
-              ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
-              : 'var(--bg-main)',
-            minHeight: '300px',
-          }}
-        >
-          {imageToUse ? (
-            <img
-              src={imageToUse}
+          <div className="flex flex-col md:flex-row w-full h-full overflow-y-auto">
+            {/* Left Side: Image */}
+            <div
+              className="w-full md:w-1/2 relative flex items-end justify-center overflow-hidden min-h-[250px] md:min-h-[400px]"
+              style={{
+                background: fighter.rank?.includes('Champion') 
+                  ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+                  : 'var(--bg-main)',
+              }}
+            >
+              {imageToUse ? (
+                <img
+                  src={imageToUse}
               alt={fighter.name}
-              className={`object-cover object-bottom ${isFullBody ? 'h-full max-h-[500px]' : 'w-48 h-48 rounded-full mb-8 shadow-xl'}`}
+              className={`object-bottom ${isFullBody ? 'object-contain h-full max-h-[400px] p-4' : 'object-cover w-48 h-48 rounded-full mb-8 shadow-xl'}`}
               style={{
                 filter: isFullBody ? 'drop-shadow(0px 10px 15px rgba(0,0,0,0.3))' : 'none',
               }}
@@ -81,13 +80,13 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
         </div>
 
         {/* Right Side: Stats */}
-        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <div className="mb-6">
+        <div className="w-full md:w-1/2 p-5 md:p-8 flex flex-col justify-center">
+          <div className="mb-4 md:mb-6">
             <h2
+              className="text-3xl md:text-5xl"
               style={{
                 fontFamily: 'var(--font-condensed)',
                 fontWeight: 900,
-                fontSize: '2.5rem',
                 lineHeight: 1,
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
@@ -117,17 +116,17 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
             <div>
               <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 700 }}>Record</div>
-              <div style={{ color: 'var(--text-primary)', fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
+              <div className="text-xl md:text-2xl" style={{ color: 'var(--text-primary)', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
                 {fighter.record}
               </div>
             </div>
             {fighter.age && (
               <div>
                 <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 700 }}>Age</div>
-                <div style={{ color: 'var(--text-primary)', fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
+                <div className="text-xl md:text-2xl" style={{ color: 'var(--text-primary)', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
                   {fighter.age}
                 </div>
               </div>
@@ -139,21 +138,21 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
               <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>
                 Win Methods
               </div>
-              <div className="flex gap-4">
-                <div className="flex-1 rounded-lg p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
-                  <div style={{ color: 'var(--accent-color)', fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
+              <div className="flex gap-2 md:gap-4">
+                <div className="flex-1 rounded-lg p-2 md:p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
+                  <div className="text-xl md:text-2xl" style={{ color: 'var(--accent-color)', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
                     {fighter.winMethods.ko}
                   </div>
                   <div style={{ color: 'var(--text-secondary)', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 700 }}>KO/TKO</div>
                 </div>
-                <div className="flex-1 rounded-lg p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
-                  <div style={{ color: 'var(--accent-color)', fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
+                <div className="flex-1 rounded-lg p-2 md:p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
+                  <div className="text-xl md:text-2xl" style={{ color: 'var(--accent-color)', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
                     {fighter.winMethods.sub}
                   </div>
                   <div style={{ color: 'var(--text-secondary)', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 700 }}>SUB</div>
                 </div>
-                <div className="flex-1 rounded-lg p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
-                  <div style={{ color: 'var(--accent-color)', fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
+                <div className="flex-1 rounded-lg p-2 md:p-3 text-center" style={{ background: 'var(--bg-card-hover)' }}>
+                  <div className="text-xl md:text-2xl" style={{ color: 'var(--accent-color)', fontWeight: 900, fontFamily: 'var(--font-condensed)' }}>
                     {fighter.winMethods.dec}
                   </div>
                   <div style={{ color: 'var(--text-secondary)', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 700 }}>DEC</div>
@@ -161,6 +160,7 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>

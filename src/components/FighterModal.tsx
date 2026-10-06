@@ -17,21 +17,23 @@ function search(
   query: string,
   lockedDiv: string | null,
   selectedFighters: string[] = [],
-  fightId: string
+  fightId: string,
+  noRestrictions: boolean,
+  filter: string
 ): Fighter[] {
   const isMainEvent = fightId === 'm1' || fightId === 'm2';
   const q = query.toLowerCase().trim();
 
-  return FIGHTERS.filter((f) => {
+  let filtered = FIGHTERS.filter((f) => {
     if (selectedFighters.includes(f.name)) return false;
 
-    const rNum = getRankNum(f.rank);
-    if (isMainEvent) {
-      // Main/Co-main: ONLY top 5 or champion
-      if (rNum > 5) return false;
-    } else {
-      // Prelims/others: NO champions allowed
-      if (rNum === 0) return false;
+    if (!noRestrictions) {
+      const rNum = getRankNum(f.rank);
+      if (isMainEvent) {
+        if (rNum > 5) return false;
+      } else {
+        if (rNum === 0) return false;
+      }
     }
 
     const matchName = !q || f.name.toLowerCase().includes(q);
@@ -39,7 +41,20 @@ function search(
     const matchQuery = matchName || matchDiv;
     const matchLocked = !lockedDiv || f.division === lockedDiv;
     return matchQuery && matchLocked;
-  }).slice(0, 8);
+  });
+
+  if (filter === 'Champions') {
+    filtered = filtered.filter(f => f.rank?.includes('Champion'));
+  } else if (filter === 'Top 5') {
+    filtered = filtered.filter(f => {
+      const r = getRankNum(f.rank);
+      return r > 0 && r <= 5;
+    });
+  } else if (filter === 'Undefeated') {
+    filtered = filtered.filter(f => f.record.split('-')[1] === '0');
+  }
+
+  return filtered.slice(0, 15);
 }
 
 interface Props {
@@ -61,8 +76,9 @@ export const FighterModal: React.FC<Props> = ({
 }) => {
   const effectiveLock = noRestrictions ? null : lockedDiv;
   const [query, setQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState('All');
   const [results, setResults] = useState<Fighter[]>(() =>
-    search('', effectiveLock, selectedFighters, fightId)
+    search('', effectiveLock, selectedFighters, fightId, noRestrictions, 'All')
   );
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -79,7 +95,17 @@ export const FighterModal: React.FC<Props> = ({
 
   const handleChange = (val: string) => {
     setQuery(val);
-    setResults(search(val, effectiveLock, selectedFighters, fightId));
+    setResults(search(val, effectiveLock, selectedFighters, fightId, noRestrictions, activeFilter));
+  };
+
+  const handleFilterClick = (filterName: string) => {
+    if (activeFilter === filterName) {
+      setActiveFilter('All');
+      setResults(search(query, effectiveLock, selectedFighters, fightId, noRestrictions, 'All'));
+    } else {
+      setActiveFilter(filterName);
+      setResults(search(query, effectiveLock, selectedFighters, fightId, noRestrictions, filterName));
+    }
   };
 
   const handleCustomSubmit = (e: React.FormEvent) => {
@@ -323,7 +349,7 @@ export const FighterModal: React.FC<Props> = ({
           /* ── Search & Results ───────────────────── */
           <>
             <div
-              className="px-4 py-3"
+              className="px-4 py-3 flex flex-col gap-3"
               style={{ borderBottom: '1px solid var(--border-card)' }}
             >
               <input
@@ -346,6 +372,24 @@ export const FighterModal: React.FC<Props> = ({
                   (e.currentTarget.style.borderColor = 'var(--border-card)')
                 }
               />
+              
+              <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+                {['Champions', 'Top 5', 'Undefeated'].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => handleFilterClick(f)}
+                    className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-bold uppercase transition-colors whitespace-nowrap"
+                    style={{
+                      fontFamily: 'var(--font-condensed)',
+                      background: activeFilter === f ? 'var(--accent-color)' : 'var(--bg-main)',
+                      color: activeFilter === f ? '#fff' : 'var(--text-secondary)',
+                      border: activeFilter === f ? '1px solid var(--accent-color)' : '1px solid var(--border-card)',
+                    }}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="overflow-y-auto flex-1 flex flex-col">

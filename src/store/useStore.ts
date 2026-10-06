@@ -18,11 +18,14 @@ interface AppState {
   noRestrictions: boolean;
   modal: ModalState | null;
   infoModal: Fighter | null;
+  taleModal: import('../types').Fight | null;
   historyModalOpen: boolean;
   saveModalOpen: boolean;
   toastMessage: string | null;
   eventName: string;
   isDark: boolean;
+  pickemMode: boolean;
+  picks: Record<string, 'f1' | 'f2' | null>;
   savedCards: import('../types').SavedCard[];
 
   setEventName: (name: string) => void;
@@ -30,10 +33,13 @@ interface AppState {
   setNoRestrictions: (noRestrictions: boolean) => void;
   setModal: (modal: ModalState | null) => void;
   setInfoModal: (fighter: Fighter | null) => void;
+  setTaleModal: (fight: import('../types').Fight | null) => void;
   setHistoryModalOpen: (open: boolean) => void;
   setSaveModalOpen: (open: boolean) => void;
   setToastMessage: (msg: string | null) => void;
   setSlots: (slots: FightSlot[]) => void;
+  setPickemMode: (mode: boolean) => void;
+  setPick: (fightId: string, pick: 'f1' | 'f2' | null) => void;
 
   saveCurrentCard: (name: string) => boolean;
   loadCard: (id: string) => void;
@@ -55,6 +61,8 @@ const initialState = {
   slots: urlState?.slots || FIGHT_SLOTS,
   eventName: urlState?.eventName || localStorageState.eventName || 'UFC 000',
   noRestrictions: urlState?.noRestrictions ?? false,
+  pickemMode: urlState?.pickemMode ?? false,
+  picks: urlState?.picks ?? {},
   savedCards: localStorageState.savedCards || [],
 };
 
@@ -65,21 +73,27 @@ export const useStore = create<AppState>((set, get) => ({
   savedCards: initialState.savedCards,
   modal: null,
   infoModal: null,
+  taleModal: null,
   historyModalOpen: false,
   saveModalOpen: false,
   toastMessage: null,
   eventName: initialState.eventName,
   isDark: false,
+  pickemMode: initialState.pickemMode,
+  picks: initialState.picks,
 
   setEventName: (name: string) => set({ eventName: name }),
   setIsDark: (isDark: boolean) => set({ isDark }),
   setNoRestrictions: (noRestrictions: boolean) => set({ noRestrictions }),
   setModal: (modal: ModalState | null) => set({ modal }),
   setInfoModal: (fighter: Fighter | null) => set({ infoModal: fighter }),
+  setTaleModal: (fight: import('../types').Fight | null) => set({ taleModal: fight }),
   setHistoryModalOpen: (open: boolean) => set({ historyModalOpen: open }),
   setSaveModalOpen: (open: boolean) => set({ saveModalOpen: open }),
   setToastMessage: (msg: string | null) => set({ toastMessage: msg }),
   setSlots: (slots: FightSlot[]) => set({ slots }),
+  setPickemMode: (mode: boolean) => set({ pickemMode: mode }),
+  setPick: (fightId, pick) => set((state) => ({ picks: { ...state.picks, [fightId]: pick } })),
 
   saveCurrentCard: (name: string) => {
     const state = get();
