@@ -56,26 +56,65 @@ export const TaleOfTheTapeModal: React.FC<Props> = ({ fight, onClose }) => {
         </button>
 
         <div className="w-full h-full overflow-y-auto">
+          {/* Title Fight Banner */}
+          {fight.isTitleFight && (
+            <div
+              className="w-full py-1.5 px-4 text-center tracking-widest uppercase font-black text-xs md:text-sm shadow-sm"
+              style={
+                fight.titleType === 'bmf'
+                  ? {
+                      background: 'linear-gradient(90deg, #09090b, #52525b, #09090b)',
+                      color: '#f4f4f5',
+                      borderBottom: '1px solid #71717a',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                      fontFamily: 'var(--font-condensed)',
+                    }
+                  : fight.titleType === 'interim'
+                  ? {
+                      background: 'linear-gradient(90deg, #6b7280, #daa520, #6b7280)',
+                      color: '#ffffff',
+                      borderBottom: '1px solid rgba(218, 165, 32, 0.5)',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.7)',
+                      fontFamily: 'var(--font-condensed)',
+                    }
+                  : {
+                      background: 'linear-gradient(90deg, rgba(218, 165, 32, 0.4), rgba(218, 165, 32, 0.85), rgba(218, 165, 32, 0.4))',
+                      color: '#ffffff',
+                      borderBottom: '1px solid rgba(218, 165, 32, 0.6)',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.6)',
+                      fontFamily: 'var(--font-condensed)',
+                    }
+              }
+            >
+              {fight.titleType === 'bmf'
+                ? 'BMF TITLEFIGHT (5 ROUNDS)'
+                : fight.titleType === 'interim'
+                ? 'INTERIM TITLEFIGHT (5 ROUNDS)'
+                : 'TITLEFIGHT (5 ROUNDS)'}
+            </div>
+          )}
+
           {/* Header images */}
-          <div className="flex w-full min-h-[200px] md:min-h-[350px]">
+          <div className="relative flex w-full min-h-[160px] md:min-h-[320px]">
             {/* Fighter 1 Image */}
             <div
               className="w-1/2 relative flex items-end justify-center overflow-hidden"
-              style={{ background: getFighterBg(f1), borderRight: '2px solid #ef4444' }}
+              style={{ background: getFighterBg(f1), borderRight: '1px solid var(--border-main)' }}
             >
               {f1Img ? (
                 <img
                   src={f1Img}
                   alt={f1.name}
-                  className={`object-bottom ${isF1Full ? 'object-contain h-full max-h-[350px] p-4' : 'object-cover w-32 h-32 md:w-48 md:h-48 rounded-full mb-8 shadow-xl'}`}
-                  style={{ filter: isF1Full ? 'drop-shadow(0px 10px 15px rgba(0,0,0,0.3))' : 'none' }}
+                  className={`block object-bottom ${isF1Full ? 'object-contain h-full max-h-[180px] md:max-h-[320px] pt-2 px-2 pb-0 md:pt-4 md:px-4 md:pb-0 self-end' : 'object-cover w-24 h-24 md:w-44 md:h-44 rounded-full my-auto shadow-xl'}`}
+                  style={{ filter: isF1Full ? 'drop-shadow(0px 8px 12px rgba(0,0,0,0.35))' : 'none', marginBottom: 0 }}
                 />
               ) : (
-                <div className="w-32 h-32 rounded-full mb-8 flex items-center justify-center text-4xl shadow-xl bg-stone-200 text-stone-600">
+                <div className="w-20 h-20 md:w-36 md:h-36 rounded-full my-auto flex items-center justify-center text-3xl md:text-5xl shadow-xl bg-stone-200 text-stone-600 font-bold" style={{ fontFamily: 'var(--font-condensed)' }}>
                   {f1.name?.charAt(0) || '?'}
                 </div>
               )}
             </div>
+
             {/* Fighter 2 Image */}
             <div
               className="w-1/2 relative flex items-end justify-center overflow-hidden"
@@ -85,50 +124,113 @@ export const TaleOfTheTapeModal: React.FC<Props> = ({ fight, onClose }) => {
                 <img
                   src={f2Img}
                   alt={f2.name}
-                  className={`object-bottom ${isF2Full ? 'object-contain h-full max-h-[350px] p-4' : 'object-cover w-32 h-32 md:w-48 md:h-48 rounded-full mb-8 shadow-xl'}`}
-                  style={{ filter: isF2Full ? 'drop-shadow(0px 10px 15px rgba(0,0,0,0.3))' : 'none' }}
+                  className={`block object-bottom ${isF2Full ? 'object-contain h-full max-h-[180px] md:max-h-[320px] pt-2 px-2 pb-0 md:pt-4 md:px-4 md:pb-0 self-end' : 'object-cover w-24 h-24 md:w-44 md:h-44 rounded-full my-auto shadow-xl'}`}
+                  style={{ filter: isF2Full ? 'drop-shadow(0px 8px 12px rgba(0,0,0,0.35))' : 'none', marginBottom: 0 }}
                 />
               ) : (
-                <div className="w-32 h-32 rounded-full mb-8 flex items-center justify-center text-4xl shadow-xl bg-stone-200 text-stone-600">
+                <div className="w-20 h-20 md:w-36 md:h-36 rounded-full my-auto flex items-center justify-center text-3xl md:text-5xl shadow-xl bg-stone-200 text-stone-600 font-bold" style={{ fontFamily: 'var(--font-condensed)' }}>
                   {f2.name?.charAt(0) || '?'}
                 </div>
               )}
             </div>
             
-            {/* Center VS Logo */}
-            <div className="absolute left-1/2 top-[100px] md:top-[175px] -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shadow-xl z-10 border-4 border-[var(--bg-card)]" style={{ fontFamily: 'var(--font-condensed)', fontWeight: 900, fontSize: '1.2rem', letterSpacing: '2px' }}>
+            {/* Center VS Badge */}
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full w-10 h-10 md:w-14 md:h-14 flex items-center justify-center shadow-2xl z-10"
+              style={{
+                background: '#ef4444',
+                color: '#fff',
+                border: '3px solid var(--bg-card)',
+                fontFamily: 'var(--font-condensed)',
+                fontWeight: 900,
+                fontSize: '0.9rem',
+                letterSpacing: '1px',
+              }}
+            >
               VS
             </div>
           </div>
 
           {/* Stats Section */}
           <div className="p-4 md:p-8 flex flex-col">
-            {/* Names */}
-            <div className="flex justify-between items-end mb-6 border-b-2 pb-4 border-[var(--accent-color)]">
-              <div className="w-1/2 pr-4 text-left">
-                <h2 className="text-2xl md:text-5xl uppercase leading-none" style={{ fontFamily: 'var(--font-condensed)', fontWeight: 900, color: 'var(--text-primary)' }}>
+            {/* Division label if present */}
+            {(f1.division || f2.division) && (
+              <div className="text-center mb-3">
+                <span
+                  className="px-3 py-1 rounded text-xs font-black uppercase tracking-wider"
+                  style={{
+                    background: 'var(--bg-main)',
+                    color: 'var(--text-secondary)',
+                    border: '1px solid var(--border-main)',
+                    fontFamily: 'var(--font-condensed)',
+                  }}
+                >
+                  {f1.division || f2.division}
+                </span>
+              </div>
+            )}
+
+            {/* Names & Ranks */}
+            <div className="flex justify-between items-start mb-6 border-b pb-4" style={{ borderColor: 'var(--border-main)' }}>
+              <div className="w-1/2 pr-3 text-left">
+                <h2
+                  className="text-xl sm:text-2xl md:text-4xl uppercase leading-tight"
+                  style={{ fontFamily: 'var(--font-condensed)', fontWeight: 900, color: 'var(--text-primary)' }}
+                >
                   {f1.name}
                 </h2>
-                <div className="text-sm md:text-lg mt-1 text-stone-400 font-bold uppercase">{f1.rank}</div>
+                <div
+                  className="text-xs sm:text-sm md:text-base mt-1 font-bold uppercase tracking-wider"
+                  style={{
+                    color: f1.rank?.includes('Champion') ? '#daa520' : 'var(--text-muted)',
+                  }}
+                >
+                  {f1.rank || 'Unranked'}
+                </div>
               </div>
-              <div className="w-1/2 pl-4 text-right">
-                <h2 className="text-2xl md:text-5xl uppercase leading-none" style={{ fontFamily: 'var(--font-condensed)', fontWeight: 900, color: 'var(--text-primary)' }}>
+              <div className="w-1/2 pl-3 text-right">
+                <h2
+                  className="text-xl sm:text-2xl md:text-4xl uppercase leading-tight"
+                  style={{ fontFamily: 'var(--font-condensed)', fontWeight: 900, color: 'var(--text-primary)' }}
+                >
                   {f2.name}
                 </h2>
-                <div className="text-sm md:text-lg mt-1 text-stone-400 font-bold uppercase">{f2.rank}</div>
+                <div
+                  className="text-xs sm:text-sm md:text-base mt-1 font-bold uppercase tracking-wider"
+                  style={{
+                    color: f2.rank?.includes('Champion') ? '#daa520' : 'var(--text-muted)',
+                  }}
+                >
+                  {f2.rank || 'Unranked'}
+                </div>
               </div>
             </div>
 
             {/* Tale of the Tape */}
-            <h3 className="text-center text-xl font-black tracking-widest text-red-500 uppercase mb-4 mt-2" style={{ fontFamily: 'var(--font-condensed)' }}>Tale of the Tape</h3>
+            <h3
+              className="text-center text-sm md:text-base font-black tracking-widest uppercase mb-2"
+              style={{ color: '#ef4444', fontFamily: 'var(--font-condensed)' }}
+            >
+              Tale of the Tape
+            </h3>
             
             <StatRow label="Record" val1={f1.record} val2={f2.record} />
             <StatRow label="Age" val1={f1.age} val2={f2.age} />
             
-            <h3 className="text-center text-xl font-black tracking-widest text-red-500 uppercase mb-4 mt-8" style={{ fontFamily: 'var(--font-condensed)' }}>Win Methods</h3>
-            <StatRow label="KO / TKO" val1={f1.winMethods?.ko} val2={f2.winMethods?.ko} />
-            <StatRow label="Submission" val1={f1.winMethods?.sub} val2={f2.winMethods?.sub} />
-            <StatRow label="Decision" val1={f1.winMethods?.dec} val2={f2.winMethods?.dec} />
+            {/* Win Methods */}
+            {(f1.winMethods || f2.winMethods) && (
+              <>
+                <h3
+                  className="text-center text-sm md:text-base font-black tracking-widest uppercase mb-2 mt-6"
+                  style={{ color: '#ef4444', fontFamily: 'var(--font-condensed)' }}
+                >
+                  Win Methods
+                </h3>
+                <StatRow label="KO / TKO" val1={f1.winMethods?.ko ?? '-'} val2={f2.winMethods?.ko ?? '-'} />
+                <StatRow label="Submission" val1={f1.winMethods?.sub ?? '-'} val2={f2.winMethods?.sub ?? '-'} />
+                <StatRow label="Decision" val1={f1.winMethods?.dec ?? '-'} val2={f2.winMethods?.dec ?? '-'} />
+              </>
+            )}
           </div>
         </div>
       </div>

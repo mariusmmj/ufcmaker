@@ -57,26 +57,31 @@ export const FighterInfoModal: React.FC<Props> = ({ fighter, onClose }) => {
               {imageToUse ? (
                 <img
                   src={imageToUse}
-              alt={fighter.name}
-              className={`object-bottom ${isFullBody ? 'object-contain h-full max-h-[400px] p-4' : 'object-cover w-48 h-48 rounded-full mb-8 shadow-xl'}`}
-              style={{
-                filter: isFullBody ? 'drop-shadow(0px 10px 15px rgba(0,0,0,0.3))' : 'none',
-              }}
-            />
-          ) : (
-            <div
-              className="w-48 h-48 rounded-full mb-8 flex items-center justify-center text-4xl shadow-xl"
-              style={{
-                background: divColors.bg,
-                color: divColors.text,
-                border: `2px solid ${divColors.border}`,
-                fontFamily: 'var(--font-condensed)',
-                fontWeight: 900,
-              }}
-            >
-              {fighter.name.charAt(0)}
-            </div>
-          )}
+                  alt={fighter.name}
+                  className={`block ${
+                    isFullBody
+                      ? 'object-contain object-bottom h-full max-h-[380px] md:max-h-[450px] pt-4 px-4 pb-0 self-end'
+                      : 'object-cover w-40 h-40 md:w-48 md:h-48 rounded-full my-auto shadow-xl'
+                  }`}
+                  style={{
+                    filter: isFullBody ? 'drop-shadow(0px 10px 15px rgba(0,0,0,0.3))' : 'none',
+                    marginBottom: 0,
+                  }}
+                />
+              ) : (
+                <div
+                  className="w-40 h-40 md:w-48 md:h-48 rounded-full my-auto flex items-center justify-center text-4xl shadow-xl"
+                  style={{
+                    background: divColors.bg,
+                    color: divColors.text,
+                    border: `2px solid ${divColors.border}`,
+                    fontFamily: 'var(--font-condensed)',
+                    fontWeight: 900,
+                  }}
+                >
+                  {fighter.name.charAt(0)}
+                </div>
+              )}
         </div>
 
         {/* Right Side: Stats */}

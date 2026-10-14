@@ -15,9 +15,13 @@ interface CellProps {
   isTitleFight?: boolean;
   isPicked?: boolean;
   isNotPicked?: boolean;
+  pick?: import('../types').FightPick | null;
+  pickemMode?: boolean;
+  rounds?: 3 | 5;
   onClick: () => void;
   onClear: () => void;
   onInfoClick?: () => void;
+  onUpdatePickDetails?: (method?: import('../types').PickMethod, round?: import('../types').PickRound) => void;
 }
 
 const FighterCell: React.FC<CellProps> = ({
@@ -26,9 +30,13 @@ const FighterCell: React.FC<CellProps> = ({
   isTitleFight,
   isPicked,
   isNotPicked,
+  pick,
+  pickemMode,
+  rounds = 3,
   onClick,
   onClear,
   onInfoClick,
+  onUpdatePickDetails,
 }) => {
   // Always left align the text to make better use of space, and put X on the right.
   const align = 'items-start text-left';
@@ -85,12 +93,17 @@ const FighterCell: React.FC<CellProps> = ({
 
   const borderColor = isPicked ? '2px solid rgb(34, 197, 94)' : isChampion ? '1px solid rgba(218, 165, 32, 0.4)' : '1px solid var(--border-card)';
 
+  const isExpandedForPick = isPicked && pickemMode;
+  const computedMinHeight = isExpandedForPick
+    ? (isTitleFight ? 116 : isMain ? 94 : 84)
+    : (isTitleFight ? 96 : isMain ? 64 : 52);
+
   return (
     <div
       onClick={onClick}
-      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 rounded-xl cursor-pointer transition-all relative group`}
+      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 py-2 rounded-xl cursor-pointer transition-all relative group`}
       style={{
-        minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
+        minHeight: computedMinHeight,
         background: defaultBg,
         border: borderColor,
         opacity: isNotPicked ? 0.3 : 1,
@@ -132,6 +145,26 @@ const FighterCell: React.FC<CellProps> = ({
         >
           ✕
         </button>
+      )}
+
+      {/* Pick'em winner badge */}
+      {isPicked && (
+        <div
+          className={`absolute right-3 ${isExpandedForPick ? 'top-2.5' : 'top-1/2 -translate-y-1/2'} z-20 px-2.5 py-1 rounded-md text-[10px] md:text-xs font-black uppercase tracking-wider shadow-md flex items-center gap-1.5`}
+          style={{
+            background: '#22c55e',
+            color: '#fff',
+            fontFamily: 'var(--font-condensed)',
+          }}
+        >
+          <span>✓ PICK</span>
+          {pick?.method && (
+            <span className="opacity-90">• {pick.method}</span>
+          )}
+          {pick?.round && pick.round !== 'DEC' && (
+            <span className="opacity-90">{pick.round}</span>
+          )}
+        </div>
       )}
 
       {/* Name & Image */}
@@ -202,6 +235,66 @@ const FighterCell: React.FC<CellProps> = ({
           </span>
         )}
       </div>
+
+      {/* Pick'em prediction detail selectors */}
+      {isPicked && pickemMode && (
+        <div
+          className="relative z-30 mt-2 pt-2 border-t flex flex-wrap items-center gap-2 w-full"
+          style={{ borderColor: 'rgba(34, 197, 94, 0.3)' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center gap-1 flex-wrap">
+            <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>Method:</span>
+            {(['KO/TKO', 'SUB', 'DEC'] as const).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onUpdatePickDetails?.(
+                    pick?.method === m ? undefined : m,
+                    m === 'DEC' ? 'DEC' : pick?.round === 'DEC' ? undefined : pick?.round
+                  );
+                }}
+                className="px-2 py-0.5 rounded text-[9px] font-black uppercase transition-colors"
+                style={{
+                  background: pick?.method === m ? 'rgb(34, 197, 94)' : 'var(--bg-main)',
+                  color: pick?.method === m ? '#fff' : 'var(--text-secondary)',
+                  border: pick?.method === m ? '1px solid rgb(34, 197, 94)' : '1px solid var(--border-card)',
+                  fontFamily: 'var(--font-condensed)',
+                }}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+
+          {pick?.method !== 'DEC' && (
+            <div className="flex items-center gap-1 flex-wrap sm:ml-auto">
+              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>Round:</span>
+              {(rounds === 5 ? ['R1', 'R2', 'R3', 'R4', 'R5'] : ['R1', 'R2', 'R3']).map((r) => (
+                <button
+                  key={r}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onUpdatePickDetails?.(pick?.method, pick?.round === r ? undefined : (r as any));
+                  }}
+                  className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase transition-colors"
+                  style={{
+                    background: pick?.round === r ? 'rgb(34, 197, 94)' : 'var(--bg-main)',
+                    color: pick?.round === r ? '#fff' : 'var(--text-secondary)',
+                    border: pick?.round === r ? '1px solid rgb(34, 197, 94)' : '1px solid var(--border-card)',
+                    fontFamily: 'var(--font-condensed)',
+                  }}
+                >
+                  {r}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -239,8 +332,11 @@ export const FightRow: React.FC<Props> = ({
     f1.division !== f2.division;
   const divColors = lockedDiv ? DIVISION_COLOR[lockedDiv] : null;
 
-  const { pickemMode, picks, setPick } = useStore();
-  const currentPick = picks[fightId];
+  const { pickemMode, picks, setPick, setPickDetails } = useStore();
+  const rawPick = picks[fightId];
+  const currentPickObj = typeof rawPick === 'string' ? { winner: rawPick } : rawPick;
+  const currentWinner = currentPickObj?.winner;
+  const titleType = fight.titleType || (isTitleFight ? 'undisputed' : null);
 
   const {
     attributes,
@@ -267,8 +363,46 @@ export const FightRow: React.FC<Props> = ({
     <div
       ref={disableDrag ? undefined : setNodeRef}
       style={style}
-      className="rounded-2xl mb-2 overflow-hidden"
+      className="rounded-2xl mb-2 overflow-hidden shadow-sm"
     >
+      {/* Title Banner */}
+      {isTitleFight && (
+        <div
+          className="w-full py-1 px-3 text-center tracking-widest uppercase font-black text-[10px] md:text-xs flex items-center justify-center gap-2 shadow-sm"
+          style={
+            titleType === 'bmf'
+              ? {
+                  background: 'linear-gradient(90deg, #09090b, #52525b, #09090b)',
+                  borderBottom: '1px solid #71717a',
+                  color: '#f4f4f5',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                  fontFamily: 'var(--font-condensed)',
+                }
+              : titleType === 'interim'
+              ? {
+                  background: 'linear-gradient(90deg, #6b7280, #daa520, #6b7280)',
+                  borderBottom: '1px solid rgba(218, 165, 32, 0.5)',
+                  color: '#ffffff',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.7)',
+                  fontFamily: 'var(--font-condensed)',
+                }
+              : {
+                  background: 'linear-gradient(90deg, rgba(218, 165, 32, 0.4), rgba(218, 165, 32, 0.85), rgba(218, 165, 32, 0.4))',
+                  borderBottom: '1px solid rgba(218, 165, 32, 0.6)',
+                  color: '#ffffff',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.6)',
+                  fontFamily: 'var(--font-condensed)',
+                }
+          }
+        >
+          {titleType === 'bmf'
+            ? 'BMF TITLEFIGHT (5 ROUNDS)'
+            : titleType === 'interim'
+            ? 'INTERIM TITLEFIGHT (5 ROUNDS)'
+            : 'TITLEFIGHT (5 ROUNDS)'}
+        </div>
+      )}
+
       {/* Row header */}
       <div className="flex items-center gap-2 px-3 pt-2 pb-1.5">
         {!disableDrag && !pickemMode && (
@@ -281,9 +415,6 @@ export const FightRow: React.FC<Props> = ({
             ⋮⋮
           </div>
         )}
-        {(isMain && slot.id === 'm1') || isTitleFight ? (
-          <span style={{ fontSize: 13 }}>🏆</span>
-        ) : null}
         <span
           style={{
             fontFamily: 'var(--font-condensed)',
@@ -321,17 +452,44 @@ export const FightRow: React.FC<Props> = ({
         {(f1.name || f2.name) && (
           <button
             onClick={() => onToggleTitle?.(fightId)}
-            className="ml-2 px-2 py-0.5 rounded border text-[10px] transition-colors"
-            style={{
-              fontFamily: 'var(--font-condensed)',
-              background: 'var(--bg-card)',
-              color: isTitleFight ? 'var(--accent-color)' : 'var(--text-muted)',
-              borderColor: isTitleFight
-                ? 'var(--accent-color)'
-                : 'var(--border-card)',
-            }}
+            className="ml-2 px-2.5 py-0.5 rounded text-[10px] font-bold transition-all uppercase tracking-wider flex items-center gap-1 shadow-sm cursor-pointer"
+            style={
+              !isTitleFight
+                ? {
+                    fontFamily: 'var(--font-condensed)',
+                    background: 'var(--bg-card)',
+                    color: 'var(--text-muted)',
+                    border: '1px solid var(--border-card)',
+                  }
+                : titleType === 'bmf'
+                ? {
+                    fontFamily: 'var(--font-condensed)',
+                    background: 'linear-gradient(90deg, #18181b, #3f3f46)',
+                    color: '#f4f4f5',
+                    border: '1px solid #71717a',
+                  }
+                : titleType === 'interim'
+                ? {
+                    fontFamily: 'var(--font-condensed)',
+                    background: 'linear-gradient(90deg, rgba(107, 114, 128, 0.4), rgba(218, 165, 32, 0.4))',
+                    color: '#ffffff',
+                    border: '1px solid #daa520',
+                  }
+                : {
+                    fontFamily: 'var(--font-condensed)',
+                    background: 'linear-gradient(90deg, rgba(218, 165, 32, 0.3), rgba(218, 165, 32, 0.15))',
+                    color: '#daa520',
+                    border: '1px solid #daa520',
+                  }
+            }
           >
-            {isTitleFight ? 'TITLEFIGHT (5 ROUNDS)' : 'Make Title Fight'}
+            {!isTitleFight
+              ? '+ Make Title'
+              : titleType === 'bmf'
+              ? 'BMF Title'
+              : titleType === 'interim'
+              ? 'Interim Title'
+              : 'Undisputed Title'}
           </button>
         )}
 
@@ -356,11 +514,14 @@ export const FightRow: React.FC<Props> = ({
           fighter={f1}
           isMain={isMain}
           isTitleFight={isTitleFight}
-          isPicked={pickemMode && currentPick === 'f1'}
-          isNotPicked={pickemMode && currentPick === 'f2'}
+          isPicked={pickemMode && currentWinner === 'f1'}
+          isNotPicked={pickemMode && currentWinner === 'f2'}
+          pick={currentWinner === 'f1' ? currentPickObj : null}
+          pickemMode={pickemMode}
+          rounds={fight.rounds || (fight.isTitleFight ? 5 : 3)}
           onClick={() => {
             if (pickemMode) {
-              if (f1.name) setPick(fightId, currentPick === 'f1' ? null : 'f1');
+              if (f1.name) setPick(fightId, currentWinner === 'f1' ? null : 'f1');
             } else {
               onPick(fightId, 'f1');
             }
@@ -372,6 +533,7 @@ export const FightRow: React.FC<Props> = ({
               useStore.getState().setInfoModal(freshData || f1);
             }
           }}
+          onUpdatePickDetails={(method, round) => setPickDetails(fightId, method, round)}
         />
 
         {/* VS divider */}
@@ -412,11 +574,14 @@ export const FightRow: React.FC<Props> = ({
           fighter={f2}
           isMain={isMain}
           isTitleFight={isTitleFight}
-          isPicked={pickemMode && currentPick === 'f2'}
-          isNotPicked={pickemMode && currentPick === 'f1'}
+          isPicked={pickemMode && currentWinner === 'f2'}
+          isNotPicked={pickemMode && currentWinner === 'f1'}
+          pick={currentWinner === 'f2' ? currentPickObj : null}
+          pickemMode={pickemMode}
+          rounds={fight.rounds || (fight.isTitleFight ? 5 : 3)}
           onClick={() => {
             if (pickemMode) {
-              if (f2.name) setPick(fightId, currentPick === 'f2' ? null : 'f2');
+              if (f2.name) setPick(fightId, currentWinner === 'f2' ? null : 'f2');
             } else {
               onPick(fightId, 'f2');
             }
@@ -428,6 +593,7 @@ export const FightRow: React.FC<Props> = ({
               useStore.getState().setInfoModal(freshData || f2);
             }
           }}
+          onUpdatePickDetails={(method, round) => setPickDetails(fightId, method, round)}
         />
       </div>
     </div>

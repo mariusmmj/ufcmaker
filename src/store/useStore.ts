@@ -25,7 +25,7 @@ interface AppState {
   eventName: string;
   isDark: boolean;
   pickemMode: boolean;
-  picks: Record<string, 'f1' | 'f2' | null>;
+  picks: Record<string, import('../types').FightPick | FighterSlotKey | null>;
   savedCards: import('../types').SavedCard[];
 
   setEventName: (name: string) => void;
@@ -39,7 +39,9 @@ interface AppState {
   setToastMessage: (msg: string | null) => void;
   setSlots: (slots: FightSlot[]) => void;
   setPickemMode: (mode: boolean) => void;
-  setPick: (fightId: string, pick: 'f1' | 'f2' | null) => void;
+  setPick: (fightId: string, pick: FighterSlotKey | null) => void;
+  setPickDetails: (fightId: string, method?: import('../types').PickMethod, round?: import('../types').PickRound) => void;
+  setTitleType: (fightId: string, titleType: import('../types').TitleType | null) => void;
 
   saveCurrentCard: (name: string) => boolean;
   loadCard: (id: string) => void;
@@ -93,7 +95,64 @@ export const useStore = create<AppState>((set, get) => ({
   setToastMessage: (msg: string | null) => set({ toastMessage: msg }),
   setSlots: (slots: FightSlot[]) => set({ slots }),
   setPickemMode: (mode: boolean) => set({ pickemMode: mode }),
-  setPick: (fightId, pick) => set((state) => ({ picks: { ...state.picks, [fightId]: pick } })),
+  setPick: (fightId: string, winner: FighterSlotKey | null) => {
+    set((state) => {
+      if (!winner) {
+        const newPicks = { ...state.picks };
+        delete newPicks[fightId];
+        return { picks: newPicks };
+      }
+      const existing = state.picks[fightId];
+      const existingWinner = typeof existing === 'string' ? existing : existing?.winner;
+
+      if (existingWinner === winner) {
+        const newPicks = { ...state.picks };
+        delete newPicks[fightId];
+        return { picks: newPicks };
+      }
+
+      return {
+        picks: {
+          ...state.picks,
+          [fightId]: { winner },
+        },
+      };
+    });
+  },
+  setPickDetails: (fightId: string, method?: import('../types').PickMethod, round?: import('../types').PickRound) => {
+    set((state) => {
+      const existing = state.picks[fightId];
+      if (!existing) return state;
+      const winner = typeof existing === 'string' ? existing : existing.winner;
+      return {
+        picks: {
+          ...state.picks,
+          [fightId]: {
+            winner,
+            method,
+            round,
+          },
+        },
+      };
+    });
+  },
+  setTitleType: (fightId: string, titleType: import('../types').TitleType | null) => {
+    const { fights } = get();
+    const current = fights[fightId];
+    if (!current) return;
+    const isTitle = !!titleType;
+    set({
+      fights: {
+        ...fights,
+        [fightId]: {
+          ...current,
+          isTitleFight: isTitle,
+          titleType,
+          rounds: (isTitle ? 5 : 3) as 3 | 5,
+        },
+      },
+    });
+  },
 
   saveCurrentCard: (name: string) => {
     const state = get();
@@ -187,12 +246,36 @@ export const useStore = create<AppState>((set, get) => ({
 
   toggleTitleFight: (fightId: string) => {
     const { fights } = get();
-    const newFight = { ...fights[fightId] };
-    newFight.isTitleFight = !newFight.isTitleFight;
-    newFight.rounds = newFight.isTitleFight ? 5 : 3;
+    const current = fights[fightId];
+    if (!current) return;
+
+    let nextTitleType: import('../types').TitleType | null = null;
+    let isTitle = false;
+
+    if (!current.isTitleFight || !current.titleType) {
+      nextTitleType = 'undisputed';
+      isTitle = true;
+    } else if (current.titleType === 'undisputed') {
+      nextTitleType = 'interim';
+      isTitle = true;
+    } else if (current.titleType === 'interim') {
+      nextTitleType = 'bmf';
+      isTitle = true;
+    } else {
+      nextTitleType = null;
+      isTitle = false;
+    }
 
     set({
-      fights: { ...fights, [fightId]: newFight },
+      fights: {
+        ...fights,
+        [fightId]: {
+          ...current,
+          isTitleFight: isTitle,
+          titleType: nextTitleType,
+          rounds: (isTitle ? 5 : 3) as 3 | 5,
+        },
+      },
     });
   },
 

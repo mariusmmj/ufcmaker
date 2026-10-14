@@ -235,7 +235,7 @@ export default function App() {
             textTransform: 'uppercase',
           }}
         >
-          Custom UFC Card Builder
+          Custom UFC Card Maker
         </span>
 
         {/* Templates and Theme Toggle */}
@@ -386,6 +386,42 @@ export default function App() {
       {/* ── Content ──────────────────────────────── */}
       <main ref={mainRef} className="max-w-5xl mx-auto px-4 pb-16 pt-4">
         <CardStats fights={fights} />
+
+        {pickemMode && (
+          <div
+            className="mb-4 p-3 rounded-xl flex items-center justify-between flex-wrap gap-2 transition-all shadow-sm"
+            style={{
+              background: 'rgba(34, 197, 94, 0.12)',
+              border: '1.5px solid rgba(34, 197, 94, 0.4)',
+            }}
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+              <span
+                className="text-xs md:text-sm font-bold uppercase tracking-wider"
+                style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-condensed)' }}
+              >
+                Pick'em Mode: Click a fighter to predict the winner ({Object.values(picks).filter(Boolean).length} / {slots.filter(s => fights[s.id]?.f1?.name && fights[s.id]?.f2?.name).length} picked)
+              </span>
+            </div>
+            {Object.values(picks).filter(Boolean).length > 0 && (
+              <button
+                onClick={() => useStore.setState({ picks: {} })}
+                className="text-xs px-3 py-1 rounded font-bold uppercase transition-colors"
+                style={{
+                  background: 'var(--bg-main)',
+                  border: '1px solid var(--border-main)',
+                  color: 'var(--text-muted)',
+                  fontFamily: 'var(--font-condensed)',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#ef4444')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              >
+                Reset Picks
+              </button>
+            )}
+          </div>
+        )}
 
         <DndContext
           sensors={sensors}

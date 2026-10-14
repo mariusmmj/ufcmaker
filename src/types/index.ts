@@ -13,11 +13,23 @@ export interface Fighter {
   };
 }
 
+export type TitleType = 'undisputed' | 'interim' | 'bmf';
+
+export type PickMethod = 'KO/TKO' | 'SUB' | 'DEC';
+export type PickRound = 'R1' | 'R2' | 'R3' | 'R4' | 'R5' | 'DEC';
+
+export interface FightPick {
+  winner: FighterSlotKey;
+  method?: PickMethod;
+  round?: PickRound;
+}
+
 export interface Fight {
   f1: Fighter;
   f2: Fighter;
   lockedDiv: string | null;
   isTitleFight?: boolean;
+  titleType?: TitleType | null;
   rounds?: 3 | 5;
 }
 

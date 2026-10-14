@@ -36,7 +36,7 @@ export function loadState(): {
   }
 }
 
-export function encodeStateToUrl(state: { fights: FightsMap; eventName: string; noRestrictions: boolean; slots: FightSlot[]; pickemMode: boolean; picks: Record<string, 'f1' | 'f2' | null> }) {
+export function encodeStateToUrl(state: { fights: FightsMap; eventName: string; noRestrictions: boolean; slots: FightSlot[]; pickemMode: boolean; picks: Record<string, import('../types').FightPick | 'f1' | 'f2' | null> }) {
   try {
     const jsonStr = JSON.stringify(state);
     const compressed = LZString.compressToEncodedURIComponent(jsonStr);

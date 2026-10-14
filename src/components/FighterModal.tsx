@@ -52,9 +52,16 @@ function search(
     });
   } else if (filter === 'Undefeated') {
     filtered = filtered.filter(f => f.record.split('-')[1] === '0');
+  } else if (filter === 'KO Artists') {
+    filtered = filtered.filter(f => (f.winMethods?.ko ?? 0) >= 8);
+  } else if (filter === 'Sub Experts') {
+    filtered = filtered.filter(f => (f.winMethods?.sub ?? 0) >= 5);
   }
 
-  return filtered.slice(0, 15);
+  // Sort by rank so Champions and top contenders appear first
+  filtered.sort((a, b) => getRankNum(a.rank) - getRankNum(b.rank));
+
+  return filtered.slice(0, 30);
 }
 
 interface Props {
@@ -374,7 +381,7 @@ export const FighterModal: React.FC<Props> = ({
               />
               
               <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
-                {['Champions', 'Top 5', 'Undefeated'].map((f) => (
+                {['Champions', 'Top 5', 'Undefeated', 'KO Artists', 'Sub Experts'].map((f) => (
                   <button
                     key={f}
                     onClick={() => handleFilterClick(f)}
