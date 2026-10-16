@@ -6,6 +6,7 @@ import { FighterInfoModal } from './components/FighterInfoModal';
 import { TaleOfTheTapeModal } from './components/TaleOfTheTapeModal';
 import { SavedCardsModal } from './components/SavedCardsModal';
 import { SaveCardModal } from './components/SaveCardModal';
+import { HowToUseModal } from './components/HowToUseModal';
 import { CardStats } from './components/CardStats';
 import { useStore } from './store/useStore';
 import { encodeStateToUrl } from './utils/storage';
@@ -63,11 +64,13 @@ export default function App() {
     taleModal,
     historyModalOpen,
     saveModalOpen,
+    helpModalOpen,
     toastMessage,
     eventName,
     isDark,
     pickemMode,
     picks,
+    setHelpModalOpen,
     setPickemMode,
     setEventName,
     setIsDark,
@@ -301,11 +304,12 @@ export default function App() {
           </button>
           <button
             onClick={handleShare}
-            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold relative uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold relative uppercase cursor-pointer"
             style={{
-              background: 'var(--accent-color)',
-              color: '#fff',
-              border: '1px solid var(--accent-color)',
+              background: 'var(--bg-main)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-main)',
+              fontFamily: 'var(--font-condensed)',
             }}
           >
             {copied ? 'Copied!' : 'Share Link'}
@@ -323,7 +327,7 @@ export default function App() {
           </button>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase cursor-pointer"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -331,6 +335,19 @@ export default function App() {
             }}
           >
             {isDark ? 'Light Mode' : 'Dark Mode'}
+          </button>
+          <button
+            onClick={() => setHelpModalOpen(true)}
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase cursor-pointer"
+            style={{
+              background: 'var(--accent-color)',
+              color: '#fff',
+              border: '1px solid var(--accent-color)',
+              fontFamily: 'var(--font-condensed)',
+            }}
+            title="How to use the app"
+          >
+            Help
           </button>
         </div>
 
@@ -515,6 +532,8 @@ export default function App() {
       {historyModalOpen && <SavedCardsModal />}
       
       {saveModalOpen && <SaveCardModal />}
+
+      {helpModalOpen && <HowToUseModal />}
 
       {/* Toast Notification */}
       {toastMessage && (

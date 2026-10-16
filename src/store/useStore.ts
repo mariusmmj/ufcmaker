@@ -21,6 +21,7 @@ interface AppState {
   taleModal: import('../types').Fight | null;
   historyModalOpen: boolean;
   saveModalOpen: boolean;
+  helpModalOpen: boolean;
   toastMessage: string | null;
   eventName: string;
   isDark: boolean;
@@ -36,6 +37,7 @@ interface AppState {
   setTaleModal: (fight: import('../types').Fight | null) => void;
   setHistoryModalOpen: (open: boolean) => void;
   setSaveModalOpen: (open: boolean) => void;
+  setHelpModalOpen: (open: boolean) => void;
   setToastMessage: (msg: string | null) => void;
   setSlots: (slots: FightSlot[]) => void;
   setPickemMode: (mode: boolean) => void;
@@ -78,6 +80,7 @@ export const useStore = create<AppState>((set, get) => ({
   taleModal: null,
   historyModalOpen: false,
   saveModalOpen: false,
+  helpModalOpen: false,
   toastMessage: null,
   eventName: initialState.eventName,
   isDark: false,
@@ -92,6 +95,7 @@ export const useStore = create<AppState>((set, get) => ({
   setTaleModal: (fight: import('../types').Fight | null) => set({ taleModal: fight }),
   setHistoryModalOpen: (open: boolean) => set({ historyModalOpen: open }),
   setSaveModalOpen: (open: boolean) => set({ saveModalOpen: open }),
+  setHelpModalOpen: (open: boolean) => set({ helpModalOpen: open }),
   setToastMessage: (msg: string | null) => set({ toastMessage: msg }),
   setSlots: (slots: FightSlot[]) => set({ slots }),
   setPickemMode: (mode: boolean) => set({ pickemMode: mode }),
