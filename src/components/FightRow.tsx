@@ -16,12 +16,9 @@ interface CellProps {
   isPicked?: boolean;
   isNotPicked?: boolean;
   pick?: import('../types').FightPick | null;
-  pickemMode?: boolean;
-  rounds?: 3 | 5;
   onClick: () => void;
   onClear: () => void;
   onInfoClick?: () => void;
-  onUpdatePickDetails?: (method?: import('../types').PickMethod, round?: import('../types').PickRound) => void;
 }
 
 const FighterCell: React.FC<CellProps> = ({
@@ -31,12 +28,9 @@ const FighterCell: React.FC<CellProps> = ({
   isPicked,
   isNotPicked,
   pick,
-  pickemMode,
-  rounds = 3,
   onClick,
   onClear,
   onInfoClick,
-  onUpdatePickDetails,
 }) => {
   // Always left align the text to make better use of space, and put X on the right.
   const align = 'items-start text-left';
@@ -93,17 +87,12 @@ const FighterCell: React.FC<CellProps> = ({
 
   const borderColor = isPicked ? '2px solid rgb(34, 197, 94)' : isChampion ? '1px solid rgba(218, 165, 32, 0.4)' : '1px solid var(--border-card)';
 
-  const isExpandedForPick = isPicked && pickemMode;
-  const computedMinHeight = isExpandedForPick
-    ? (isTitleFight ? 116 : isMain ? 94 : 84)
-    : (isTitleFight ? 96 : isMain ? 64 : 52);
-
   return (
     <div
       onClick={onClick}
-      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-4 py-2 rounded-xl cursor-pointer transition-all relative group`}
+      className={`flex-1 min-w-0 w-full flex flex-col justify-center ${align} px-3 sm:px-4 py-2 rounded-xl cursor-pointer transition-all relative group`}
       style={{
-        minHeight: computedMinHeight,
+        minHeight: isTitleFight ? 96 : isMain ? 64 : 52,
         background: defaultBg,
         border: borderColor,
         opacity: isNotPicked ? 0.3 : 1,
@@ -130,9 +119,9 @@ const FighterCell: React.FC<CellProps> = ({
             border: 'none',
             cursor: 'pointer',
             color: 'white',
-            width: 28,
-            height: 28,
-            fontSize: 14,
+            width: 26,
+            height: 26,
+            fontSize: 13,
             lineHeight: 1,
             borderRadius: '50%',
             fontFamily: 'var(--font-condensed)',
@@ -147,154 +136,115 @@ const FighterCell: React.FC<CellProps> = ({
         </button>
       )}
 
-      {/* Pick'em winner badge */}
-      {isPicked && (
-        <div
-          className={`absolute right-3 ${isExpandedForPick ? 'top-2.5' : 'top-1/2 -translate-y-1/2'} z-20 px-2.5 py-1 rounded-md text-[10px] md:text-xs font-black uppercase tracking-wider shadow-md flex items-center gap-1.5`}
-          style={{
-            background: '#22c55e',
-            color: '#fff',
-            fontFamily: 'var(--font-condensed)',
-          }}
-        >
-          <span>✓ PICK</span>
-          {pick?.method && (
-            <span className="opacity-90">• {pick.method}</span>
-          )}
-          {pick?.round && pick.round !== 'DEC' && (
-            <span className="opacity-90">{pick.round}</span>
-          )}
-        </div>
-      )}
-
       {/* Name & Image */}
-      <div className="relative z-20 flex items-center gap-2 sm:gap-4 mb-1">
-        {fighter.image && (
-          <button 
-            type="button"
-            className="relative z-20 cursor-pointer transition-transform hover:scale-105 active:scale-95 border-none bg-transparent p-0"
-            onClick={(e) => {
-              e.stopPropagation();
-              onInfoClick?.();
-            }}
-          >
-            <img
-              src={fighter.image}
-              alt={fighter.name}
-              className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-cover rounded-md"
-              style={{
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                background: isChampion 
-                  ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
-                  : 'var(--bg-card-hover)',
+      <div className="relative z-20 flex items-center gap-2 sm:gap-3 mb-1 w-full min-w-0">
+        {fighter.image ? (
+          <div className="relative flex-shrink-0">
+            <button 
+              type="button"
+              className="relative z-10 cursor-pointer transition-transform hover:scale-105 active:scale-95 border-none bg-transparent p-0 block"
+              onClick={(e) => {
+                e.stopPropagation();
+                onInfoClick?.();
               }}
-            />
-          </button>
-        )}
-        <p
-          className={`uppercase leading-tight ${
-            isTitleFight ? 'text-lg sm:text-xl lg:text-2xl' : isMain ? 'text-sm sm:text-base lg:text-lg' : 'text-xs sm:text-sm lg:text-base'
-          }`}
-          style={{
-            fontFamily: 'var(--font-condensed)',
-            fontWeight: 900,
-            letterSpacing: '0.05em',
-            color: 'var(--text-primary)',
-          }}
-        >
-          {fighter.name}
-        </p>
-      </div>
-
-      {/* Meta */}
-      <div
-        className={`flex ${metaDir} items-center gap-2 flex-wrap relative z-10 pr-8`}
-      >
-        <DivisionBadge division={fighter.division} />
-        <span
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 11,
-            color: 'var(--text-secondary)',
-          }}
-        >
-          {fighter.record}
-        </span>
-        {fighter.rank && fighter.rank !== 'Unranked' && (
-          <span
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 10,
-              color: isChampion ? '#daa520' : 'var(--text-secondary)',
-              fontWeight: isChampion ? 800 : 400,
-              fontStyle: isChampion ? 'normal' : 'italic',
-              textTransform: isChampion ? 'uppercase' : 'none',
-            }}
-          >
-            {fighter.rank}
-          </span>
-        )}
-      </div>
-
-      {/* Pick'em prediction detail selectors */}
-      {isPicked && pickemMode && (
-        <div
-          className="relative z-30 mt-2 pt-2 border-t flex flex-wrap items-center gap-2 w-full"
-          style={{ borderColor: 'rgba(34, 197, 94, 0.3)' }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex items-center gap-1 flex-wrap">
-            <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>Method:</span>
-            {(['KO/TKO', 'SUB', 'DEC'] as const).map((m) => (
-              <button
-                key={m}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUpdatePickDetails?.(
-                    pick?.method === m ? undefined : m,
-                    m === 'DEC' ? 'DEC' : pick?.round === 'DEC' ? undefined : pick?.round
-                  );
-                }}
-                className="px-2 py-0.5 rounded text-[9px] font-black uppercase transition-colors"
+            >
+              <img
+                src={fighter.image}
+                alt={fighter.name}
+                className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-22 lg:h-22 object-cover rounded-md"
                 style={{
-                  background: pick?.method === m ? 'rgb(34, 197, 94)' : 'var(--bg-main)',
-                  color: pick?.method === m ? '#fff' : 'var(--text-secondary)',
-                  border: pick?.method === m ? '1px solid rgb(34, 197, 94)' : '1px solid var(--border-card)',
-                  fontFamily: 'var(--font-condensed)',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  background: isChampion 
+                    ? 'linear-gradient(135deg, rgba(218, 165, 32, 0.25), rgba(218, 165, 32, 0.1))' 
+                    : 'var(--bg-card-hover)',
                 }}
+              />
+            </button>
+            {isPicked && (
+              <span
+                className="absolute -top-1.5 -right-1.5 z-30 pointer-events-none bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-black shadow-md border-2 border-[var(--bg-card)]"
+                title="Predicted Winner"
               >
-                {m}
-              </button>
-            ))}
+                ✓
+              </span>
+            )}
+          </div>
+        ) : (
+          isPicked && (
+            <span
+              className="bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-black shadow-md flex-shrink-0 mr-1"
+              title="Predicted Winner"
+            >
+              ✓
+            </span>
+          )
+        )}
+
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <p
+              className={`uppercase leading-tight truncate ${
+                isTitleFight ? 'text-sm sm:text-lg lg:text-xl' : isMain ? 'text-xs sm:text-base lg:text-lg' : 'text-xs sm:text-sm lg:text-base'
+              }`}
+              style={{
+                fontFamily: 'var(--font-condensed)',
+                fontWeight: 900,
+                letterSpacing: '0.05em',
+                color: 'var(--text-primary)',
+              }}
+              title={fighter.name}
+            >
+              {fighter.name}
+            </p>
+            {isPicked && (
+              <span
+                className="hidden sm:inline-block px-1.5 py-0.2 rounded text-[9px] font-black uppercase text-white shadow-sm flex-shrink-0"
+                style={{ background: '#22c55e', fontFamily: 'var(--font-condensed)' }}
+              >
+                PICK
+              </span>
+            )}
           </div>
 
-          {pick?.method !== 'DEC' && (
-            <div className="flex items-center gap-1 flex-wrap sm:ml-auto">
-              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>Round:</span>
-              {(rounds === 5 ? ['R1', 'R2', 'R3', 'R4', 'R5'] : ['R1', 'R2', 'R3']).map((r) => (
-                <button
-                  key={r}
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onUpdatePickDetails?.(pick?.method, pick?.round === r ? undefined : (r as import('../types').PickRound));
-                  }}
-                  className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase transition-colors"
-                  style={{
-                    background: pick?.round === r ? 'rgb(34, 197, 94)' : 'var(--bg-main)',
-                    color: pick?.round === r ? '#fff' : 'var(--text-secondary)',
-                    border: pick?.round === r ? '1px solid rgb(34, 197, 94)' : '1px solid var(--border-card)',
-                    fontFamily: 'var(--font-condensed)',
-                  }}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
-          )}
+          {/* Meta (Division, Record, Rank) */}
+          <div
+            className={`flex ${metaDir} items-center gap-1.5 flex-wrap relative z-10 mt-0.5`}
+          >
+            <DivisionBadge division={fighter.division} />
+            <span
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 11,
+                color: 'var(--text-secondary)',
+              }}
+            >
+              {fighter.record}
+            </span>
+            {fighter.rank && fighter.rank !== 'Unranked' && (
+              <span
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 10,
+                  color: isChampion ? '#daa520' : 'var(--text-secondary)',
+                  fontWeight: isChampion ? 800 : 400,
+                  fontStyle: isChampion ? 'normal' : 'italic',
+                  textTransform: isChampion ? 'uppercase' : 'none',
+                }}
+              >
+                {fighter.rank}
+              </span>
+            )}
+            {isPicked && (pick?.method || pick?.round) && (
+              <span
+                className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase text-green-500 bg-green-500/10 border border-green-500/20"
+                style={{ fontFamily: 'var(--font-condensed)' }}
+              >
+                {[pick.method, pick.round && pick.round !== 'DEC' ? pick.round : null].filter(Boolean).join(' ')}
+              </span>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -517,8 +467,6 @@ export const FightRow: React.FC<Props> = ({
           isPicked={pickemMode && currentWinner === 'f1'}
           isNotPicked={pickemMode && currentWinner === 'f2'}
           pick={currentWinner === 'f1' ? currentPickObj : null}
-          pickemMode={pickemMode}
-          rounds={fight.rounds || (fight.isTitleFight ? 5 : 3)}
           onClick={() => {
             if (pickemMode) {
               if (f1.name) setPick(fightId, currentWinner === 'f1' ? null : 'f1');
@@ -533,7 +481,6 @@ export const FightRow: React.FC<Props> = ({
               useStore.getState().setInfoModal(freshData || f1);
             }
           }}
-          onUpdatePickDetails={(method, round) => setPickDetails(fightId, method, round)}
         />
 
         {/* VS divider */}
@@ -577,8 +524,6 @@ export const FightRow: React.FC<Props> = ({
           isPicked={pickemMode && currentWinner === 'f2'}
           isNotPicked={pickemMode && currentWinner === 'f1'}
           pick={currentWinner === 'f2' ? currentPickObj : null}
-          pickemMode={pickemMode}
-          rounds={fight.rounds || (fight.isTitleFight ? 5 : 3)}
           onClick={() => {
             if (pickemMode) {
               if (f2.name) setPick(fightId, currentWinner === 'f2' ? null : 'f2');
@@ -593,9 +538,101 @@ export const FightRow: React.FC<Props> = ({
               useStore.getState().setInfoModal(freshData || f2);
             }
           }}
-          onUpdatePickDetails={(method, round) => setPickDetails(fightId, method, round)}
         />
       </div>
+
+      {/* Full-width Pick'em Prediction Bar */}
+      {pickemMode && currentWinner && (currentWinner === 'f1' ? f1 : f2).name && (
+        <div
+          className="mx-2 mb-2 p-2.5 sm:p-3 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 transition-all shadow-sm"
+          style={{
+            background: 'rgba(34, 197, 94, 0.08)',
+            borderColor: 'rgba(34, 197, 94, 0.35)',
+          }}
+        >
+          {/* Winner info */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span
+              className="px-2.5 py-1 rounded text-xs font-black uppercase tracking-wider text-white shadow-sm"
+              style={{ background: '#22c55e', fontFamily: 'var(--font-condensed)' }}
+            >
+              ✓ Pick: {(currentWinner === 'f1' ? f1 : f2).name}
+            </span>
+            {(currentPickObj?.method || currentPickObj?.round) && (
+              <span
+                className="text-xs font-bold uppercase tracking-wide"
+                style={{ color: '#22c55e', fontFamily: 'var(--font-condensed)' }}
+              >
+                ({[currentPickObj.method, currentPickObj.round && currentPickObj.round !== 'DEC' ? currentPickObj.round : null].filter(Boolean).join(' • ')})
+              </span>
+            )}
+          </div>
+
+          {/* Method and Round Selectors */}
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+            {/* Method chips */}
+            <div className="flex items-center gap-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">Method:</span>
+              {(['KO/TKO', 'SUB', 'DEC'] as const).map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setPickDetails(
+                      fightId,
+                      currentPickObj?.method === m ? undefined : m,
+                      m === 'DEC' ? 'DEC' : currentPickObj?.round === 'DEC' ? undefined : currentPickObj?.round
+                    );
+                  }}
+                  className="px-2.5 py-1 rounded text-[10px] font-black uppercase transition-colors cursor-pointer"
+                  style={{
+                    background: currentPickObj?.method === m ? '#22c55e' : 'var(--bg-main)',
+                    color: currentPickObj?.method === m ? '#fff' : 'var(--text-secondary)',
+                    border: currentPickObj?.method === m ? '1px solid #22c55e' : '1px solid var(--border-card)',
+                    fontFamily: 'var(--font-condensed)',
+                  }}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+
+            {/* Round chips */}
+            {currentPickObj?.method !== 'DEC' && (
+              <div className="flex items-center gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">Round:</span>
+                {((fight.rounds || (fight.isTitleFight ? 5 : 3)) === 5
+                  ? ['R1', 'R2', 'R3', 'R4', 'R5']
+                  : ['R1', 'R2', 'R3']
+                ).map((r) => (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setPickDetails(
+                        fightId,
+                        currentPickObj?.method,
+                        currentPickObj?.round === r ? undefined : (r as import('../types').PickRound)
+                      );
+                    }}
+                    className="px-2 py-1 rounded text-[10px] font-black uppercase transition-colors cursor-pointer"
+                    style={{
+                      background: currentPickObj?.round === r ? '#22c55e' : 'var(--bg-main)',
+                      color: currentPickObj?.round === r ? '#fff' : 'var(--text-secondary)',
+                      border: currentPickObj?.round === r ? '1px solid #22c55e' : '1px solid var(--border-card)',
+                      fontFamily: 'var(--font-condensed)',
+                    }}
+                  >
+                    {r}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
