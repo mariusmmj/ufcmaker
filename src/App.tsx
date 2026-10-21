@@ -92,6 +92,39 @@ export default function App() {
   const nameRef = useRef<HTMLInputElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    if (editingName) {
+      nameRef.current?.focus();
+      nameRef.current?.select();
+    }
+  }, [editingName]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (modal) setModal(null);
+        else if (infoModal) setInfoModal(null);
+        else if (taleModal) setTaleModal(null);
+        else if (helpModalOpen) setHelpModalOpen(false);
+        else if (historyModalOpen) useStore.getState().setHistoryModalOpen(false);
+        else if (saveModalOpen) useStore.getState().setSaveModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [
+    modal,
+    infoModal,
+    taleModal,
+    helpModalOpen,
+    historyModalOpen,
+    saveModalOpen,
+    setModal,
+    setInfoModal,
+    setTaleModal,
+    setHelpModalOpen,
+  ]);
+
   const handleShare = () => {
     encodeStateToUrl({ fights, eventName, noRestrictions, slots, pickemMode, picks });
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -175,41 +208,23 @@ export default function App() {
       >
         
 
-        {/* Event name */}
-        {editingName ? (
-          <input
-            ref={nameRef}
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-            onBlur={() => setEditingName(false)}
-            onKeyDown={(e) => e.key === 'Enter' && setEditingName(false)}
-            className="outline-none"
-            style={{
-              fontFamily: 'var(--font-condensed)',
-              fontWeight: 900,
-              fontSize: 20,
-              letterSpacing: '0.08em',
-              color: 'var(--text-primary)',
-              textTransform: 'uppercase',
-              background: 'transparent',
-              border: 'none',
-              borderBottom: '1.5px solid var(--accent-color)',
-              width: 200,
-              padding: '0 0 1px',
-            }}
+        {/* Logo and Event name */}
+        <div className="flex items-center gap-2.5">
+          <img
+            src="/favicon.svg"
+            alt="UFC Logo"
+            className="w-7 h-7 sm:w-8 sm:h-8 object-contain flex-shrink-0 select-none"
+            style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.25))' }}
           />
-        ) : (
-          <button
-            onClick={() => setEditingName(true)}
-            className="flex items-center gap-2 group"
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 0,
-            }}
-          >
-            <span
+
+          {editingName ? (
+            <input
+              ref={nameRef}
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+              onBlur={() => setEditingName(false)}
+              onKeyDown={(e) => e.key === 'Enter' && setEditingName(false)}
+              className="outline-none"
               style={{
                 fontFamily: 'var(--font-condensed)',
                 fontWeight: 900,
@@ -217,15 +232,41 @@ export default function App() {
                 letterSpacing: '0.08em',
                 color: 'var(--text-primary)',
                 textTransform: 'uppercase',
+                background: 'transparent',
+                border: 'none',
+                borderBottom: '1.5px solid var(--accent-color)',
+                width: 200,
+                padding: '0 0 1px',
+              }}
+            />
+          ) : (
+            <button
+              onClick={() => setEditingName(true)}
+              className="flex items-center gap-2 group cursor-pointer"
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
               }}
             >
-              {eventName}
-            </span>
-            <span className="text-stone-300 group-hover:text-stone-500 transition-colors text-xs">
-              Edit Name
-            </span>
-          </button>
-        )}
+              <span
+                style={{
+                  fontFamily: 'var(--font-condensed)',
+                  fontWeight: 900,
+                  fontSize: 20,
+                  letterSpacing: '0.08em',
+                  color: 'var(--text-primary)',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {eventName}
+              </span>
+              <span className="text-stone-300 group-hover:text-stone-500 transition-colors text-xs">
+                Edit Name
+              </span>
+            </button>
+          )}
+        </div>
 
         <span
           className="hidden sm:block mr-auto"

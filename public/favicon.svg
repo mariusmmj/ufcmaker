@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="#18181b" stroke="#ef4444" stroke-width="7" stroke-linejoin="round" />
+  <polygon points="32,12 68,12 88,32 88,68 68,88 32,88 12,68 12,32" fill="none" stroke="#27272a" stroke-width="3" stroke-linejoin="round" />
+  <text x="50" y="52" font-family="'Barlow Condensed', 'Impact', 'Arial Black', sans-serif" font-size="32" font-weight="900" fill="#ef4444" text-anchor="middle" dominant-baseline="central" letter-spacing="1.5">UFC</text>
+</svg>

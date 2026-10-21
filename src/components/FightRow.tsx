@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fight, FightSlot, FighterSlotKey } from '../types';
+import { Fight, Fighter, FightSlot, FighterSlotKey } from '../types';
 import { DIVISION_COLOR } from '../constants';
 import { DivisionBadge } from './DivisionBadge';
 import { useSortable } from '@dnd-kit/sortable';
@@ -278,7 +278,7 @@ const FighterCell: React.FC<CellProps> = ({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onUpdatePickDetails?.(pick?.method, pick?.round === r ? undefined : (r as any));
+                    onUpdatePickDetails?.(pick?.method, pick?.round === r ? undefined : (r as import('../types').PickRound));
                   }}
                   className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase transition-colors"
                   style={{
@@ -529,7 +529,7 @@ export const FightRow: React.FC<Props> = ({
           onClear={() => onClear(fightId, 'f1')}
           onInfoClick={() => {
             if (f1.name) {
-              const freshData = allFighters.find((f) => f.name === f1.name) as any;
+              const freshData = allFighters.find((f) => f.name === f1.name) as Fighter | undefined;
               useStore.getState().setInfoModal(freshData || f1);
             }
           }}
@@ -544,9 +544,9 @@ export const FightRow: React.FC<Props> = ({
           <button
             onClick={() => {
               if (f1.name && f2.name) {
-                const freshF1 = allFighters.find((f) => f.name === f1.name) || f1;
-                const freshF2 = allFighters.find((f) => f.name === f2.name) || f2;
-                useStore.getState().setTaleModal({ ...fight, f1: freshF1 as any, f2: freshF2 as any });
+                const freshF1 = (allFighters.find((f) => f.name === f1.name) || f1) as Fighter;
+                const freshF2 = (allFighters.find((f) => f.name === f2.name) || f2) as Fighter;
+                useStore.getState().setTaleModal({ ...fight, f1: freshF1, f2: freshF2 });
               }
             }}
             className="flex flex-col items-center justify-center transition-transform hover:scale-110 active:scale-95 bg-transparent border-none p-0 cursor-pointer"
@@ -589,7 +589,7 @@ export const FightRow: React.FC<Props> = ({
           onClear={() => onClear(fightId, 'f2')}
           onInfoClick={() => {
             if (f2.name) {
-              const freshData = allFighters.find((f) => f.name === f2.name) as any;
+              const freshData = allFighters.find((f) => f.name === f2.name) as Fighter | undefined;
               useStore.getState().setInfoModal(freshData || f2);
             }
           }}
