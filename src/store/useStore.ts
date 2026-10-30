@@ -22,6 +22,8 @@ interface AppState {
   historyModalOpen: boolean;
   saveModalOpen: boolean;
   helpModalOpen: boolean;
+  pickemSlipModalOpen: boolean;
+  cardExportModalOpen: boolean;
   toastMessage: string | null;
   eventName: string;
   isDark: boolean;
@@ -38,6 +40,8 @@ interface AppState {
   setHistoryModalOpen: (open: boolean) => void;
   setSaveModalOpen: (open: boolean) => void;
   setHelpModalOpen: (open: boolean) => void;
+  setPickemSlipModalOpen: (open: boolean) => void;
+  setCardExportModalOpen: (open: boolean) => void;
   setToastMessage: (msg: string | null) => void;
   setSlots: (slots: FightSlot[]) => void;
   setPickemMode: (mode: boolean) => void;
@@ -81,6 +85,8 @@ export const useStore = create<AppState>((set, get) => ({
   historyModalOpen: false,
   saveModalOpen: false,
   helpModalOpen: false,
+  pickemSlipModalOpen: false,
+  cardExportModalOpen: false,
   toastMessage: null,
   eventName: initialState.eventName,
   isDark: false,
@@ -96,6 +102,8 @@ export const useStore = create<AppState>((set, get) => ({
   setHistoryModalOpen: (open: boolean) => set({ historyModalOpen: open }),
   setSaveModalOpen: (open: boolean) => set({ saveModalOpen: open }),
   setHelpModalOpen: (open: boolean) => set({ helpModalOpen: open }),
+  setPickemSlipModalOpen: (open: boolean) => set({ pickemSlipModalOpen: open }),
+  setCardExportModalOpen: (open: boolean) => set({ cardExportModalOpen: open }),
   setToastMessage: (msg: string | null) => set({ toastMessage: msg }),
   setSlots: (slots: FightSlot[]) => set({ slots }),
   setPickemMode: (mode: boolean) => set({ pickemMode: mode }),

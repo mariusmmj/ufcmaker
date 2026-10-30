@@ -64,15 +64,15 @@ const GUIDE_SECTIONS: GuideSection[] = [
   },
   {
     badge: 'Predictions',
-    title: 'Interactive Pick\'em Mode',
+    title: 'Interactive Pick\'em Mode & Prediction Slip',
     description:
-      'Toggle "Pick\'em Mode" in the navbar, then click on your predicted winner in each matchup to highlight them. You can optionally pick the Method (KO/TKO, SUB, DEC) and Round (R1 to R5 or Decision).',
+      'Toggle "Pick\'em Mode" in the navbar, then click on your predicted winner in each matchup to highlight them. You can optionally pick the Method (KO/TKO, SUB, DEC) and Round (R1 to R5 or Decision). Click "Prediction Slip" in the banner to browse, copy text, or download high-resolution PNG prediction slips for the Main Card and Prelims.',
   },
   {
     badge: 'Export',
     title: 'Saving, Sharing & Image Export',
     description:
-      'Use "Save Card" to store cards locally in your "History". Use "Share Link" to compress your entire card and predictions into a link you can send to friends. Click "Image Export" to download a high-resolution PNG image of the fight card.',
+      'Use "Save Card" to store cards locally in your "History". Use "Share Link" to compress your entire card and predictions into a link you can send to friends. Click "Image Export" to browse and download high-resolution fight card pictures for the Main Card and Prelims.',
   },
 ];
 

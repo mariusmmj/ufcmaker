@@ -7,10 +7,11 @@ import { TaleOfTheTapeModal } from './components/TaleOfTheTapeModal';
 import { SavedCardsModal } from './components/SavedCardsModal';
 import { SaveCardModal } from './components/SaveCardModal';
 import { HowToUseModal } from './components/HowToUseModal';
+import { PickemSlipModal } from './components/PickemSlipModal';
+import { CardExportModal } from './components/CardExportModal';
 import { CardStats } from './components/CardStats';
 import { useStore } from './store/useStore';
 import { encodeStateToUrl } from './utils/storage';
-import { toPng } from 'html-to-image';
 import {
   DndContext,
   closestCenter,
@@ -65,12 +66,16 @@ export default function App() {
     historyModalOpen,
     saveModalOpen,
     helpModalOpen,
+    pickemSlipModalOpen,
+    cardExportModalOpen,
     toastMessage,
     eventName,
     isDark,
     pickemMode,
     picks,
     setHelpModalOpen,
+    setPickemSlipModalOpen,
+    setCardExportModalOpen,
     setPickemMode,
     setEventName,
     setIsDark,
@@ -108,6 +113,8 @@ export default function App() {
         else if (helpModalOpen) setHelpModalOpen(false);
         else if (historyModalOpen) useStore.getState().setHistoryModalOpen(false);
         else if (saveModalOpen) useStore.getState().setSaveModalOpen(false);
+        else if (pickemSlipModalOpen) setPickemSlipModalOpen(false);
+        else if (cardExportModalOpen) setCardExportModalOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -119,10 +126,14 @@ export default function App() {
     helpModalOpen,
     historyModalOpen,
     saveModalOpen,
+    pickemSlipModalOpen,
+    cardExportModalOpen,
     setModal,
     setInfoModal,
     setTaleModal,
     setHelpModalOpen,
+    setPickemSlipModalOpen,
+    setCardExportModalOpen,
   ]);
 
   const handleShare = () => {
@@ -134,30 +145,7 @@ export default function App() {
   };
 
   const handleExport = () => {
-    if (mainRef.current === null) return;
-    const node = mainRef.current;
-    const exportWidth = 1200;
-    toPng(node, { 
-      cacheBust: true, 
-      backgroundColor: isDark ? '#1a1a1a' : '#f9f9f9',
-      width: exportWidth,
-      height: node.scrollHeight,
-      style: { 
-        margin: '0',
-        width: `${exportWidth}px`,
-        minWidth: `${exportWidth}px`,
-        maxWidth: `${exportWidth}px`
-      }
-    })
-      .then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = `${eventName.replace(/\s+/g, '_')}_card.png`;
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch((err) => {
-        console.error('Oops, something went wrong with the export!', err);
-      });
+    setCardExportModalOpen(true);
   };
 
   // Focus input when editing name
@@ -334,7 +322,7 @@ export default function App() {
           </button>
           <button
             onClick={handleExport}
-            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase"
+            className="text-xs md:text-sm px-2 md:px-3 py-1 rounded transition-colors font-bold uppercase cursor-pointer"
             style={{
               background: 'var(--bg-main)',
               color: 'var(--text-primary)',
@@ -462,22 +450,35 @@ export default function App() {
                 Pick'em Mode: Click a fighter to predict the winner ({Object.values(picks).filter(Boolean).length} / {slots.filter(s => fights[s.id]?.f1?.name && fights[s.id]?.f2?.name).length} picked)
               </span>
             </div>
-            {Object.values(picks).filter(Boolean).length > 0 && (
+            <div className="flex items-center gap-2">
               <button
-                onClick={() => useStore.setState({ picks: {} })}
-                className="text-xs px-3 py-1 rounded font-bold uppercase transition-colors"
+                onClick={() => setPickemSlipModalOpen(true)}
+                className="text-xs px-3 py-1 rounded font-bold uppercase transition-all shadow-sm cursor-pointer flex items-center gap-1.5"
                 style={{
-                  background: 'var(--bg-main)',
-                  border: '1px solid var(--border-main)',
-                  color: 'var(--text-muted)',
+                  background: '#22c55e',
+                  color: '#ffffff',
                   fontFamily: 'var(--font-condensed)',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#ef4444')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
               >
-                Reset Picks
+                Prediction Slip
               </button>
-            )}
+              {Object.values(picks).filter(Boolean).length > 0 && (
+                <button
+                  onClick={() => useStore.setState({ picks: {} })}
+                  className="text-xs px-3 py-1 rounded font-bold uppercase transition-colors cursor-pointer"
+                  style={{
+                    background: 'var(--bg-main)',
+                    border: '1px solid var(--border-main)',
+                    color: 'var(--text-muted)',
+                    fontFamily: 'var(--font-condensed)',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ef4444')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+                >
+                  Reset Picks
+                </button>
+              )}
+            </div>
           </div>
         )}
 
@@ -575,6 +576,10 @@ export default function App() {
       {saveModalOpen && <SaveCardModal />}
 
       {helpModalOpen && <HowToUseModal />}
+
+      {pickemSlipModalOpen && <PickemSlipModal />}
+
+      {cardExportModalOpen && <CardExportModal />}
 
       {/* Toast Notification */}
       {toastMessage && (
