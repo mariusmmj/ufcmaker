@@ -15,6 +15,7 @@ interface CellProps {
   isTitleFight?: boolean;
   isPicked?: boolean;
   isNotPicked?: boolean;
+  pickemMode?: boolean;
   pick?: import('../types').FightPick | null;
   onClick: () => void;
   onClear: () => void;
@@ -27,6 +28,7 @@ const FighterCell: React.FC<CellProps> = ({
   isTitleFight,
   isPicked,
   isNotPicked,
+  pickemMode,
   pick,
   onClick,
   onClear,
@@ -106,28 +108,34 @@ const FighterCell: React.FC<CellProps> = ({
       }
     >
       {/* Clear button */}
-      {!isPicked && !isNotPicked && !useStore.getState().pickemMode && (
+      {!isPicked && !isNotPicked && !pickemMode && (
         <button
-          className={`absolute ${clearPos} opacity-50 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center`}
+          type="button"
+          className={`absolute ${clearPos} z-30 flex items-center justify-center opacity-80 sm:opacity-50 hover:opacity-100 group-hover:opacity-100 transition-opacity cursor-pointer`}
           onClick={(e) => {
+            e.preventDefault();
             e.stopPropagation();
             onClear();
           }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()}
           title="Remove fighter"
+          aria-label={`Remove ${fighter.name}`}
           style={{
             background: '#ef4444',
             border: 'none',
             cursor: 'pointer',
             color: 'white',
-            width: 26,
-            height: 26,
+            width: 28,
+            height: 28,
             fontSize: 13,
             lineHeight: 1,
             borderRadius: '50%',
             fontFamily: 'var(--font-condensed)',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            boxShadow: '0 2px 5px rgba(0,0,0,0.3)',
             top: '50%',
             transform: 'translateY(-50%)',
+            pointerEvents: 'auto',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.background = '#dc2626')}
           onMouseLeave={(e) => (e.currentTarget.style.background = '#ef4444')}
@@ -137,7 +145,7 @@ const FighterCell: React.FC<CellProps> = ({
       )}
 
       {/* Name & Image */}
-      <div className="relative z-20 flex items-center gap-2 sm:gap-3 mb-1 w-full min-w-0">
+      <div className="relative z-20 flex items-center gap-2 sm:gap-3 mb-1 w-full min-w-0 pr-8 sm:pr-9">
         {fighter.image ? (
           <div className="relative flex-shrink-0">
             <button 
@@ -466,6 +474,7 @@ export const FightRow: React.FC<Props> = ({
           isTitleFight={isTitleFight}
           isPicked={pickemMode && currentWinner === 'f1'}
           isNotPicked={pickemMode && currentWinner === 'f2'}
+          pickemMode={pickemMode}
           pick={currentWinner === 'f1' ? currentPickObj : null}
           onClick={() => {
             if (pickemMode) {
@@ -523,6 +532,7 @@ export const FightRow: React.FC<Props> = ({
           isTitleFight={isTitleFight}
           isPicked={pickemMode && currentWinner === 'f2'}
           isNotPicked={pickemMode && currentWinner === 'f1'}
+          pickemMode={pickemMode}
           pick={currentWinner === 'f2' ? currentPickObj : null}
           onClick={() => {
             if (pickemMode) {

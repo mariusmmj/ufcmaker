@@ -242,7 +242,7 @@ export const useStore = create<AppState>((set, get) => ({
   },
 
   handleClear: (fightId: string, slot: FighterSlotKey) => {
-    const { fights } = get();
+    const { fights, picks } = get();
     const newFight = {
       ...fights[fightId],
       f1: { ...fights[fightId].f1 },
@@ -251,8 +251,16 @@ export const useStore = create<AppState>((set, get) => ({
     newFight[slot] = emptyFighter();
     if (!newFight.f1.name && !newFight.f2.name) newFight.lockedDiv = null;
 
+    const newPicks = { ...picks };
+    const curPick = newPicks[fightId];
+    const pickedWinner = typeof curPick === 'string' ? curPick : curPick?.winner;
+    if (pickedWinner === slot) {
+      delete newPicks[fightId];
+    }
+
     set({
       fights: { ...fights, [fightId]: newFight },
+      picks: newPicks,
     });
   },
 
